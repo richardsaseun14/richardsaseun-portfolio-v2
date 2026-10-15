@@ -36,7 +36,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
       </head>
-      <body className="min-h-screen bg-bg text-ink">
+      <body className="min-h-screen overflow-x-clip bg-bg text-ink">
         <PrefsProvider>
           <Marquee />
           <Header />

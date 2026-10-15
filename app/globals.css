@@ -134,7 +134,7 @@
 /* ---------- Type & layout utilities ---------- */
 @utility container-x {
   width: 100%;
-  max-width: 1320px;
+  max-width: 1440px;
   margin-inline: auto;
   padding-inline: 32px;
   @media (max-width: 640px) {
@@ -259,8 +259,24 @@
   }
 }
 
+/* ---------- Mobile menu ---------- */
+.mobile-menu[data-state="open"] {
+  animation: menu-in 0.22s ease both;
+}
+@keyframes menu-in {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .marquee-track,
+  .mobile-menu[data-state="open"],
   .toast-in {
     animation: none;
   }

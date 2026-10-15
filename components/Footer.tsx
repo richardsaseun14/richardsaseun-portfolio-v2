@@ -16,7 +16,7 @@ export function Footer() {
             <p className="max-w-[260px] text-muted-foreground">{site.bio}</p>
           </div>
 
-          <div className="flex flex-wrap gap-x-20 gap-y-10">
+          <div className="flex flex-wrap gap-x-12 gap-y-10 sm:gap-x-20">
             <nav aria-labelledby="ft-sitemap" className="flex flex-col gap-1.5">
               <h2 id="ft-sitemap" className={colTitle}>Sitemap</h2>
               <Link href="/" className="no-underline">Home</Link>

@@ -74,3 +74,8 @@ export const Asterisk = ({ size = 12, className }: P) => (
     <path d="M12 2v20M2 12h20M4.9 4.9l14.2 14.2M19.1 4.9L4.9 19.1" />
   </svg>
 );
+export const Menu = ({ size = 20, className }: P) => (
+  <svg {...base(size)} strokeWidth={2} className={className}>
+    <path d="M4 7h16M4 12h16M4 17h16" />
+  </svg>
+);

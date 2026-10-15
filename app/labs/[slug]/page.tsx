@@ -21,10 +21,10 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
 function Block({ id, title, children }: { id: string; title: string; children: React.ReactNode }) {
   return (
     <section aria-labelledby={id} className="flex flex-wrap gap-x-16 gap-y-8">
-      <h2 id={id} className="flex-[1_1_300px] font-display text-[44px] leading-[0.95] font-extrabold tracking-[-0.035em]">
+      <h2 id={id} className="flex-[1_1_300px] font-display text-[clamp(32px,8vw,44px)] leading-[0.95] font-extrabold tracking-[-0.035em]">
         {title}
       </h2>
-      <div className="flex max-w-[760px] flex-[999_1_560px] flex-col gap-5 text-[19px] leading-[1.6]">{children}</div>
+      <div className="flex max-w-[760px] flex-[999_1_560px] flex-col gap-5 text-[17px] leading-[1.6] sm:text-[19px]">{children}</div>
     </section>
   );
 }
@@ -39,7 +39,7 @@ export default async function CaseStudyPage({ params }: Params) {
 
   return (
     <main>
-      <section className="container-x pt-12">
+      <section className="container-x pt-8 sm:pt-12">
         <Link href="/labs" className="meta inline-flex min-h-11 items-center gap-2 text-[13px] no-underline">
           <ArrowLeft size={16} /> Back to Labs
         </Link>
@@ -63,14 +63,19 @@ export default async function CaseStudyPage({ params }: Params) {
             { k: "Team", v: cs.team },
             { k: "Stack", v: cs.stack },
           ].map((row, i) => (
-            <div key={row.k} className={`flex flex-col gap-1.5 py-5 ${i === 0 ? "pr-5" : "border-l border-line px-5"}`}>
+            <div
+              key={row.k}
+              className={`flex flex-col gap-1.5 border-t border-line py-4 first:border-t-0 sm:border-t-0 sm:py-5 ${
+                i === 0 ? "sm:pr-5" : "sm:border-l sm:px-5"
+              }`}
+            >
               <dt className="meta text-muted-foreground">{row.k}</dt>
               <dd className="font-medium">{row.v}</dd>
             </div>
           ))}
-          <div className="flex flex-col gap-1.5 border-l border-line px-5 py-5">
+          <div className="flex flex-col gap-1.5 border-t border-line py-4 sm:border-t-0 sm:border-l sm:px-5 sm:py-5">
             <dt className="meta text-muted-foreground">Links</dt>
-            <dd className="flex gap-4 font-medium">
+            <dd className="flex flex-wrap gap-x-4 gap-y-1 font-medium">
               {cs.links.map((l) => (
                 <a key={l.label} href={l.href} target="_blank" rel="noreferrer">
                   {l.label} ↗
@@ -89,8 +94,8 @@ export default async function CaseStudyPage({ params }: Params) {
         <section aria-label="Outcomes" className="container-x pt-14">
           <div className="grid bg-invert text-invert-ink [grid-template-columns:repeat(auto-fit,minmax(min(240px,100%),1fr))]">
             {project.metrics.map((m) => (
-              <div key={m.label} className="p-9">
-                <div className="font-display text-[64px] leading-none font-extrabold tracking-[-0.04em]">
+              <div key={m.label} className="p-6 sm:p-9">
+                <div className="font-display text-[clamp(44px,12vw,64px)] leading-none font-extrabold tracking-[-0.04em]">
                   {m.value}
                   <span className="text-accent">{m.accent}</span>
                 </div>
@@ -101,7 +106,7 @@ export default async function CaseStudyPage({ params }: Params) {
         </section>
       )}
 
-      <article className="container-x flex flex-col gap-24 pt-30">
+      <article className="container-x flex flex-col gap-16 pt-20 sm:gap-24 sm:pt-30">
         <Block id="cs-problem" title="The problem">
           <p className="text-pretty">{cs.problem[0]}</p>
           {cs.problem.slice(1).map((p) => (
@@ -113,7 +118,7 @@ export default async function CaseStudyPage({ params }: Params) {
 
         <Block id="cs-thinking" title="The thinking">
           <p className="text-pretty">{cs.thinking.intro}</p>
-          <blockquote className="border-t border-b border-t-ink border-b-line py-7 font-display text-[30px] leading-[1.15] font-bold tracking-[-0.025em] text-pretty">
+          <blockquote className="border-t border-b border-t-ink border-b-line py-7 font-display text-[clamp(22px,6vw,30px)] leading-[1.15] font-bold tracking-[-0.025em] text-pretty">
             “{cs.thinking.quote}”
           </blockquote>
           <ol className="border-t border-line text-base">
@@ -128,10 +133,10 @@ export default async function CaseStudyPage({ params }: Params) {
 
         <section aria-labelledby="cs-built" className="flex flex-col gap-10">
           <div className="flex flex-wrap gap-x-16 gap-y-8">
-            <h2 id="cs-built" className="flex-[1_1_300px] font-display text-[44px] leading-[0.95] font-extrabold tracking-[-0.035em]">
+            <h2 id="cs-built" className="flex-[1_1_300px] font-display text-[clamp(32px,8vw,44px)] leading-[0.95] font-extrabold tracking-[-0.035em]">
               What I built
             </h2>
-            <p className="max-w-[760px] flex-[999_1_560px] text-[19px] leading-[1.6] text-pretty">{cs.built.intro}</p>
+            <p className="max-w-[760px] flex-[999_1_560px] text-[17px] leading-[1.6] text-pretty sm:text-[19px]">{cs.built.intro}</p>
           </div>
           <div className="grid gap-5 [grid-template-columns:repeat(auto-fit,minmax(min(280px,100%),1fr))]">
             {cs.built.mobileShots.map((caption, i) => (
@@ -152,18 +157,18 @@ export default async function CaseStudyPage({ params }: Params) {
         </Block>
       </article>
 
-      <section aria-label="Next case study" className="container-x py-30">
+      <section aria-label="Next case study" className="container-x py-20 sm:py-30">
         <Link
           href={`/labs/${next.slug}`}
           className="flex flex-wrap items-center justify-between gap-6 bg-invert p-[clamp(28px,4vw,56px)] text-invert-ink no-underline transition-colors hover:bg-accent hover:text-on-accent"
         >
           <div className="flex flex-col gap-2.5">
             <span className="meta text-[13px] opacity-75">Next case study</span>
-            <span className="font-display text-[clamp(36px,5vw,72px)] leading-[0.9] font-black tracking-[-0.04em] uppercase">
+            <span className="font-display text-[clamp(32px,5vw,72px)] leading-[0.9] font-black tracking-[-0.04em] uppercase [overflow-wrap:anywhere]">
               {next.name}
             </span>
           </div>
-          <ArrowRight size={56} />
+          <ArrowRight size={56} className="size-10 sm:size-14" />
         </Link>
       </section>
 

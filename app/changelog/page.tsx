@@ -30,7 +30,7 @@ export default function ChangelogPage() {
         action={
           <a
             href={site.cvUrl}
-            className="inline-flex h-14 items-center gap-2.5 bg-ink px-7 font-semibold text-bg no-underline hover:bg-accent hover:text-on-accent"
+            className="inline-flex h-12 items-center gap-2.5 bg-ink px-5 font-semibold sm:h-14 sm:px-7 text-bg no-underline hover:bg-accent hover:text-on-accent"
           >
             <Download /> Download CV
           </a>
@@ -38,19 +38,19 @@ export default function ChangelogPage() {
         intro="A running log of where I've worked, the kind of work I can take on for you, and a few quick facts for when you just need the overview."
       />
 
-      <section aria-labelledby="history-title" className="container-x pt-30">
+      <section aria-labelledby="history-title" className="container-x pt-20 sm:pt-30">
         <SectionHeading id="history-title" eyebrow="Experience" title="Where I've worked." aside={<span className="eyebrow">Newest first</span>} />
         <ol className="border-t border-ink">
           {experience.map((job, i) => (
-            <li key={i} className="flex flex-wrap gap-x-10 gap-y-4 border-b border-line py-8 hover:bg-surface">
-              <div className="flex flex-[0_0_200px] flex-col items-start gap-2.5">
+            <li key={i} className="flex flex-wrap gap-x-10 gap-y-4 border-b border-line py-7 hover:bg-surface sm:py-8">
+              <div className="flex basis-full flex-row flex-wrap items-center gap-2.5 sm:flex-[0_0_200px] sm:flex-col sm:items-start">
                 <span className="font-mono text-[13px] text-muted-foreground">{job.period}</span>
                 {job.current && (
                   <span className="meta bg-accent px-2 py-1 text-[11px] tracking-[0.06em] text-on-accent">Current</span>
                 )}
               </div>
-              <div className="flex flex-[1_1_420px] flex-col gap-3">
-                <h3 className="font-display text-[28px] font-extrabold tracking-[-0.025em]">{job.company}</h3>
+              <div className="flex flex-[1_1_320px] flex-col gap-3">
+                <h3 className="font-display text-[clamp(24px,6.5vw,28px)] font-extrabold tracking-[-0.025em]">{job.company}</h3>
                 <span className="font-medium">{job.role}</span>
                 <ul className="flex flex-col gap-1.5 text-muted-foreground">
                   {job.notes.map((n, j) => (
@@ -68,11 +68,11 @@ export default function ChangelogPage() {
         </ol>
       </section>
 
-      <section aria-labelledby="cap-title" className="container-x pt-30">
+      <section aria-labelledby="cap-title" className="container-x pt-20 sm:pt-30">
         <SectionHeading id="cap-title" eyebrow="Services" title="What I can work on." aside={<span className="eyebrow">Bring me in for</span>} />
         <ul className={cellGrid}>
           {capabilities.map((c) => (
-            <li key={c.title} className={`${cell} flex flex-col gap-2.5 p-7 hover:bg-surface`}>
+            <li key={c.title} className={`${cell} flex flex-col gap-2.5 p-6 hover:bg-surface sm:p-7`}>
               <span aria-hidden className="font-mono text-lg text-accent">
                 +
               </span>
@@ -83,7 +83,7 @@ export default function ChangelogPage() {
         </ul>
       </section>
 
-      <section aria-labelledby="facts-title" className="container-x pt-30">
+      <section aria-labelledby="facts-title" className="container-x pt-20 sm:pt-30">
         <SectionHeading id="facts-title" eyebrow="Overview" title="Quick facts." aside={<span className="eyebrow">The CV in 30 seconds</span>} />
         <dl className={cellGrid}>
           {quickFacts.map((f) => (
@@ -95,12 +95,12 @@ export default function ChangelogPage() {
         </dl>
       </section>
 
-      <section aria-labelledby="reach-title" className="container-x py-30">
-        <div className="flex flex-wrap gap-x-18 gap-y-14 bg-invert p-[clamp(28px,5vw,72px)] text-invert-ink">
-          <div className="flex flex-[999_1_480px] flex-col justify-between gap-10">
+      <section aria-labelledby="reach-title" className="container-x py-20 sm:py-30">
+        <div className="flex flex-wrap gap-x-18 gap-y-10 bg-invert sm:gap-y-14 p-[clamp(28px,5vw,72px)] text-invert-ink">
+          <div className="flex min-w-0 flex-[999_1_min(320px,100%)] flex-col justify-between gap-10">
             <div className="flex flex-col gap-5">
               <span className="meta text-[13px] opacity-75">Reach out</span>
-              <h2 id="reach-title" className="font-display text-[clamp(44px,6vw,96px)] leading-[0.9] font-black tracking-[-0.045em] uppercase">
+              <h2 id="reach-title" className="font-display text-[clamp(36px,6vw,96px)] leading-[0.9] font-black tracking-[-0.045em] uppercase">
                 Let&apos;s build
                 <br />
                 something<span className="text-accent">.</span>
@@ -110,7 +110,7 @@ export default function ChangelogPage() {
               </p>
             </div>
             <div className="flex flex-wrap gap-3">
-              <ButtonLink href={mailto} variant="accent">
+              <ButtonLink href={mailto} variant="accent" full>
                 Email me
               </ButtonLink>
               {linkedin && (
@@ -125,7 +125,7 @@ export default function ChangelogPage() {
               )}
             </div>
           </div>
-          <dl className="flex flex-[1_1_320px] flex-col self-end text-[15px]">
+          <dl className="flex min-w-0 flex-[1_1_min(320px,100%)] flex-col self-end text-[15px]">
             {[
               { k: "Location", v: site.location },
               {

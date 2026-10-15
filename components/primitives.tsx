@@ -44,7 +44,7 @@ export function PageIntro({
   action?: React.ReactNode;
 }) {
   return (
-    <section className="container-x pt-18">
+    <section className="container-x pt-12 sm:pt-18">
       <div className="eyebrow flex flex-wrap justify-between gap-3 pb-7">
         <span>{eyebrow}</span>
         {eyebrowRight && <span>{eyebrowRight}</span>}
@@ -57,7 +57,7 @@ export function PageIntro({
         {action}
       </div>
       {intro && (
-        <p className="mt-10 max-w-[680px] text-[clamp(20px,2vw,26px)] leading-[1.3] tracking-[-0.015em] text-pretty text-muted-foreground">
+        <p className="mt-8 max-w-[680px] sm:mt-10 text-[clamp(20px,2vw,26px)] leading-[1.3] tracking-[-0.015em] text-pretty text-muted-foreground">
           {intro}
         </p>
       )}
@@ -71,12 +71,15 @@ export function ButtonLink({
   variant = "primary",
   icon = true,
   external = false,
+  full = false,
 }: {
   href: string;
   children: React.ReactNode;
   variant?: "primary" | "accent" | "ghost" | "ghost-invert";
   icon?: boolean;
   external?: boolean;
+  /** Stretch to full width on small screens. */
+  full?: boolean;
 }) {
   const styles = {
     primary: "bg-ink text-bg hover:bg-accent hover:text-on-accent",
@@ -84,7 +87,9 @@ export function ButtonLink({
     ghost: "border border-line text-muted-foreground hover:border-ink hover:text-ink",
     "ghost-invert": "border border-[rgba(128,128,128,0.5)] text-[inherit] hover:border-current hover:text-[inherit]",
   }[variant];
-  const cls = `inline-flex h-14 items-center gap-2.5 px-7 font-semibold no-underline transition-colors ${styles}`;
+  const cls = `inline-flex h-12 items-center gap-2.5 px-5 font-semibold no-underline transition-colors sm:h-14 sm:px-7 ${
+    full ? "w-full justify-center sm:w-auto" : ""
+  } ${styles}`;
   const content = (
     <>
       {children}

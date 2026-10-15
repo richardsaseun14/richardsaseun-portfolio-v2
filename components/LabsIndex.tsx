@@ -11,7 +11,7 @@ export function LabsIndex({ projects }: { projects: Project[] }) {
 
   return (
     <>
-      <div role="group" aria-label="Filter projects" className="mt-16 flex flex-wrap gap-2.5">
+      <div role="group" aria-label="Filter projects" className="mt-12 flex flex-wrap gap-2.5 sm:mt-16">
         {projectFilters.map((f) => (
           <button
             key={f}
@@ -34,9 +34,9 @@ export function LabsIndex({ projects }: { projects: Project[] }) {
             href={`/labs/${p.slug}`}
             className="group grid items-center gap-x-10 gap-y-6 border-b border-line py-7 text-ink no-underline hover:bg-surface hover:text-ink [grid-template-columns:repeat(auto-fit,minmax(min(260px,100%),1fr))]"
           >
-            <div className="stripes aspect-[16/10] w-40 border border-line" />
+            <div className="stripes aspect-[16/10] w-full border border-line sm:w-40" />
             <div className="flex flex-col gap-1.5">
-              <span className="font-display text-[30px] leading-[1.05] font-extrabold tracking-[-0.03em]">{p.name}</span>
+              <span className="font-display text-[clamp(26px,7vw,30px)] leading-[1.05] font-extrabold tracking-[-0.03em]">{p.name}</span>
               <span className="text-muted-foreground">{p.blurb}</span>
             </div>
             <div className="flex items-center justify-between gap-4">

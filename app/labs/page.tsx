@@ -26,7 +26,7 @@ export default function LabsPage() {
         <LabsIndex projects={projects} />
       </section>
 
-      <section aria-labelledby="side-title" className="container-x pt-30">
+      <section aria-labelledby="side-title" className="container-x pt-20 sm:pt-30">
         <SectionHeading
           id="side-title"
           eyebrow="Side projects"
@@ -45,7 +45,7 @@ export default function LabsPage() {
                 <span className="meta text-muted-foreground">{sp.date}</span>
                 <span className={`meta px-2 py-1 text-[11px] tracking-[0.06em] ${statusStyle[sp.status]}`}>{sp.status}</span>
               </div>
-              <h3 className="font-display text-[26px] leading-[1.05] font-extrabold tracking-[-0.025em]">{sp.name}</h3>
+              <h3 className="font-display text-[clamp(22px,6vw,26px)] leading-[1.05] font-extrabold tracking-[-0.025em]">{sp.name}</h3>
               <p className="grow text-pretty text-muted-foreground">{sp.blurb}</p>
               <div className="meta flex flex-wrap gap-1.5 text-[11px]">
                 {sp.tags.map((t) => (
@@ -76,13 +76,15 @@ export default function LabsPage() {
         </div>
       </section>
 
-      <section className="container-x pt-24 pb-30">
-        <div className="flex flex-wrap items-center justify-between gap-6 border border-line bg-surface p-10">
+      <section className="container-x pt-16 pb-20 sm:pt-24 sm:pb-30">
+        <div className="flex flex-wrap items-center justify-between gap-6 border border-line bg-surface p-6 sm:p-10">
           <div className="flex flex-col gap-1.5">
-            <span className="font-display text-[32px] font-extrabold tracking-[-0.03em]">Some work is under NDA.</span>
+            <span className="font-display text-[clamp(24px,7vw,32px)] font-extrabold tracking-[-0.03em]">Some work is under NDA.</span>
             <span className="text-muted-foreground">Happy to walk through it on a call.</span>
           </div>
-          <ButtonLink href={mailto}>Discuss a role</ButtonLink>
+          <ButtonLink href={mailto} full>
+            Discuss a role
+          </ButtonLink>
         </div>
       </section>
 

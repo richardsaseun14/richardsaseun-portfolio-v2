@@ -50,13 +50,13 @@ export default function SideQuestsPage() {
         intro="Life outside the codebase. The shows, music, games and books I'm into, what I'm learning, and a little about who I am."
       />
 
-      <div className="container-x pb-30">
+      <div className="container-x pb-20 sm:pb-30">
         {/* Beyond the screen */}
-        <section aria-labelledby="roots" className="mt-24">
+        <section aria-labelledby="roots" className="mt-16 sm:mt-24">
           <SectionHeading id="roots" eyebrow="Beyond the screen" title="The person behind the code." />
           <div className="grid border-t border-l border-t-ink border-l-line [grid-template-columns:repeat(auto-fit,minmax(min(280px,100%),1fr))]">
             {roots.map((r) => (
-              <div key={r.key} className="flex min-h-[300px] flex-col gap-3.5 border-r border-b border-line p-7">
+              <div key={r.key} className="flex min-h-[260px] flex-col gap-3.5 border-r border-b border-line p-6 sm:min-h-[300px] sm:p-7">
                 <div className="flex h-16 items-center">
                   <RootIcon kind={r.key} />
                 </div>
@@ -106,7 +106,7 @@ export default function SideQuestsPage() {
         </Carousel>
 
         {/* Music */}
-        <section aria-labelledby="music" className="mt-24">
+        <section aria-labelledby="music" className="mt-16 sm:mt-24">
           <SectionHeading id="music" eyebrow="Music" title="Giving me joy right now." />
           <div className="flex flex-wrap items-center gap-x-12 gap-y-8 bg-invert p-[clamp(24px,4vw,48px)] text-invert-ink">
             <div className="stripes-invert meta grid aspect-square w-[260px] max-w-full shrink-0 place-items-center border border-[rgba(128,128,128,0.35)] opacity-80">
@@ -142,16 +142,16 @@ export default function SideQuestsPage() {
         </section>
 
         {/* Books */}
-        <section aria-labelledby="reading" className="mt-24">
+        <section aria-labelledby="reading" className="mt-16 sm:mt-24">
           <SectionHeading id="reading" eyebrow="Books" title="On the nightstand." />
           <div className="grid gap-6 [grid-template-columns:repeat(auto-fit,minmax(min(380px,100%),1fr))]">
-            <div className="flex flex-wrap gap-7 border border-line bg-surface p-8">
+            <div className="flex flex-wrap gap-7 border border-line bg-surface p-6 sm:p-8">
               <Placeholder label="[Cover]" className="aspect-[2/3] w-40 shrink-0" />
               <div className="flex flex-[1_1_220px] flex-col gap-2.5">
                 <span className="meta self-start bg-accent px-2 py-1 text-[11px] tracking-[0.06em] text-on-accent">
                   Currently reading
                 </span>
-                <span className="font-display text-[34px] leading-[1.02] font-extrabold tracking-[-0.03em]">
+                <span className="font-display text-[clamp(26px,7vw,34px)] leading-[1.02] font-extrabold tracking-[-0.03em]">
                   {books.current.title}
                 </span>
                 <span className="text-muted-foreground">{books.current.author}</span>
@@ -164,12 +164,12 @@ export default function SideQuestsPage() {
                 </div>
               </div>
             </div>
-            <div className="flex flex-col gap-5 border border-line p-8">
+            <div className="flex flex-col gap-5 border border-line p-6 sm:p-8">
               <h3 className="eyebrow font-medium">Recently finished</h3>
               <ul className="border-t border-ink">
                 {books.finished.map((b, i) => (
-                  <li key={i} className="flex items-center gap-5 border-b border-line py-4 hover:bg-surface">
-                    <span className="flex-1 font-semibold">{b.title}</span>
+                  <li key={i} className="flex flex-wrap items-center gap-x-5 gap-y-0.5 border-b border-line py-4 hover:bg-surface">
+                    <span className="min-w-[60%] flex-1 font-semibold">{b.title}</span>
                     <span className="text-muted-foreground">{b.author}</span>
                   </li>
                 ))}
@@ -185,18 +185,18 @@ export default function SideQuestsPage() {
         <GameLibrary games={games} />
 
         {/* Learning */}
-        <section aria-labelledby="learning" className="mt-24">
+        <section aria-labelledby="learning" className="mt-16 sm:mt-24">
           <div className="flex flex-wrap gap-x-16 gap-y-10 bg-invert p-[clamp(28px,5vw,64px)] text-invert-ink">
-            <div className="flex flex-[999_1_460px] flex-col gap-5">
+            <div className="flex min-w-0 flex-[999_1_min(320px,100%)] flex-col gap-5">
               <span className="meta text-[13px] opacity-75">Currently learning</span>
-              <h2 id="learning" className="font-display text-[clamp(40px,5.6vw,88px)] leading-[0.9] font-black tracking-[-0.045em] uppercase">
+              <h2 id="learning" className="font-display text-[clamp(34px,5.6vw,88px)] leading-[0.9] font-black tracking-[-0.045em] uppercase">
                 AI
                 <br />
                 engineering<span className="text-accent">.</span>
               </h2>
-              <p className="max-w-[520px] text-[19px] leading-normal text-pretty opacity-85">{learning.body}</p>
+              <p className="max-w-[520px] text-[17px] leading-normal sm:text-[19px] text-pretty opacity-85">{learning.body}</p>
             </div>
-            <dl className="flex flex-[1_1_300px] flex-col self-end text-[15px]">
+            <dl className="flex min-w-0 flex-[1_1_min(300px,100%)] flex-col self-end text-[15px]">
               {learning.facts.map((f, i, arr) => (
                 <div
                   key={f.label}
