@@ -15,10 +15,11 @@ export default config({
     ? { kind: "github", repo: "richardsaseun14/richardsaseun-portfolio-v2" }
     : { kind: "local" },
   ui: {
-    brand: { name: "Portfolio" },
+    brand: { name: "RS Portfolio" },
     navigation: {
-      Pages: ["profile", "home", "about", "sideQuests"],
+      Pages: ["home", "about", "sideQuests"],
       Work: ["projects", "sideProjects"],
+      More: ["profile"]
     },
   },
   singletons: { profile, home, about, sideQuests, sideProjects },

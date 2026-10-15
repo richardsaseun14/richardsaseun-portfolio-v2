@@ -1,6 +1,6 @@
 {
   "name": "Richard Saseun",
-  "email": "[email]",
+  "email": "richardsaseun@gmail.com",
   "location": "Lagos, Nigeria",
   "bio": "Product-minded software engineer in Lagos, building for web and mobile with AI in the loop.",
   "replyTime": "I reply within 24 hours on weekdays.",
@@ -8,15 +8,15 @@
   "socials": [
     {
       "label": "LinkedIn",
-      "href": "https://www.linkedin.com/in/[handle]"
+      "href": "https://www.linkedin.com/in/richardsaseun"
     },
     {
       "label": "GitHub",
-      "href": "https://github.com/[handle]"
+      "href": "https://github.com/richardsaseun14"
     },
     {
       "label": "X",
-      "href": "https://x.com/[handle]"
+      "href": "https://x.com/richardsaseun"
     }
   ]
 }
