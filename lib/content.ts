@@ -46,7 +46,7 @@ export const stats = [
   { value: "9+", label: "Years building production software" },
   { value: "15+", label: "Client web apps delivered" },
   { value: "50K+", label: "Users on a product I helped build" },
-  { value: "₦50M", accent: "+", label: "Revenue through a product" },
+  // { value: "₦50M", accent: "+", label: "Revenue through a product" },
 ];
 
 export const principles = [
@@ -146,7 +146,7 @@ export const projects: Project[] = [
     featured: true,
     metrics: [
       { value: "50K", accent: "+", label: "Active users" },
-      { value: "₦50M", accent: "+", label: "Revenue" },
+      // { value: "₦50M", accent: "+", label: "Revenue" },
       { value: "[X]", accent: "%", label: "[Another metric]" },
     ],
     caseStudy: caseStudyTemplate,
