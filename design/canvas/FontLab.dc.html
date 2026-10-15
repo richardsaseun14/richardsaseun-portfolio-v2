@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Font options</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&amp;family=Geist:wght@300..700&amp;family=Geist+Mono:wght@400;500&amp;family=Unbounded:wght@400..900&amp;family=Figtree:wght@400..700&amp;family=JetBrains+Mono:wght@400;500&amp;family=Bricolage+Grotesque:wght@400..800&amp;family=DM+Sans:wght@400..700&amp;family=DM+Mono:wght@400;500&amp;family=Syne:wght@400..800&amp;family=Manrope:wght@400..700&amp;family=IBM+Plex+Mono:wght@400;500&amp;family=Anton&amp;family=Work+Sans:wght@400..700&amp;family=Space+Mono:wght@400;700&amp;family=Big+Shoulders+Display:wght@400..900&amp;family=Public+Sans:wght@400..700&amp;family=Martian+Mono:wght@400;500&amp;family=Instrument+Serif:ital@0;1&amp;family=Instrument+Sans:wght@400..700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+</style>
+</helmet>
+<div style="width: 1440px; box-sizing: border-box; background: #EAE7DF; color: #2B2A26; font-family: 'Geist', ui-sans-serif, system-ui, sans-serif; padding: 80px 80px 40px">
+<div style="display: flex; justify-content: space-between; align-items: end; gap: 24px; padding-bottom: 32px; border-bottom: 2px solid #2B2A26">
+<h1 style="margin: 0; font-family: 'Archivo', sans-serif; font-stretch: 125%; font-weight: 900; font-size: 72px; line-height: 0.9; letter-spacing: -0.04em; text-transform: uppercase">Font options<span style="color: #7C3AED">.</span></h1>
+<span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 13px; text-transform: uppercase; letter-spacing: 0.04em; color: #57554F">Headline / Body / Labels</span>
+</div>
+<sc-for list="{{sets}}" as="s" hint-placeholder-count="7">
+<section style="display: grid; grid-template-columns: 300px minmax(0, 1fr); gap: 56px; padding: 56px 0; border-bottom: 1px solid #CFCBC1">
+<div style="display: flex; flex-direction: column; gap: 14px">
+<span style="{{s.tagStyle}}">{{s.tag}}</span>
+<span style="font-family: 'Archivo', sans-serif; font-stretch: 110%; font-weight: 800; font-size: 26px; line-height: 1.05; letter-spacing: -0.02em">{{s.name}}</span>
+<span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 12px; line-height: 1.7; text-transform: uppercase; letter-spacing: 0.04em; color: #57554F; white-space: pre-line">{{s.stack}}</span>
+<p style="margin: 6px 0 0; color: #57554F; line-height: 1.5">{{s.note}}</p>
+</div>
+<div style="display: flex; flex-direction: column; gap: 24px; min-width: 0">
+<div style="{{s.labelStyle}}; display: flex; justify-content: space-between; gap: 16px; color: #57554F"><span>Full-stack engineer · Web &amp; mobile</span><span>Lagos 14:32:07 WAT</span></div>
+<div style="{{s.heroStyle}}">Richard Saseun<span style="color: #7C3AED">.</span></div>
+<div style="{{s.h2Style}}">Products, not just pages.</div>
+<p style="{{s.bodyStyle}}">I build web and mobile products that ship — and hold up in production. Product-minded engineer, fluent in AI-driven workflows.</p>
+<div style="display: flex; align-items: center; gap: 12px">
+<span style="{{s.btnStyle}}">Discuss a role →</span>
+<span style="{{s.labelStyle}}; padding: 8px 12px; background: #7C3AED; color: #FFFFFF">Open to roles</span>
+<span style="{{s.labelStyle}}; padding: 8px 12px; border: 1px solid #CFCBC1">React Native</span>
+</div>
+</div>
+</section>
+</sc-for>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":4900}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const sets = [
+      { tag: 'Current', name: 'Archivo / Geist / Geist Mono', d: "'Archivo', sans-serif", dx: 'font-stretch: 125%; font-weight: 900; letter-spacing: -0.045em; text-transform: uppercase;', h2x: 'font-stretch: 118%; font-weight: 800; letter-spacing: -0.035em;', b: "'Geist', sans-serif", m: "'Geist Mono', monospace", note: 'Wide, heavy, engineered. What the site uses today.' },
+      { tag: 'Option', name: 'Unbounded / Figtree / JetBrains Mono', d: "'Unbounded', sans-serif", dx: 'font-weight: 800; letter-spacing: -0.04em; text-transform: uppercase;', h2x: 'font-weight: 700; letter-spacing: -0.03em;', b: "'Figtree', sans-serif", m: "'JetBrains Mono', monospace", note: 'Wide and rounded. Futuristic, techy — the closest swap with more personality.' },
+      { tag: 'Option', name: 'Bricolage Grotesque / DM Sans / DM Mono', d: "'Bricolage Grotesque', sans-serif", dx: 'font-weight: 800; letter-spacing: -0.045em; text-transform: uppercase;', h2x: 'font-weight: 700; letter-spacing: -0.03em;', b: "'DM Sans', sans-serif", m: "'DM Mono', monospace", note: 'Quirky, crafted letterforms. Leans product-person over engineer.' },
+      { tag: 'Option', name: 'Syne / Manrope / IBM Plex Mono', d: "'Syne', sans-serif", dx: 'font-weight: 800; letter-spacing: -0.04em; text-transform: uppercase;', h2x: 'font-weight: 700; letter-spacing: -0.025em;', b: "'Manrope', sans-serif", m: "'IBM Plex Mono', monospace", note: 'Art-gallery strange. The edgiest of the set.' },
+      { tag: 'Option', name: 'Anton / Work Sans / Space Mono', d: "'Anton', sans-serif", dx: 'font-weight: 400; letter-spacing: -0.01em; text-transform: uppercase;', h2x: 'font-weight: 400; letter-spacing: 0;', b: "'Work Sans', sans-serif", m: "'Space Mono', monospace", note: 'Tall, condensed, poster-loud. Changes the mood from wide to compressed.' },
+      { tag: 'Option', name: 'Big Shoulders Display / Public Sans / Martian Mono', d: "'Big Shoulders Display', sans-serif", dx: 'font-weight: 900; letter-spacing: -0.01em; text-transform: uppercase;', h2x: 'font-weight: 800; letter-spacing: 0;', b: "'Public Sans', sans-serif", m: "'Martian Mono', monospace", note: 'Industrial signage. Raw and utilitarian, slightly retro labels.' },
+      { tag: 'Option', name: 'Instrument Serif / Instrument Sans / Geist Mono', d: "'Instrument Serif', serif", dx: 'font-weight: 400; letter-spacing: -0.035em;', h2x: 'font-weight: 400; font-style: italic; letter-spacing: -0.02em;', b: "'Instrument Sans', sans-serif", m: "'Geist Mono', monospace", note: 'The contrast play. Editorial and refined rather than brutal.' }
+    ];
+    return {
+      sets: sets.map((s) => {
+        const big = s.d.indexOf('Anton') !== -1 || s.d.indexOf('Big Shoulders') !== -1 || s.d.indexOf('Instrument') !== -1;
+        return {
+          tag: s.tag,
+          name: s.name,
+          note: s.note,
+          stack: 'Headline — ' + s.d.split(',')[0].replace(/'/g, '') + '\nBody — ' + s.b.split(',')[0].replace(/'/g, '') + '\nLabels — ' + s.m.split(',')[0].replace(/'/g, ''),
+          tagStyle: "align-self: flex-start; padding: 4px 8px; font-family: 'Geist Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; " + (s.tag === 'Current' ? 'background: #2B2A26; color: #EAE7DF;' : 'border: 1px solid #CFCBC1; color: #57554F;'),
+          heroStyle: 'margin: 0; font-family: ' + s.d + '; ' + s.dx + ' font-size: ' + (big ? 132 : 104) + 'px; line-height: 0.9; overflow-wrap: anywhere;',
+          h2Style: 'margin: 0; font-family: ' + s.d + '; ' + s.h2x + ' font-size: ' + (big ? 56 : 48) + 'px; line-height: 1;',
+          bodyStyle: 'margin: 0; max-width: 720px; font-family: ' + s.b + '; font-size: 22px; line-height: 1.4; letter-spacing: -0.01em;',
+          labelStyle: 'font-family: ' + s.m + '; font-size: 12px; text-transform: uppercase; letter-spacing: 0.06em',
+          btnStyle: 'display: inline-flex; align-items: center; height: 52px; padding: 0 24px; background: #2B2A26; color: #EAE7DF; font-family: ' + s.b + '; font-weight: 600; font-size: 16px;'
+        };
+      })
+    };
+  }
+}
+</script>
+</body>
+</html>

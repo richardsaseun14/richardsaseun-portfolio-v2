@@ -1,0 +1,95 @@
+{
+  "v": 3,
+  "attachments": {},
+  "boards": {
+    "CaseStudy.dc.html": {
+      "expand": "fill",
+      "h": 5815,
+      "is_interactive": true,
+      "title": "Case study — detail",
+      "w": 1440,
+      "x": 3040,
+      "y": 0
+    },
+    "FontLab.dc.html": {
+      "h": 4900,
+      "title": "Font options",
+      "w": 1440,
+      "x": 7600,
+      "y": 0
+    },
+    "Main.dc.html": {
+      "expand": "fill",
+      "h": 5600,
+      "is_interactive": true,
+      "title": "Home",
+      "w": 1440,
+      "x": 0,
+      "y": 0
+    },
+    "Personal.dc.html": {
+      "expand": "fill",
+      "h": 6400,
+      "is_interactive": true,
+      "title": "Side quests",
+      "w": 1440,
+      "x": 6080,
+      "y": 0
+    },
+    "Resume.dc.html": {
+      "expand": "fill",
+      "h": 4300,
+      "is_interactive": true,
+      "title": "Changelog",
+      "w": 1440,
+      "x": 4560,
+      "y": 0
+    },
+    "Work.dc.html": {
+      "expand": "fill",
+      "h": 4100,
+      "is_interactive": true,
+      "title": "Labs",
+      "w": 1440,
+      "x": 1520,
+      "y": 0
+    }
+  },
+  "createdOnFiles": {
+    "at": "2026-10-15T12:00:00Z",
+    "v": 1
+  },
+  "designSystems": [],
+  "launch": {
+    "view": "canvas"
+  },
+  "notes": {
+    "shortcuts": {
+      "fill": "purple",
+      "maxH": 795,
+      "size": 24,
+      "text": "Keyboard shortcuts (build spec)\n\nListen for keydown on window; ignore when focus is in input/textarea/contenteditable or when Cmd/Ctrl/Alt is held.\n\nT  scroll to top (smooth)\nB  scroll to bottom (smooth)\nS  toggle sound\nL  light mode\nD  dark mode\nA  auto (follow prefers-color-scheme, and update when it changes)\n?  open shortcuts panel (Shift+/)\nEsc  close panel / tip\n\nTip toast: show once, on first use of sound or theme; persist 'seen' in localStorage; auto-hide after 6s.\nSave theme mode and sound choice in localStorage.\nHide tip, hover labels and footer 'Shortcuts' on touch devices (hover: none).",
+      "w": 560,
+      "x": 0,
+      "y": 6100
+    },
+    "title": {
+      "kind": "title1",
+      "maxW": 7520,
+      "text": "Portfolio · Light mode",
+      "w": 240,
+      "x": 0,
+      "y": -300
+    }
+  },
+  "order": [
+    "Main.dc.html",
+    "Work.dc.html",
+    "CaseStudy.dc.html",
+    "Resume.dc.html",
+    "Personal.dc.html",
+    "FontLab.dc.html"
+  ],
+  "pages": [],
+  "title": "Richard Saseun — Portfolio"
+}

@@ -1,0 +1,419 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Richard Saseun · Case study</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400..900&amp;family=Figtree:wght@300..900&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+.pf{--bg:#EAE7DF;--surface:#F1EEE7;--ink:#2B2A26;--muted:#57554F;--line:#CFCBC1;--invert-bg:#0E0E0C;--invert-ink:#F3F2EE}
+.pf.dark{--bg:#0D0D0C;--surface:#151513;--ink:#F1F0EB;--muted:#A19F98;--line:#2B2A27;--invert-bg:#F1F0EB;--invert-ink:#0D0D0C}
+.pf a{color:var(--ink)}
+.pf a:hover{color:var(--accent)}
+.pf .ph{background-color:var(--surface);background-image:repeating-linear-gradient(135deg,transparent 0 11px,var(--line) 11px 12px)}
+.pf .next:hover{background:var(--accent)!important;color:#FFFFFF!important}
+.pf .mq{overflow:hidden}
+.pf .mq-track{display:flex;width:max-content;animation:mq 45s linear infinite}
+.pf .mq:hover .mq-track{animation-play-state:paused}
+.pf .xcard:hover{background:var(--accent)!important;color:#FFFFFF!important;border-color:var(--accent)!important}
+.pf .hk{position:relative;display:inline-flex}
+.pf .hk-tip{opacity:0;transform:translateY(-4px);transition:opacity .15s ease,transform .15s ease}
+.pf .hk:hover .hk-tip,.pf .hk:focus-within .hk-tip{opacity:1;transform:none}
+.pf .kb-toast{animation:kbin .35s ease both}
+@keyframes kbin{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+@media (hover: none){.pf .hk-tip,.pf .kb-only{display:none!important}}
+@keyframes mq{to{transform:translateX(-50%)}}
+@media (prefers-reduced-motion: reduce){.pf .mq-track{animation:none}}
+</style>
+</helmet>
+<div class="pf {{theme}}" onClickCapture="{{rootClick}}" style="--accent: {{accent}}; background: var(--bg); color: var(--ink); font-family: 'Figtree', ui-sans-serif, system-ui, sans-serif; font-size: 16px; line-height: 1.5; min-height: 100vh">
+
+<div class="mq" role="marquee" aria-label="What I do" style="background: var(--accent); color: #FFFFFF; border-bottom: 2px solid #000000">
+<div class="mq-track">
+<sc-for list="{{loop}}" as="c" hint-placeholder-count="2">
+<div aria-hidden="{{c.hidden}}" style="display: flex; align-items: center; gap: 36px; padding-right: 36px; flex-shrink: 0; height: 40px; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 13px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.08em; white-space: nowrap">
+<span>Writing code</span><svg aria-hidden="true" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M12 2v20M2 12h20M4.9 4.9l14.2 14.2M19.1 4.9L4.9 19.1"></path></svg>
+<span>Shipping products</span><svg aria-hidden="true" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M12 2v20M2 12h20M4.9 4.9l14.2 14.2M19.1 4.9L4.9 19.1"></path></svg>
+<span>Web &amp; mobile</span><svg aria-hidden="true" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M12 2v20M2 12h20M4.9 4.9l14.2 14.2M19.1 4.9L4.9 19.1"></path></svg>
+<span>React Native</span><svg aria-hidden="true" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M12 2v20M2 12h20M4.9 4.9l14.2 14.2M19.1 4.9L4.9 19.1"></path></svg>
+<span>Next.js</span><svg aria-hidden="true" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M12 2v20M2 12h20M4.9 4.9l14.2 14.2M19.1 4.9L4.9 19.1"></path></svg>
+<span>Vue</span><svg aria-hidden="true" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M12 2v20M2 12h20M4.9 4.9l14.2 14.2M19.1 4.9L4.9 19.1"></path></svg>
+<span>Supabase</span><svg aria-hidden="true" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M12 2v20M2 12h20M4.9 4.9l14.2 14.2M19.1 4.9L4.9 19.1"></path></svg>
+<span>AI-driven workflows</span><svg aria-hidden="true" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M12 2v20M2 12h20M4.9 4.9l14.2 14.2M19.1 4.9L4.9 19.1"></path></svg>
+<span>Product thinking</span><svg aria-hidden="true" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M12 2v20M2 12h20M4.9 4.9l14.2 14.2M19.1 4.9L4.9 19.1"></path></svg>
+<span>Leading teams</span><svg aria-hidden="true" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M12 2v20M2 12h20M4.9 4.9l14.2 14.2M19.1 4.9L4.9 19.1"></path></svg>
+<span>Breaking code</span><svg aria-hidden="true" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M12 2v20M2 12h20M4.9 4.9l14.2 14.2M19.1 4.9L4.9 19.1"></path></svg>
+<span>Fixing code</span><svg aria-hidden="true" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M12 2v20M2 12h20M4.9 4.9l14.2 14.2M19.1 4.9L4.9 19.1"></path></svg>
+<span>Open to roles</span><svg aria-hidden="true" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M12 2v20M2 12h20M4.9 4.9l14.2 14.2M19.1 4.9L4.9 19.1"></path></svg>
+</div>
+</sc-for>
+</div>
+</div>
+
+<header style="border-bottom: 1px solid var(--line)">
+<div style="max-width: 1320px; margin: 0 auto; padding: 18px 32px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px">
+<a href="Main.dc.html" style="display: flex; align-items: center; gap: 12px; text-decoration: none">
+<span style="font-family: 'Unbounded', sans-serif; font-weight: 800; font-size: 20px; line-height: 1; letter-spacing: -0.03em; color: var(--ink)">r<span style="color: var(--accent)">.</span>saseun</span>
+</a>
+<nav aria-label="Primary" style="display: flex; flex-wrap: wrap; align-items: center; gap: 28px; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 13px; text-transform: uppercase; letter-spacing: 0.04em">
+<a href="Work.dc.html" aria-current="page" style="text-decoration: underline; text-underline-offset: 6px; text-decoration-color: var(--accent); text-decoration-thickness: 2px">Labs</a>
+<a href="Resume.dc.html" style="text-decoration: none">Changelog</a>
+<a href="Personal.dc.html" style="text-decoration: none">Side quests</a>
+</nav>
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 10px">
+<span style="display: flex; align-items: center; gap: 8px; height: 44px; padding: 0 6px; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em; color: var(--muted)"><svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path></svg>Lagos <time style="color: var(--ink); font-variant-numeric: tabular-nums">{{time}}</time> WAT</span>
+<span style="display: flex; align-items: center; gap: 8px; padding: 0 14px; height: 44px; border: 1px solid var(--line); font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em; color: var(--muted)"><span style="width: 8px; height: 8px; border-radius: 50%; background: #1FA855"></span>Open to roles</span>
+<span class="hk">
+<button type="button" aria-label="Toggle sound" aria-pressed="{{soundPressed}}" onClick="{{toggleSound}}" style="width: 44px; height: 44px; border: 1px solid var(--line); background: transparent; color: var(--ink); display: grid; place-items: center; cursor: pointer">
+<sc-if value="{{soundOn}}" hint-placeholder-val="{{ false }}">
+<svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M11 5L6 9H3v6h3l5 4V5z"></path><path d="M15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13"></path></svg>
+</sc-if>
+<sc-if value="{{soundOff}}" hint-placeholder-val="{{ true }}">
+<svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M11 5L6 9H3v6h3l5 4V5z"></path><path d="M16 9l5 6M21 9l-5 6"></path></svg>
+</sc-if>
+</button>
+<span class="hk-tip" aria-hidden="true" style="position: absolute; top: calc(100% + 8px); right: 0; z-index: 30; white-space: nowrap; padding: 6px 9px; background: var(--ink); color: var(--bg); font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; pointer-events: none">Sound · S</span>
+</span>
+<span class="hk">
+<span role="group" aria-label="Theme" style="display: flex; height: 44px; box-sizing: border-box; border: 1px solid var(--line)">
+<sc-for list="{{modes}}" as="m" hint-placeholder-count="3">
+<button type="button" aria-label="{{m.label}}" aria-pressed="{{m.pressed}}" onClick="{{m.pick}}" style="{{m.style}}">
+<sc-if value="{{m.isLight}}" hint-placeholder-val="{{ false }}"><svg aria-hidden="true" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path></svg></sc-if>
+<sc-if value="{{m.isDark}}" hint-placeholder-val="{{ false }}"><svg aria-hidden="true" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"></path></svg></sc-if>
+<sc-if value="{{m.isAuto}}" hint-placeholder-val="{{ false }}"><svg aria-hidden="true" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="8"></circle><path d="M12 4a8 8 0 0 1 0 16z" fill="currentColor"></path></svg></sc-if>
+</button>
+</sc-for>
+</span>
+<span class="hk-tip" aria-hidden="true" style="position: absolute; top: calc(100% + 8px); right: 0; z-index: 30; white-space: nowrap; padding: 6px 9px; background: var(--ink); color: var(--bg); font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; pointer-events: none">Theme · L / D / A</span>
+</span>
+</div>
+</div>
+</header>
+
+<main>
+<section style="max-width: 1320px; margin: 0 auto; padding: 48px 32px 0">
+<a href="Work.dc.html" style="display: inline-flex; align-items: center; gap: 8px; min-height: 44px; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 13px; text-transform: uppercase; letter-spacing: 0.04em; text-decoration: none">
+<svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M11 18l-6-6 6-6"></path></svg>Back to Labs</a>
+<div style="display: flex; flex-wrap: wrap; gap: 8px; margin-top: 32px; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em">
+<span style="padding: 6px 10px; background: var(--accent); color: #FFFFFF">Case study</span>
+<span style="padding: 6px 10px; border: 1px solid var(--line); color: var(--muted)">Web + Mobile</span>
+<span style="padding: 6px 10px; border: 1px solid var(--line); color: var(--muted)">[Industry]</span>
+</div>
+<h1 style="margin: 24px 0 0; font-family: 'Unbounded', sans-serif; font-stretch: 125%; font-weight: 900; font-size: clamp(52px, 8.4vw, 136px); line-height: 0.88; letter-spacing: -0.045em; text-transform: uppercase">[Product<br>name]<span style="color: var(--accent)">.</span></h1>
+<p style="margin: 36px 0 0; font-size: clamp(22px, 2.2vw, 30px); line-height: 1.25; letter-spacing: -0.02em; max-width: 820px; text-wrap: pretty">[One sentence: what the product does, for whom, and the result, e.g. “Scaling a [category] platform to 50K+ users and ₦1B+ in revenue.”]</p>
+
+<dl style="margin: 56px 0 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(200px, 100%), 1fr)); border-top: 1px solid var(--ink); border-bottom: 1px solid var(--line)">
+<div style="padding: 20px 20px 20px 0; display: flex; flex-direction: column; gap: 6px">
+<dt style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em; color: var(--muted)">Role</dt>
+<dd style="margin: 0; font-weight: 500">[e.g. Lead front-end engineer]</dd>
+</div>
+<div style="padding: 20px; border-left: 1px solid var(--line); display: flex; flex-direction: column; gap: 6px">
+<dt style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em; color: var(--muted)">Timeline</dt>
+<dd style="margin: 0; font-weight: 500">[Start – End]</dd>
+</div>
+<div style="padding: 20px; border-left: 1px solid var(--line); display: flex; flex-direction: column; gap: 6px">
+<dt style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em; color: var(--muted)">Team</dt>
+<dd style="margin: 0; font-weight: 500">[Team size &amp; makeup]</dd>
+</div>
+<div style="padding: 20px; border-left: 1px solid var(--line); display: flex; flex-direction: column; gap: 6px">
+<dt style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em; color: var(--muted)">Stack</dt>
+<dd style="margin: 0; font-weight: 500">[React Native · Next.js · Node · Postgres]</dd>
+</div>
+<div style="padding: 20px; border-left: 1px solid var(--line); display: flex; flex-direction: column; gap: 6px">
+<dt style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em; color: var(--muted)">Links</dt>
+<dd style="margin: 0; font-weight: 500; display: flex; gap: 16px"><a href="#">Live ↗</a><a href="#">App Store ↗</a></dd>
+</div>
+</dl>
+</section>
+
+<section aria-label="Hero screenshot" style="max-width: 1320px; margin: 0 auto; padding: 56px 32px 0">
+<div class="ph" style="aspect-ratio: 16 / 8; border: 1px solid var(--line); display: grid; place-items: center; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em; color: var(--muted)">[Hero screenshot: web + mobile together]</div>
+</section>
+
+<section aria-label="Outcomes" style="max-width: 1320px; margin: 0 auto; padding: 56px 32px 0">
+<div style="background: var(--invert-bg); color: var(--invert-ink); display: grid; grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr))">
+<div style="padding: 36px">
+<div style="font-family: 'Unbounded', sans-serif; font-stretch: 112%; font-weight: 800; font-size: 64px; line-height: 1; letter-spacing: -0.04em">50K<span style="color: var(--accent)">+</span></div>
+<div style="margin-top: 12px; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em; opacity: 0.75">Active users</div>
+</div>
+<div style="padding: 36px">
+<div style="font-family: 'Unbounded', sans-serif; font-stretch: 112%; font-weight: 800; font-size: 64px; line-height: 1; letter-spacing: -0.04em">₦1B<span style="color: var(--accent)">+</span></div>
+<div style="margin-top: 12px; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em; opacity: 0.75">Revenue processed</div>
+</div>
+<div style="padding: 36px">
+<div style="font-family: 'Unbounded', sans-serif; font-stretch: 112%; font-weight: 800; font-size: 64px; line-height: 1; letter-spacing: -0.04em">[X]<span style="color: var(--accent)">%</span></div>
+<div style="margin-top: 12px; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em; opacity: 0.75">[Another metric]</div>
+</div>
+</div>
+</section>
+
+<article style="max-width: 1320px; margin: 0 auto; padding: 120px 32px 0; display: flex; flex-direction: column; gap: 96px">
+<section aria-labelledby="cs-problem" style="display: flex; flex-wrap: wrap; gap: 32px 64px">
+<div style="flex: 1 1 300px; display: flex; flex-direction: column; gap: 10px">
+<h2 id="cs-problem" style="margin: 0; font-family: 'Unbounded', sans-serif; font-stretch: 118%; font-weight: 800; font-size: 44px; line-height: 0.95; letter-spacing: -0.035em">The problem</h2>
+</div>
+<div style="flex: 999 1 560px; display: flex; flex-direction: column; gap: 20px; font-size: 19px; line-height: 1.6; max-width: 760px">
+<p style="margin: 0; text-wrap: pretty">[What was broken or missing? Who was hurting, and what did it cost the business? Keep it to the essentials.]</p>
+<p style="margin: 0; color: var(--muted); text-wrap: pretty">[Constraints: timeline, team, legacy systems, regulation, budget.]</p>
+</div>
+</section>
+
+<section aria-labelledby="cs-thinking" style="display: flex; flex-wrap: wrap; gap: 32px 64px">
+<div style="flex: 1 1 300px; display: flex; flex-direction: column; gap: 10px">
+<h2 id="cs-thinking" style="margin: 0; font-family: 'Unbounded', sans-serif; font-stretch: 118%; font-weight: 800; font-size: 44px; line-height: 0.95; letter-spacing: -0.035em">The thinking</h2>
+</div>
+<div style="flex: 999 1 560px; display: flex; flex-direction: column; gap: 28px; max-width: 760px">
+<p style="margin: 0; font-size: 19px; line-height: 1.6; text-wrap: pretty">[How you framed the problem, what you weighed, and the call you made.]</p>
+<blockquote style="margin: 0; padding: 28px 0; border-top: 1px solid var(--ink); border-bottom: 1px solid var(--line); font-family: 'Unbounded', sans-serif; font-stretch: 108%; font-weight: 700; font-size: 30px; line-height: 1.15; letter-spacing: -0.025em; text-wrap: pretty">“[The key insight or decision, in one line.]”</blockquote>
+<ol style="margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; border-top: 1px solid var(--line)">
+<li style="display: flex; gap: 20px; padding: 18px 0; border-bottom: 1px solid var(--line)"><span style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 13px; color: var(--muted); padding-top: 3px">A</span><span>[Trade-off or decision #1 and why]</span></li>
+<li style="display: flex; gap: 20px; padding: 18px 0; border-bottom: 1px solid var(--line)"><span style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 13px; color: var(--muted); padding-top: 3px">B</span><span>[Trade-off or decision #2 and why]</span></li>
+<li style="display: flex; gap: 20px; padding: 18px 0; border-bottom: 1px solid var(--line)"><span style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 13px; color: var(--muted); padding-top: 3px">C</span><span>[Trade-off or decision #3 and why]</span></li>
+</ol>
+</div>
+</section>
+
+<section aria-labelledby="cs-built" style="display: flex; flex-direction: column; gap: 40px">
+<div style="display: flex; flex-wrap: wrap; gap: 32px 64px">
+<div style="flex: 1 1 300px; display: flex; flex-direction: column; gap: 10px">
+<h2 id="cs-built" style="margin: 0; font-family: 'Unbounded', sans-serif; font-stretch: 118%; font-weight: 800; font-size: 44px; line-height: 0.95; letter-spacing: -0.035em">What I built</h2>
+</div>
+<p style="flex: 999 1 560px; margin: 0; font-size: 19px; line-height: 1.6; max-width: 760px; text-wrap: pretty">[Your part, specifically: architecture, the hard features, leading the team, the AI pieces.]</p>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr)); gap: 20px">
+<figure style="margin: 0; display: flex; flex-direction: column; gap: 12px">
+<div class="ph" style="aspect-ratio: 9 / 16; border: 1px solid var(--line); display: grid; place-items: center; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; text-transform: uppercase; color: var(--muted)">[Mobile screen]</div>
+<figcaption style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em; color: var(--muted)">[Caption]</figcaption>
+</figure>
+<figure style="margin: 0; display: flex; flex-direction: column; gap: 12px">
+<div class="ph" style="aspect-ratio: 9 / 16; border: 1px solid var(--line); display: grid; place-items: center; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; text-transform: uppercase; color: var(--muted)">[Mobile screen]</div>
+<figcaption style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em; color: var(--muted)">[Caption]</figcaption>
+</figure>
+<figure style="margin: 0; display: flex; flex-direction: column; gap: 12px">
+<div class="ph" style="aspect-ratio: 9 / 16; border: 1px solid var(--line); display: grid; place-items: center; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; text-transform: uppercase; color: var(--muted)">[Mobile screen]</div>
+<figcaption style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em; color: var(--muted)">[Caption]</figcaption>
+</figure>
+</div>
+<figure style="margin: 0; display: flex; flex-direction: column; gap: 12px">
+<div class="ph" style="aspect-ratio: 16 / 9; border: 1px solid var(--line); display: grid; place-items: center; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; text-transform: uppercase; color: var(--muted)">[Web dashboard screenshot]</div>
+<figcaption style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em; color: var(--muted)">[Caption]</figcaption>
+</figure>
+</section>
+
+<section aria-labelledby="cs-outcome" style="display: flex; flex-wrap: wrap; gap: 32px 64px">
+<div style="flex: 1 1 300px; display: flex; flex-direction: column; gap: 10px">
+<h2 id="cs-outcome" style="margin: 0; font-family: 'Unbounded', sans-serif; font-stretch: 118%; font-weight: 800; font-size: 44px; line-height: 0.95; letter-spacing: -0.035em">Outcome &amp; lessons</h2>
+</div>
+<div style="flex: 999 1 560px; display: flex; flex-direction: column; gap: 20px; font-size: 19px; line-height: 1.6; max-width: 760px">
+<p style="margin: 0; text-wrap: pretty">[What shipped, what moved, and what you'd do differently next time.]</p>
+</div>
+</section>
+</article>
+
+<section aria-label="Next case study" style="max-width: 1320px; margin: 0 auto; padding: 120px 32px">
+<a class="next" href="Work.dc.html" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 24px; padding: clamp(28px, 4vw, 56px); background: var(--invert-bg); color: var(--invert-ink); text-decoration: none">
+<div style="display: flex; flex-direction: column; gap: 10px">
+<span style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 13px; text-transform: uppercase; letter-spacing: 0.04em; opacity: 0.75">Next case study</span>
+<span style="font-family: 'Unbounded', sans-serif; font-stretch: 125%; font-weight: 900; font-size: clamp(36px, 5vw, 72px); line-height: 0.9; letter-spacing: -0.04em; text-transform: uppercase">[Project name]</span>
+</div>
+<svg aria-hidden="true" width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+</a>
+</section>
+</main>
+
+<section aria-labelledby="explore-title" style="max-width: 1320px; margin: 0 auto; padding: 0 32px 120px">
+<h2 id="explore-title" style="margin: 0 0 24px; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 13px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.04em; color: var(--muted)">Keep exploring</h2>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr)); border-top: 1px solid var(--ink); border-left: 1px solid var(--line)">
+<a class="xcard" href="Work.dc.html" style="display: flex; flex-direction: column; justify-content: space-between; gap: 48px; min-height: 200px; padding: 28px; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); text-decoration: none; color: var(--ink)">
+<span style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em; opacity: 0.75">More case studies</span>
+<span style="display: flex; align-items: end; justify-content: space-between; gap: 16px"><span style="min-width: 0; overflow-wrap: anywhere; font-family: 'Unbounded', sans-serif; font-stretch: 110%; font-weight: 900; font-size: clamp(32px, 3.4vw, 52px); line-height: 0.95; letter-spacing: -0.035em; text-transform: uppercase">Labs</span><svg aria-hidden="true" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7 17L17 7M8 7h9v9"></path></svg></span>
+</a>
+<a class="xcard" href="Resume.dc.html" style="display: flex; flex-direction: column; justify-content: space-between; gap: 48px; min-height: 200px; padding: 28px; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); text-decoration: none; color: var(--ink)">
+<span style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em; opacity: 0.75">Experience &amp; quick facts</span>
+<span style="display: flex; align-items: end; justify-content: space-between; gap: 16px"><span style="min-width: 0; overflow-wrap: anywhere; font-family: 'Unbounded', sans-serif; font-stretch: 110%; font-weight: 900; font-size: clamp(32px, 3.4vw, 52px); line-height: 0.95; letter-spacing: -0.035em; text-transform: uppercase">Change<br>log</span><svg aria-hidden="true" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7 17L17 7M8 7h9v9"></path></svg></span>
+</a>
+<a class="xcard" href="Personal.dc.html" style="display: flex; flex-direction: column; justify-content: space-between; gap: 48px; min-height: 200px; padding: 28px; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); text-decoration: none; color: var(--ink)">
+<span style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em; opacity: 0.75">Music, screens &amp; off-hours</span>
+<span style="display: flex; align-items: end; justify-content: space-between; gap: 16px"><span style="min-width: 0; overflow-wrap: anywhere; font-family: 'Unbounded', sans-serif; font-stretch: 110%; font-weight: 900; font-size: clamp(32px, 3.4vw, 52px); line-height: 0.95; letter-spacing: -0.035em; text-transform: uppercase">Side quests</span><svg aria-hidden="true" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7 17L17 7M8 7h9v9"></path></svg></span>
+</a>
+</div>
+</section>
+
+<footer style="border-top: 1px solid var(--line)">
+<div style="max-width: 1320px; margin: 0 auto; padding: 56px 32px 32px; display: flex; flex-direction: column; gap: 48px">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-start; gap: 40px 64px">
+<div style="display: flex; flex-direction: column; gap: 14px">
+<a href="Main.dc.html" style="display: flex; align-items: center; gap: 12px; text-decoration: none">
+<span style="font-family: 'Unbounded', sans-serif; font-weight: 800; font-size: 20px; line-height: 1; letter-spacing: -0.03em; color: var(--ink)">r<span style="color: var(--accent)">.</span>saseun</span>
+</a>
+<p style="margin: 0; color: var(--muted); max-width: 260px">Product-minded software engineer in Lagos, building for web and mobile with AI in the loop.</p>
+</div>
+<div style="display: flex; flex-wrap: wrap; gap: 40px 80px">
+<nav aria-labelledby="ft-sitemap" style="display: flex; flex-direction: column; gap: 6px">
+<h2 id="ft-sitemap" style="margin: 0 0 10px; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.04em; color: var(--muted)">Sitemap</h2>
+<a href="Main.dc.html" style="text-decoration: none">Home</a>
+<a href="Work.dc.html" style="text-decoration: none">Labs</a>
+<a href="Resume.dc.html" style="text-decoration: none">Changelog</a>
+<a href="Personal.dc.html" style="text-decoration: none">Side quests</a>
+</nav>
+<nav aria-labelledby="ft-social" style="display: flex; flex-direction: column; gap: 6px">
+<h2 id="ft-social" style="margin: 0 0 10px; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.04em; color: var(--muted)">Elsewhere</h2>
+<a href="https://www.linkedin.com/in/[handle]" style="text-decoration: none">LinkedIn ↗</a>
+<a href="https://github.com/[handle]" style="text-decoration: none">GitHub ↗</a>
+<a href="https://x.com/[handle]" style="text-decoration: none">X ↗</a>
+<a href="mailto:[email]" style="text-decoration: none">Email ↗</a>
+</nav>
+</div>
+</div>
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 16px; padding-top: 24px; border-top: 1px solid var(--line); font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em; color: var(--muted)">
+<span style="display: flex; flex-wrap: wrap; align-items: center; gap: 20px"><span>© 2026 Richard Saseun · Built in Lagos</span><button type="button" class="kb-only" onClick="{{openPanel}}" style="display: inline-flex; align-items: center; gap: 8px; min-height: 32px; padding: 0; background: transparent; border: 0; color: var(--ink); font: inherit; text-transform: inherit; letter-spacing: inherit; cursor: pointer">Shortcuts <kbd style="display: inline-grid; place-items: center; min-width: 28px; height: 28px; padding: 0 8px; box-sizing: border-box; border: 1px solid var(--line); border-bottom-width: 2px; background: var(--surface); color: var(--ink); font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; font-weight: 500; text-transform: none">?</kbd></button></span>
+<span>Lagos <time style="color: var(--ink); font-variant-numeric: tabular-nums">{{time}}</time> WAT</span>
+</div>
+</div>
+</footer>
+<sc-if value="{{tip}}" hint-placeholder-val="{{ false }}">
+<div role="status" class="kb-only kb-toast" style="position: fixed; right: 24px; bottom: 24px; z-index: 40; display: flex; align-items: center; gap: 12px; padding: 12px 12px 12px 18px; background: var(--invert-bg); color: var(--invert-ink); box-shadow: 0 12px 32px rgba(0,0,0,0.25); font-size: 15px; max-width: calc(100vw - 48px)">
+<span>Tip: press <kbd style="display: inline-grid; place-items: center; min-width: 24px; height: 24px; padding: 0 6px; margin: 0 2px; border: 1px solid rgba(128,128,128,0.6); font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px">?</kbd> for keyboard shortcuts</span>
+<button type="button" onClick="{{openPanel}}" style="height: 36px; padding: 0 14px; background: var(--accent); color: #FFFFFF; border: 0; font: inherit; font-weight: 600; font-size: 14px; cursor: pointer">Show</button>
+<button type="button" aria-label="Dismiss tip" onClick="{{closeTip}}" style="width: 36px; height: 36px; background: transparent; border: 0; color: inherit; display: grid; place-items: center; cursor: pointer"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6L6 18"></path></svg></button>
+</div>
+</sc-if>
+<sc-if value="{{panel}}" hint-placeholder-val="{{ false }}">
+<div style="position: fixed; inset: 0; z-index: 50; display: grid; place-items: center; padding: 24px">
+<button type="button" aria-label="Close shortcuts" tabindex="-1" onClick="{{closePanel}}" style="position: absolute; inset: 0; border: 0; padding: 0; background: rgba(14,14,12,0.55); cursor: pointer"></button>
+<div role="dialog" aria-modal="true" aria-labelledby="kb-title" style="position: relative; width: 100%; max-width: 460px; background: var(--bg); color: var(--ink); border: 1px solid var(--ink); box-shadow: 0 24px 64px rgba(0,0,0,0.3)">
+<div style="display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 18px 20px 18px 24px; border-bottom: 1px solid var(--line)">
+<h2 id="kb-title" style="margin: 0; font-family: 'Unbounded', sans-serif; font-weight: 800; font-size: 20px; letter-spacing: -0.02em">Keyboard shortcuts<span style="color: var(--accent)">.</span></h2>
+<button type="button" aria-label="Close" onClick="{{closePanel}}" style="width: 40px; height: 40px; border: 1px solid var(--line); background: transparent; color: var(--ink); display: grid; place-items: center; cursor: pointer"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6L6 18"></path></svg></button>
+</div>
+<ul style="margin: 0; padding: 4px 24px; list-style: none">
+<sc-for list="{{keys}}" as="k" hint-placeholder-count="8">
+<li style="display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 11px 0; border-bottom: 1px solid var(--line)"><span>{{k.d}}</span><kbd style="display: inline-grid; place-items: center; min-width: 28px; height: 28px; padding: 0 8px; box-sizing: border-box; border: 1px solid var(--line); border-bottom-width: 2px; background: var(--surface); color: var(--ink); font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; font-weight: 500; text-transform: none">{{k.k}}</kbd></li>
+</sc-for>
+</ul>
+<p style="margin: 0; padding: 14px 24px 18px; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em; color: var(--muted)">Shortcuts pause while you're typing</p>
+</div>
+</div>
+</sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"dark":{"editor":"boolean","default":false},"accent":{"editor":"color","default":"#7C3AED","options":["#7C3AED","#6D28D9","#5B21B6","#9333EA"]},"$preview":{"width":1440,"height":5250}}'>
+class Component extends DCLogic {
+  componentDidMount() { this._t = setInterval(() => this.setState({ time: this.clock() }), 1000); }
+  componentWillUnmount() { clearInterval(this._t); clearTimeout(this._tip); }
+  hint() {
+    // First use of sound or theme in a visit: show the shortcuts tip once, then auto-hide.
+    if (this._hinted) return;
+    this._hinted = true;
+    this.setState({ tip: true });
+    clearTimeout(this._tip);
+    this._tip = setTimeout(() => this.setState({ tip: false }), 6000);
+  }
+  tone(freq, at, dur, opts) {
+    const o = opts || {};
+    const C = window.AudioContext || window.webkitAudioContext;
+    if (!C) return;
+    this._ac = this._ac || new C();
+    const ac = this._ac;
+    if (ac.state === 'suspended' && ac.resume) ac.resume();
+    const t = ac.currentTime + (at || 0);
+    const osc = ac.createOscillator(), g = ac.createGain();
+    osc.type = o.type || 'sine';
+    osc.frequency.setValueAtTime(freq, t);
+    if (o.to) osc.frequency.exponentialRampToValueAtTime(o.to, t + dur);
+    g.gain.setValueAtTime(0.0001, t);
+    g.gain.exponentialRampToValueAtTime(o.vol || 0.05, t + 0.012);
+    g.gain.exponentialRampToValueAtTime(0.0001, t + dur);
+    osc.connect(g); g.connect(ac.destination);
+    osc.start(t); osc.stop(t + dur + 0.02);
+  }
+  chime() {
+    // Soft two-note chime for clicks: clear but quiet.
+    try { this.tone(1046.5, 0, 0.22, { vol: 0.045 }); this.tone(1568, 0.045, 0.26, { vol: 0.03 }); } catch (e) {}
+  }
+  sparkle() {
+    // Gentle rising arpeggio for the portrait reveal.
+    try {
+      [523.25, 659.25, 783.99, 1046.5].forEach((f, i) => this.tone(f, i * 0.055, 0.32, { type: 'triangle', vol: 0.035 }));
+    } catch (e) {}
+  }
+  blip() {
+    try {
+      const C = window.AudioContext || window.webkitAudioContext;
+      if (!C) return;
+      this._ac = this._ac || new C();
+      const ac = this._ac, t = ac.currentTime;
+      const o = ac.createOscillator(), g = ac.createGain();
+      o.type = 'sine';
+      o.frequency.setValueAtTime(660, t);
+      o.frequency.exponentialRampToValueAtTime(990, t + 0.08);
+      g.gain.setValueAtTime(0.0001, t);
+      g.gain.exponentialRampToValueAtTime(0.08, t + 0.01);
+      g.gain.exponentialRampToValueAtTime(0.0001, t + 0.18);
+      o.connect(g); g.connect(ac.destination);
+      o.start(t); o.stop(t + 0.2);
+    } catch (e) {}
+  }
+  clock() {
+    try { return new Date().toLocaleTimeString('en-GB', { timeZone: 'Africa/Lagos', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false }); }
+    catch (e) { return '--:--:--'; }
+  }
+  renderVals() {
+    const s = this.state || {};
+    const mode = s.mode || (this.props.dark ? 'dark' : 'light');
+    let sysDark = false;
+    try { sysDark = !!(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches); } catch (e) {}
+    const dark = mode === 'dark' || (mode === 'auto' && sysDark);
+    const segBase = "width: 40px; height: 42px; border: 0; padding: 0; display: grid; place-items: center; cursor: pointer; ";
+    return {
+      dark: dark,
+      light: !dark,
+      theme: dark ? 'dark' : '',
+      time: s.time || this.clock(),
+      loop: [{ hidden: 'false' }, { hidden: 'true' }],
+      accent: this.props.accent ?? '#7C3AED',
+      modes: ['light', 'dark', 'auto'].map((k) => ({
+        isLight: k === 'light', isDark: k === 'dark', isAuto: k === 'auto',
+        label: k === 'light' ? 'Light mode' : k === 'dark' ? 'Dark mode' : 'Auto mode (match system)',
+        pressed: mode === k ? 'true' : 'false',
+        style: segBase + (mode === k ? 'background: var(--ink); color: var(--bg);' : 'background: transparent; color: var(--ink);'),
+        pick: () => { this.setState({ mode: k }); this.hint(); }
+      })),
+      tip: !!s.tip,
+      panel: !!s.panel,
+      openPanel: () => { clearTimeout(this._tip); this.setState({ panel: true, tip: false }); },
+      closePanel: () => this.setState({ panel: false }),
+      closeTip: () => { clearTimeout(this._tip); this.setState({ tip: false }); },
+      keys: [
+        { k: 'T', d: 'Scroll to top' },
+        { k: 'B', d: 'Scroll to bottom' },
+        { k: 'S', d: 'Sound on / off' },
+        { k: 'L', d: 'Light mode' },
+        { k: 'D', d: 'Dark mode' },
+        { k: 'A', d: 'Auto (match your system)' },
+        { k: '?', d: 'Show shortcuts' },
+        { k: 'Esc', d: 'Close this panel' }
+      ],
+      soundOn: !!s.sound,
+      soundOff: !s.sound,
+      soundPressed: s.sound ? 'true' : 'false',
+      rootClick: (e) => {
+        if (!(this.state || {}).sound) return;
+        const el = e && e.target && e.target.closest ? e.target.closest('button, a') : null;
+        if (!el || el.getAttribute('aria-label') === 'Toggle sound') return;
+        this.chime();
+      },
+      photoEnter: () => { if ((this.state || {}).sound) this.sparkle(); },
+      toggleSound: () => { const on = !s.sound; this.setState({ sound: on }); if (on) this.blip(); this.hint(); }
+    };
+  }
+}
+</script>
+</body>
+</html>

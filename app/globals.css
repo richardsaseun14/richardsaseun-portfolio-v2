@@ -1,0 +1,271 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+/* Theme is set on <html data-theme="light|dark"> by PrefsProvider (and an inline script before paint). */
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
+:root {
+  --bg: #eae7df;
+  --surface: #f1eee7;
+  --ink: #2b2a26;
+  --muted: #57554f;
+  --line: #cfcbc1;
+  --invert-bg: #0e0e0c;
+  --invert-ink: #f3f2ee;
+  --accent: #7c3aed;
+  --on-accent: #ffffff;
+  --live: #1fa855;
+  --danger: #c2410c;
+  color-scheme: light;
+}
+
+[data-theme="dark"] {
+  --bg: #0d0d0c;
+  --surface: #151513;
+  --ink: #f1f0eb;
+  --muted: #a19f98;
+  --line: #2b2a27;
+  --invert-bg: #f1f0eb;
+  --invert-ink: #0d0d0c;
+  --accent: #8b5cf6;
+  --danger: #f97316;
+  color-scheme: dark;
+}
+
+/*
+ * shadcn/ui tokens, derived from the palette above so it stays the single source of truth.
+ * Note: in shadcn, `muted` is a subtle surface and `muted-foreground` is the secondary text color.
+ * `accent` keeps this site's meaning (brand purple), so shadcn hover states read as brand highlights.
+ */
+:root {
+  --radius: 0rem;
+  --background: var(--bg);
+  --foreground: var(--ink);
+  --card: var(--surface);
+  --card-foreground: var(--ink);
+  --popover: var(--surface);
+  --popover-foreground: var(--ink);
+  --primary: var(--ink);
+  --primary-foreground: var(--bg);
+  --secondary: var(--surface);
+  --secondary-foreground: var(--ink);
+  --muted-surface: var(--surface);
+  --muted-foreground: var(--muted);
+  --accent-foreground: var(--on-accent);
+  --destructive: var(--danger);
+  --border: var(--line);
+  --input: var(--line);
+  --ring: var(--accent);
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-ink: var(--ink);
+  --color-line: var(--line);
+  --color-invert: var(--invert-bg);
+  --color-invert-ink: var(--invert-ink);
+  --color-accent: var(--accent);
+  --color-on-accent: var(--on-accent);
+  --color-live: var(--live);
+
+  /* shadcn/ui */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted-surface);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --radius-sm: max(0px, calc(var(--radius) - 4px));
+  --radius-md: max(0px, calc(var(--radius) - 2px));
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+
+  --font-display: var(--font-unbounded), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-figtree), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains), ui-monospace, monospace;
+}
+
+/* ---------- Base ---------- */
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--font-sans);
+    font-size: 16px;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+  a {
+    color: inherit;
+  }
+  a:hover {
+    color: var(--accent);
+  }
+  ::selection {
+    background: var(--accent);
+    color: var(--on-accent);
+  }
+}
+
+/* ---------- Type & layout utilities ---------- */
+@utility container-x {
+  width: 100%;
+  max-width: 1320px;
+  margin-inline: auto;
+  padding-inline: 32px;
+  @media (max-width: 640px) {
+    padding-inline: 20px;
+  }
+}
+@utility eyebrow {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+}
+@utility meta {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+@utility page-title {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: clamp(52px, 9vw, 144px);
+  line-height: 0.86;
+  letter-spacing: -0.045em;
+  text-transform: uppercase;
+}
+@utility section-title {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(32px, 4.4vw, 64px);
+  line-height: 0.98;
+  letter-spacing: -0.035em;
+}
+@utility stripes {
+  background-color: var(--surface);
+  background-image: repeating-linear-gradient(135deg, transparent 0 11px, var(--line) 11px 12px);
+}
+@utility stripes-invert {
+  background-image: repeating-linear-gradient(135deg, transparent 0 11px, rgba(128, 128, 128, 0.35) 11px 12px);
+}
+@utility no-scrollbar {
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* ---------- Marquee ---------- */
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee 45s linear infinite;
+}
+.marquee:hover .marquee-track {
+  animation-play-state: paused;
+}
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* ---------- Hero portrait (hover reveal) ---------- */
+.hero-photo {
+  opacity: 0;
+  transform: translate(24px, -50%) rotate(-6deg) scale(0.92);
+  transition:
+    opacity 0.25s ease,
+    transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.hero-name:hover .hero-photo {
+  opacity: 1;
+  transform: translate(40px, -50%) rotate(3deg) scale(1);
+}
+@media (hover: none), (max-width: 900px) {
+  .hero-photo {
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    margin-top: 28px;
+    opacity: 1;
+    transform: rotate(-2deg);
+  }
+}
+
+/* ---------- Hover hints for keyboard shortcuts ---------- */
+.hk {
+  position: relative;
+  display: inline-flex;
+}
+.hk-tip {
+  opacity: 0;
+  transform: translateY(-4px);
+  transition:
+    opacity 0.15s ease,
+    transform 0.15s ease;
+}
+.hk:hover .hk-tip,
+.hk:focus-within .hk-tip {
+  opacity: 1;
+  transform: none;
+}
+@media (hover: none) {
+  .hk-tip,
+  .kb-only {
+    display: none !important;
+  }
+}
+
+.toast-in {
+  animation: toast-in 0.35s ease both;
+}
+@keyframes toast-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track,
+  .toast-in {
+    animation: none;
+  }
+  .hero-photo,
+  .hk-tip {
+    transition: none;
+  }
+}
