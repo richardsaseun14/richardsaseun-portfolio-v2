@@ -10,7 +10,6 @@ import { Wordmark } from "./Wordmark";
 import { Availability, LagosTime, SoundToggle, ThemeSwitch } from "./HeaderControls";
 import { ArrowRight, Close, Menu } from "./Icons";
 
-const links = [{ label: "Home", href: "/" }, ...nav];
 const squareBtn = "grid size-11 cursor-pointer place-items-center border border-line text-ink hover:border-ink";
 
 /** Full-screen navigation overlay for small screens. Hidden from `md` up. */
@@ -44,7 +43,7 @@ export function MobileMenu() {
 
           <nav aria-label="Primary" className="container-x pt-6">
             <ul className="border-t border-ink">
-              {links.map((item) => {
+              {nav.map((item) => {
                 const active = isActive(pathname, item.href);
                 return (
                   <li key={item.href} className="border-b border-line">

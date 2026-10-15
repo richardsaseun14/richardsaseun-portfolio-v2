@@ -21,6 +21,7 @@ export const site = {
 export const mailto = `mailto:${site.email}`;
 
 export const nav = [
+  { label: "Home", href: "/" },
   { label: "Work", href: "/work" },
   { label: "About", href: "/about" },
   { label: "Side quests", href: "/side-quests" },

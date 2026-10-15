@@ -19,7 +19,6 @@ export function Footer() {
           <div className="flex flex-wrap gap-x-12 gap-y-10 sm:gap-x-20">
             <nav aria-labelledby="ft-sitemap" className="flex flex-col gap-1.5">
               <h2 id="ft-sitemap" className={colTitle}>Sitemap</h2>
-              <Link href="/" className="no-underline">Home</Link>
               {nav.map((item) => (
                 <Link key={item.href} href={item.href} className="no-underline">
                   {item.label}
