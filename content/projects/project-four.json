@@ -1,0 +1,54 @@
+{
+  "name": "[Project name]",
+  "blurb": "[AI feature or tool you shipped]",
+  "type": "AI · Web",
+  "role": "[Role]",
+  "year": "[Year]",
+  "tags": [
+    "AI",
+    "Web"
+  ],
+  "caseStudy": {
+    "industry": "[Industry]",
+    "summary": "[One sentence: what the product does, for whom, and the result, e.g. “Scaling a [category] platform to 50K+ users.”]",
+    "timeline": "[Start – End]",
+    "team": "[Team size & makeup]",
+    "stack": "[React Native · Next.js · Node · Postgres]",
+    "links": [
+      {
+        "label": "Live",
+        "href": "#"
+      },
+      {
+        "label": "App Store",
+        "href": "#"
+      }
+    ],
+    "problem": [
+      "[What was broken or missing? Who was hurting, and what did it cost the business? Keep it to the essentials.]",
+      "[Constraints: timeline, team, legacy systems, regulation, budget.]"
+    ],
+    "thinking": {
+      "intro": "[How you framed the problem, what you weighed, and the call you made.]",
+      "quote": "[The key insight or decision, in one line.]",
+      "decisions": [
+        "[Trade-off or decision #1 and why]",
+        "[Trade-off or decision #2 and why]",
+        "[Trade-off or decision #3 and why]"
+      ]
+    },
+    "built": {
+      "intro": "[Your part, specifically: architecture, the hard features, leading the team, the AI pieces.]",
+      "mobileShots": [
+        "[Caption]",
+        "[Caption]",
+        "[Caption]"
+      ],
+      "webShot": "[Caption]"
+    },
+    "outcome": "[What shipped, what moved, and what you'd do differently next time.]"
+  },
+  "order": 4,
+  "featured": false,
+  "metrics": []
+}

@@ -1,0 +1,61 @@
+{
+  "items": [
+    {
+      "name": "[Side project]",
+      "blurb": "[One line: what it does and why you built it]",
+      "date": "[Mon 2026]",
+      "status": "Building",
+      "tags": [
+        "AI",
+        "Next.js"
+      ],
+      "demo": "#",
+      "code": "#"
+    },
+    {
+      "name": "[Side project]",
+      "blurb": "[One line: what it does and why you built it]",
+      "date": "[Mon 2026]",
+      "status": "Live",
+      "tags": [
+        "React Native"
+      ],
+      "demo": "#",
+      "code": "#"
+    },
+    {
+      "name": "[Side project]",
+      "blurb": "[One line: what it does and why you built it]",
+      "date": "[Mon 2026]",
+      "status": "Live",
+      "tags": [
+        "Supabase",
+        "Vue"
+      ],
+      "demo": "#",
+      "code": "#"
+    },
+    {
+      "name": "[Side project]",
+      "blurb": "[One line: what it does and why you built it]",
+      "date": "[Mon 2025]",
+      "status": "Live",
+      "tags": [
+        "Python"
+      ],
+      "demo": "#",
+      "code": "#"
+    },
+    {
+      "name": "[Side project]",
+      "blurb": "[One line: what it does and why you built it]",
+      "date": "[Mon 2025]",
+      "status": "Archived",
+      "tags": [
+        "Node.js"
+      ],
+      "code": "#",
+      "demo": ""
+    }
+  ]
+}
