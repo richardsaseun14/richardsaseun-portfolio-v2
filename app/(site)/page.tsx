@@ -3,9 +3,11 @@ import { HeroName } from "@/components/HeroName";
 import { ExploreCards } from "@/components/ExploreCards";
 import { ArrowRight } from "@/components/Icons";
 import { ButtonLink, Placeholder, SectionHeading } from "@/components/primitives";
-import { mailto, pipeline, principles, projects, site, stack, stats } from "@/lib/content";
+import { mailto, pipeline, principles, site, stack, stats } from "@/lib/content";
+import { getProjects } from "@/lib/projects";
 
-export default function Home() {
+export default async function Home() {
+  const projects = await getProjects();
   const featured = projects.find((p) => p.featured) ?? projects[0];
   const more = projects.filter((p) => p !== featured).slice(0, 2);
 

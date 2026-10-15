@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import { WorkIndex } from "@/components/WorkIndex";
 import { ExploreCards } from "@/components/ExploreCards";
 import { ButtonLink, PageIntro, SectionHeading } from "@/components/primitives";
-import { mailto, projects, sideProjects, type SideProject } from "@/lib/content";
+import { mailto, sideProjects, type SideProject } from "@/lib/content";
+import { getProjects } from "@/lib/projects";
 
 export const metadata: Metadata = {
   title: "Work: Case studies & Side projects",
@@ -15,7 +16,8 @@ const statusStyle: Record<SideProject["status"], string> = {
   Archived: "border border-line text-muted-foreground",
 };
 
-export default function WorkPage() {
+export default async function WorkPage() {
+  const projects = await getProjects();
   return (
     <main>
       <PageIntro

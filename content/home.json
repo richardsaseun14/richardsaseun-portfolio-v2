@@ -1,0 +1,97 @@
+{
+  "marquee": [
+    "Writing code",
+    "Shipping products",
+    "Web & mobile",
+    "React Native",
+    "Next.js",
+    "Vue",
+    "Supabase",
+    "AI-driven workflows",
+    "Product thinking",
+    "Leading teams",
+    "Breaking code",
+    "Fixing code",
+    "Open to roles"
+  ],
+  "stats": [
+    {
+      "value": "9+",
+      "accent": "",
+      "label": "Years building production software"
+    },
+    {
+      "value": "15+",
+      "accent": "",
+      "label": "Client web apps delivered"
+    },
+    {
+      "value": "50K+",
+      "accent": "",
+      "label": "Users on a product I helped build"
+    }
+  ],
+  "principles": [
+    {
+      "title": "Start from the user",
+      "body": "I ask why before how, and scope features around real usage and business impact, not just the ticket."
+    },
+    {
+      "title": "Ship across every screen",
+      "body": "Web, mobile and the backend that connects them. I've led front-end teams and can own a feature from start to finish."
+    },
+    {
+      "title": "AI-native workflow",
+      "body": "I use AI to build faster and build AI into the products themselves, without cutting corners."
+    }
+  ],
+  "pipeline": [
+    "Interface",
+    "API",
+    "Database",
+    "Pipeline",
+    "Tests"
+  ],
+  "stack": [
+    {
+      "group": "Frontend",
+      "items": [
+        "React",
+        "Next.js",
+        "Vue",
+        "JavaScript",
+        "TypeScript",
+        "Tailwind CSS"
+      ]
+    },
+    {
+      "group": "Mobile",
+      "items": [
+        "React Native"
+      ]
+    },
+    {
+      "group": "Backend & data",
+      "items": [
+        "Node.js",
+        "Python",
+        "Django",
+        "PostgreSQL",
+        "Supabase"
+      ]
+    },
+    {
+      "group": "AI",
+      "items": [
+        "OpenAI API",
+        "AI-driven workflows"
+      ]
+    },
+    {
+      "group": "CMS",
+      "items": [
+        "WordPress"
+      ]
+    }
+  ]
+}

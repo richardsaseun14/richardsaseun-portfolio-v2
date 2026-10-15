@@ -4,16 +4,19 @@ import { notFound } from "next/navigation";
 import { ExploreCards } from "@/components/ExploreCards";
 import { ArrowLeft, ArrowRight } from "@/components/Icons";
 import { Placeholder } from "@/components/primitives";
-import { projects, site } from "@/lib/content";
+import { site } from "@/lib/content";
+import { getProjects } from "@/lib/projects";
 
 type Params = { params: Promise<{ slug: string }> };
 
-export function generateStaticParams() {
+export async function generateStaticParams() {
+  const projects = await getProjects();
   return projects.map((p) => ({ slug: p.slug }));
 }
 
 export async function generateMetadata({ params }: Params): Promise<Metadata> {
   const { slug } = await params;
+  const projects = await getProjects();
   const project = projects.find((p) => p.slug === slug);
   return {
     title: project ? `${project.name} case study` : "Case study",
@@ -34,6 +37,7 @@ function Block({ id, title, children }: { id: string; title: string; children: R
 
 export default async function CaseStudyPage({ params }: Params) {
   const { slug } = await params;
+  const projects = await getProjects();
   const index = projects.findIndex((p) => p.slug === slug);
   const project = projects[index];
   const cs = project?.caseStudy;

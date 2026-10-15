@@ -1,0 +1,192 @@
+{
+  "roots": [
+    {
+      "key": "faith",
+      "label": "Faith",
+      "title": "Christian",
+      "body": "A practicing Christian. It sits at the centre of who I am."
+    },
+    {
+      "key": "roots",
+      "label": "Roots",
+      "title": "Yoruba · Nigerian",
+      "body": "Yoruba by heritage, proudly Nigerian, building from Lagos."
+    },
+    {
+      "key": "family",
+      "label": "Family",
+      "title": "Married",
+      "body": "[A line about family, if you'd like one.]"
+    }
+  ],
+  "series": [
+    {
+      "title": "[Series title]",
+      "meta": "S[0] · E[0] · [Platform]",
+      "progress": 60,
+      "poster": null
+    },
+    {
+      "title": "[Series title]",
+      "meta": "S[0] · E[0] · [Platform]",
+      "progress": 25,
+      "poster": null
+    },
+    {
+      "title": "[Series title]",
+      "meta": "S[0] · E[0] · [Platform]",
+      "progress": 80,
+      "poster": null
+    },
+    {
+      "title": "[Series title]",
+      "meta": "S[0] · E[0] · [Platform]",
+      "progress": 10,
+      "poster": null
+    },
+    {
+      "title": "[Series title]",
+      "meta": "Up next",
+      "progress": 0,
+      "poster": null
+    },
+    {
+      "title": "[Series title]",
+      "meta": "Up next",
+      "progress": 0,
+      "poster": null
+    }
+  ],
+  "anime": [
+    {
+      "title": "[Anime title]",
+      "meta": "Ep [8] of [24]",
+      "progress": 33,
+      "status": "Watching",
+      "poster": null
+    },
+    {
+      "title": "[Anime title]",
+      "meta": "Ep [3] of [12]",
+      "progress": 25,
+      "status": "Watching",
+      "poster": null
+    },
+    {
+      "title": "[Anime title]",
+      "meta": "Ep [20] of [25]",
+      "progress": 80,
+      "status": "Watching",
+      "poster": null
+    },
+    {
+      "title": "[Anime title]",
+      "meta": "Not started",
+      "progress": 0,
+      "status": "Up next",
+      "poster": null
+    },
+    {
+      "title": "[Anime title]",
+      "meta": "Not started",
+      "progress": 0,
+      "status": "Up next",
+      "poster": null
+    }
+  ],
+  "music": {
+    "title": "[Album or playlist]",
+    "artist": "[Artist]",
+    "note": "[One line on why it's on repeat.]",
+    "listenLabel": "Listen on [Spotify]",
+    "listenHref": "#",
+    "playlistsHref": "#",
+    "cover": null
+  },
+  "books": {
+    "current": {
+      "title": "[Book title]",
+      "author": "[Author]",
+      "note": "[One line on why you picked it up or what's sticking with you.]",
+      "page": 120,
+      "pages": 320
+    },
+    "finished": [
+      {
+        "title": "[Book title]",
+        "author": "[Author]"
+      },
+      {
+        "title": "[Book title]",
+        "author": "[Author]"
+      },
+      {
+        "title": "[Book title]",
+        "author": "[Author]"
+      }
+    ],
+    "listHref": "#"
+  },
+  "games": [
+    {
+      "title": "[Game title]",
+      "meta": "[Platform] · [Hours]h",
+      "status": "Playing",
+      "cover": null
+    },
+    {
+      "title": "[Game title]",
+      "meta": "[Platform] · [Hours]h",
+      "status": "Playing",
+      "cover": null
+    },
+    {
+      "title": "[Game title]",
+      "meta": "[Platform] · [Hours]h",
+      "status": "Playing",
+      "cover": null
+    },
+    {
+      "title": "[Game title]",
+      "meta": "[Platform] · Finished [Year]",
+      "status": "Finished",
+      "cover": null
+    },
+    {
+      "title": "[Game title]",
+      "meta": "[Platform] · Finished [Year]",
+      "status": "Finished",
+      "cover": null
+    },
+    {
+      "title": "[Game title]",
+      "meta": "[Platform] · Finished [Year]",
+      "status": "Finished",
+      "cover": null
+    },
+    {
+      "title": "[Game title]",
+      "meta": "[Platform] · Finished [Year]",
+      "status": "Finished",
+      "cover": null
+    }
+  ],
+  "learning": {
+    "title": "AI engineering",
+    "body": "Going deep on artificial intelligence: how the models work, and how to engineer real products on top of them.",
+    "facts": [
+      {
+        "label": "Focus",
+        "value": "AI engineering"
+      },
+      {
+        "label": "Learning from",
+        "value": "[Course / book]"
+      },
+      {
+        "label": "Building",
+        "value": "[Side project]"
+      }
+    ]
+  }
+}

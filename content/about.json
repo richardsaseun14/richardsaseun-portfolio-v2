@@ -1,0 +1,106 @@
+{
+  "experience": [
+    {
+      "period": "[20XX] – Now",
+      "current": true,
+      "company": "[Company]",
+      "role": "[Role]",
+      "notes": [
+        "[What you shipped and what it moved]",
+        "[What you shipped and what it moved]"
+      ]
+    },
+    {
+      "period": "[20XX] – [20XX]",
+      "company": "[Company]",
+      "role": "Front-end Lead",
+      "notes": [
+        "Led the front-end team on [product], used by 50K+ people",
+        "[What you shipped and what it moved]"
+      ],
+      "current": false
+    },
+    {
+      "period": "[20XX] – [20XX]",
+      "company": "[Company / Freelance]",
+      "role": "[Role]",
+      "notes": [
+        "Delivered 15+ client web apps across [industries]"
+      ],
+      "current": false
+    },
+    {
+      "period": "2017 – [20XX]",
+      "company": "[Company]",
+      "role": "[Role]",
+      "notes": [
+        "[What you shipped and what it moved]"
+      ],
+      "current": false
+    }
+  ],
+  "capabilities": [
+    {
+      "title": "Mobile apps",
+      "body": "Cross-platform iOS and Android apps with React Native."
+    },
+    {
+      "title": "Web applications",
+      "body": "Fast, accessible apps with Next.js, Vue and Tailwind."
+    },
+    {
+      "title": "Front-end architecture",
+      "body": "Codebases, patterns and design systems a team can grow into."
+    },
+    {
+      "title": "AI-powered features",
+      "body": "LLM features with OpenAI, from prototype to production."
+    },
+    {
+      "title": "Design to production",
+      "body": "Taking designs all the way to a polished, shipped product."
+    },
+    {
+      "title": "MVPs",
+      "body": "From zero to launch, fast, without boxing in what comes next."
+    },
+    {
+      "title": "Enterprise & large systems",
+      "body": "Complex domains, many users and long-lived codebases."
+    }
+  ],
+  "quickFacts": [
+    {
+      "label": "Role",
+      "value": "Full-stack engineer, web & mobile"
+    },
+    {
+      "label": "Experience",
+      "value": "9+ years of production software"
+    },
+    {
+      "label": "Leadership",
+      "value": "Led front-end teams"
+    },
+    {
+      "label": "Delivered",
+      "value": "15+ client web apps"
+    },
+    {
+      "label": "Scale",
+      "value": "50K+ users and ₦50M+ revenue on one product"
+    },
+    {
+      "label": "Core stack",
+      "value": "React, Vue, Next.js, React Native, Node, Python / Django, Postgres"
+    },
+    {
+      "label": "Also",
+      "value": "Open-source contributor · AI-driven workflows"
+    },
+    {
+      "label": "Education",
+      "value": "[Degree] · [School]"
+    }
+  ]
+}

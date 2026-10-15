@@ -15,18 +15,36 @@ npm run typecheck
 
 | What | Where |
 | --- | --- |
-| All copy, projects, side projects, experience, watchlists, games, books | `lib/content.ts` |
-| Colours, fonts, shared utilities (eyebrow, page-title, stripes…) | `app/globals.css` |
-| Pages | `app/page.tsx` (Home), `app/labs`, `app/labs/[slug]` (case study), `app/changelog`, `app/side-quests` |
+| All editable copy (profile, home, about, side quests, side projects) | `content/*.json`, edited at `/keystatic` |
+| Projects and case studies | `content/projects/<slug>.json`, edited at `/keystatic` |
+| Content schema (what the editor shows) | `keystatic.config.ts`, `keystatic/schema/*` |
+| Typed content for components, plus nav / shortcuts | `lib/content.ts`, `lib/projects.ts` |
+| Colours, fonts, shared utilities (eyebrow, page-title, stripes…) | `app/(site)/globals.css` |
+| Pages | `app/(site)/page.tsx` (Home), `app/(site)/work`, `app/(site)/work/[slug]` (case study), `app/(site)/about`, `app/(site)/side-quests` |
 | Theme / sound / keyboard shortcuts / click sounds | `components/PrefsProvider.tsx` |
 | Nav, footer, scrolling top bar | `components/Header.tsx`, `Footer.tsx`, `Marquee.tsx` |
 | Portrait | `public/richard-portrait.jpg` |
 
-### Adding a side project
-Add an entry to the top of `sideProjects` in `lib/content.ts`. The card and the "builds so far" count update automatically.
+## Editing content (Keystatic)
 
-### Adding a case study
-Add a project to `projects` in `lib/content.ts` with a unique `slug` and a `caseStudy` object. It gets its own page at `/labs/<slug>`.
+Content is managed with [Keystatic](https://keystatic.com). It is stored as JSON in `content/`, so there is no database and every edit is a git commit.
+
+- **Locally:** run `npm run dev` and open http://localhost:3000/keystatic. Saves write straight to `content/`; commit and push as usual.
+- **Side projects:** Work > Side projects. Add new builds to the top.
+- **Case studies:** Work > Projects > Add. The slug becomes the URL (`/work/<slug>`); `Order` controls position.
+- **Images** (posters, covers) upload to `public/images/<folder>/`.
+
+### Editing from the live site (GitHub mode)
+
+Set `NEXT_PUBLIC_KEYSTATIC_STORAGE=github` to make `/keystatic` commit to GitHub instead of the local disk. Each save then triggers a redeploy.
+
+One-time setup:
+1. Locally, add `NEXT_PUBLIC_KEYSTATIC_STORAGE=github` to `.env.local`, run `npm run dev` and open `/keystatic`.
+2. Follow the prompt to create a GitHub App for the repo. Keystatic writes `KEYSTATIC_GITHUB_CLIENT_ID`, `KEYSTATIC_GITHUB_CLIENT_SECRET`, `KEYSTATIC_SECRET` and `NEXT_PUBLIC_KEYSTATIC_GITHUB_APP_SLUG` into `.env.local`.
+3. Copy those four values plus `NEXT_PUBLIC_KEYSTATIC_STORAGE=github` into your host's environment variables (e.g. Vercel) and redeploy.
+4. In the GitHub App settings, add `https://<your-domain>/api/keystatic/github/oauth/callback` as a callback URL.
+
+Only GitHub users with write access to the repo can sign in and save.
 
 ## Design tokens
 
@@ -42,4 +60,4 @@ Ignored while typing or when Cmd/Ctrl/Alt is held. Theme and sound choices persi
 
 ## Still to fill in
 
-Everything in `[brackets]` in `lib/content.ts`: email, social handles, project names, screenshots, job history, watchlists and so on.
+Everything in `[brackets]` in the editor (or `content/`): email, social handles, project names, screenshots, job history, watchlists and so on.
