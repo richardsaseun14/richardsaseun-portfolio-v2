@@ -1,42 +1,68 @@
 {
   "experience": [
     {
-      "period": "[20XX] – Now",
-      "current": true,
-      "company": "[Company]",
-      "role": "[Role]",
+      "period": "Apr 2025 – Aug 2026",
+      "current": false,
+      "company": "Tempo Labs",
+      "role": "Software Engineer · Toronto (remote)",
       "notes": [
-        "[What you shipped and what it moved]",
-        "[What you shipped and what it moved]"
+        "Owned client platforms end to end, from architecture and build to deployment and maintenance",
+        "Built with Next.js (App Router), TypeScript and Supabase, wiring in Stripe payments, SendGrid email and external APIs",
+        "Tied together payments, reservations, notifications, waivers and admin workflows, backed by Edge Functions, RLS, triggers and cron jobs",
+        "Ran staging and production releases, and shaped the architecture so new clients onboarded faster"
       ]
     },
     {
-      "period": "[20XX] – [20XX]",
-      "company": "[Company]",
-      "role": "Front-end Lead",
+      "period": "Mar 2023 – Mar 2025",
+      "current": false,
+      "company": "Terminal Africa",
+      "role": "Senior Frontend Engineer",
       "notes": [
-        "Led the front-end team on [product], used by 50K+ people",
-        "[What you shipped and what it moved]"
-      ],
-      "current": false
+        "Led development of responsive web apps with React and Next.js, tuned for speed and scale",
+        "Mentored junior developers and ran code reviews, raising the bar on code quality, testing and performance",
+        "Built automated test suites and worked with backend, design and product to ship on time"
+      ]
     },
     {
-      "period": "[20XX] – [20XX]",
-      "company": "[Company / Freelance]",
-      "role": "[Role]",
+      "period": "Sept 2020 – Aug 2023",
+      "current": false,
+      "company": "Ashipa Electric",
+      "role": "Senior UI Developer · Alabama, US (remote)",
       "notes": [
-        "Delivered 15+ client web apps across [industries]"
-      ],
-      "current": false
+        "Built responsive web apps and PWAs with Vue, Nuxt, React and Next.js, using Firebase and MQTT for live data",
+        "Took designs from Figma mock-ups to production, monitoring performance and fixing front-end issues",
+        "Prototyped new ideas and supported clients directly with troubleshooting and guidance"
+      ]
     },
     {
-      "period": "2017 – [20XX]",
-      "company": "[Company]",
-      "role": "[Role]",
+      "period": "Jan 2020 – Jun 2021",
+      "current": false,
+      "company": "Starters Africa",
+      "role": "Chief Technical Officer",
       "notes": [
-        "[What you shipped and what it moved]"
-      ],
-      "current": false
+        "Managed and onboarded the team and trainees",
+        "Taught coding to children aged 5–15 in schools and at events"
+      ]
+    },
+    {
+      "period": "May 2019 – May 2020",
+      "current": false,
+      "company": "Pajuno Development Company",
+      "role": "UI/UX & Frontend Developer",
+      "notes": [
+        "Built interfaces for complex web apps with Angular, TypeScript and SASS",
+        "Turned mock-ups into cross-browser templates, working closely with UX designers and developers"
+      ]
+    },
+    {
+      "period": "Jun 2016 – Mar 2020",
+      "current": false,
+      "company": "Skylar Business Solutions · The Village",
+      "role": "Web & Graphic Designer",
+      "notes": [
+        "Designed and built websites with HTML, CSS and SASS",
+        "Created brand identities, logos and brand guidelines in Photoshop and Illustrator"
+      ]
     }
   ],
   "capabilities": [
