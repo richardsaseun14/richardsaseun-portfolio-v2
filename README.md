@@ -32,7 +32,7 @@ Add a project to `projects` in `lib/content.ts` with a unique `slug` and a `case
 
 - Fonts: **Unbounded** (headings), **Figtree** (body), **JetBrains Mono** (labels)
 - Accent: `#7C3AED` (dark mode `#8B5CF6`)
-- Light background `#EAE7DF`, ink `#2B2A26`
+- Light background `#FAFAFA`, ink `#2B2A26`
 - Theme is stored on `<html data-theme>`; Tailwind `dark:` targets it.
 
 ## Keyboard shortcuts
