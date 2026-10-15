@@ -40,8 +40,8 @@ export default async function CaseStudyPage({ params }: Params) {
   return (
     <main>
       <section className="container-x pt-8 sm:pt-12">
-        <Link href="/labs" className="meta inline-flex min-h-11 items-center gap-2 text-[13px] no-underline">
-          <ArrowLeft size={16} /> Back to Labs
+        <Link href="/work" className="meta inline-flex min-h-11 items-center gap-2 text-[13px] no-underline">
+          <ArrowLeft size={16} /> Back to Work
         </Link>
         <div className="meta mt-8 flex flex-wrap gap-2">
           <span className="bg-accent px-2.5 py-1.5 text-on-accent">Case study</span>
@@ -159,7 +159,7 @@ export default async function CaseStudyPage({ params }: Params) {
 
       <section aria-label="Next case study" className="container-x py-20 sm:py-30">
         <Link
-          href={`/labs/${next.slug}`}
+          href={`/work/${next.slug}`}
           className="flex flex-wrap items-center justify-between gap-6 bg-invert p-[clamp(28px,4vw,56px)] text-invert-ink no-underline transition-colors hover:bg-accent hover:text-on-accent"
         >
           <div className="flex flex-col gap-2.5">
@@ -172,7 +172,7 @@ export default async function CaseStudyPage({ params }: Params) {
         </Link>
       </section>
 
-      <ExploreCards items={["labs", "changelog", "sideQuests"]} labels={{ labs: "More case studies" }} />
+      <ExploreCards items={["work", "about", "sideQuests"]} labels={{ work: "More case studies" }} />
     </main>
   );
 }

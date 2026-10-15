@@ -27,8 +27,8 @@ export default function Home() {
             <ButtonLink href={mailto} full>
               Discuss a role
             </ButtonLink>
-            <ButtonLink href="/labs" variant="ghost" icon={false} full>
-              Explore Labs
+            <ButtonLink href="/work" variant="ghost" icon={false} full>
+              Explore my work
             </ButtonLink>
           </div>
         </div>
@@ -100,7 +100,7 @@ export default function Home() {
           title="Products, not just pages."
           aside={
             <Link
-              href="/labs"
+              href="/work"
               className="meta inline-flex h-11 items-center gap-2.5 border border-line px-[18px] text-ink no-underline hover:border-ink"
             >
               View all projects <ArrowRight size={16} />
@@ -109,7 +109,7 @@ export default function Home() {
         />
 
         <Link
-          href={`/labs/${featured.slug}`}
+          href={`/work/${featured.slug}`}
           className="group grid overflow-hidden border border-line bg-surface text-ink no-underline hover:text-ink [grid-template-columns:repeat(auto-fit,minmax(min(480px,100%),1fr))]"
         >
           <div className="overflow-hidden border-b border-line md:border-r md:border-b-0">
@@ -151,7 +151,7 @@ export default function Home() {
           {more.map((p) => (
             <Link
               key={p.slug}
-              href={`/labs/${p.slug}`}
+              href={`/work/${p.slug}`}
               className="group flex flex-col overflow-hidden border border-line bg-surface text-ink no-underline hover:text-ink"
             >
               <div className="overflow-hidden border-b border-line">
@@ -251,7 +251,7 @@ export default function Home() {
         </div>
       </section>
 
-      <ExploreCards items={["changelog", "sideQuests"]} />
+      <ExploreCards items={["about", "sideQuests"]} />
     </main>
   );
 }

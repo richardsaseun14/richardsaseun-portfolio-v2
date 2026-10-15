@@ -21,8 +21,8 @@ export const site = {
 export const mailto = `mailto:${site.email}`;
 
 export const nav = [
-  { label: "Labs", href: "/labs" },
-  { label: "Changelog", href: "/changelog" },
+  { label: "Work", href: "/work" },
+  { label: "About", href: "/about" },
   { label: "Side quests", href: "/side-quests" },
 ];
 
@@ -74,7 +74,7 @@ export const stack = [
   { group: "CMS", items: ["WordPress"] },
 ];
 
-/* ---------- Labs ---------- */
+/* ---------- Work ---------- */
 
 export type Project = {
   slug: string;
@@ -214,7 +214,7 @@ export const sideProjects: SideProject[] = [
   { name: "[Side project]", blurb: "[One line: what it does and why you built it]", date: "[Mon 2025]", status: "Archived", tags: ["Node.js"], code: "#" },
 ];
 
-/* ---------- Changelog ---------- */
+/* ---------- About ---------- */
 
 export const experience = [
   { period: "[20XX] – Now", current: true, company: "[Company]", role: "[Role]", notes: ["[What you shipped and what it moved]", "[What you shipped and what it moved]"] },
@@ -322,8 +322,8 @@ export const learning = {
 /* ---------- Cross-page links ---------- */
 
 export const explore = {
-  labs: { href: "/labs", title: "Labs", label: "Case studies & builds" },
-  changelog: { href: "/changelog", title: "Changelog", label: "Experience & quick facts" },
+  work: { href: "/work", title: "Work", label: "Case studies & builds" },
+  about: { href: "/about", title: "About", label: "Experience & quick facts" },
   sideQuests: { href: "/side-quests", title: "Side quests", label: "Music, screens & off-hours" },
 };
 

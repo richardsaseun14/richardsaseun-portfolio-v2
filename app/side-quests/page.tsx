@@ -213,7 +213,7 @@ export default function SideQuestsPage() {
         </section>
       </div>
 
-      <ExploreCards items={["labs", "changelog"]} />
+      <ExploreCards items={["work", "about"]} />
     </main>
   );
 }

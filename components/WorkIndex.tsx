@@ -5,7 +5,7 @@ import { useState } from "react";
 import { projectFilters, type Project } from "@/lib/content";
 import { ArrowUpRight } from "./Icons";
 
-export function LabsIndex({ projects }: { projects: Project[] }) {
+export function WorkIndex({ projects }: { projects: Project[] }) {
   const [filter, setFilter] = useState<(typeof projectFilters)[number]>("All");
   const shown = filter === "All" ? projects : projects.filter((p) => p.tags.includes(filter));
 
@@ -31,7 +31,7 @@ export function LabsIndex({ projects }: { projects: Project[] }) {
         {shown.map((p) => (
           <Link
             key={p.slug}
-            href={`/labs/${p.slug}`}
+            href={`/work/${p.slug}`}
             className="group grid items-center gap-x-10 gap-y-6 border-b border-line py-7 text-ink no-underline hover:bg-surface hover:text-ink [grid-template-columns:repeat(auto-fit,minmax(min(260px,100%),1fr))]"
           >
             <div className="stripes aspect-[16/10] w-full border border-line sm:w-40" />

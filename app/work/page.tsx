@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
-import { LabsIndex } from "@/components/LabsIndex";
+import { WorkIndex } from "@/components/WorkIndex";
 import { ExploreCards } from "@/components/ExploreCards";
 import { ButtonLink, PageIntro, SectionHeading } from "@/components/primitives";
 import { mailto, projects, sideProjects, type SideProject } from "@/lib/content";
 
-export const metadata: Metadata = { title: "Labs" };
+export const metadata: Metadata = { title: "Work" };
 
 const statusStyle: Record<SideProject["status"], string> = {
   Live: "bg-accent text-on-accent",
@@ -12,18 +12,18 @@ const statusStyle: Record<SideProject["status"], string> = {
   Archived: "border border-line text-muted-foreground",
 };
 
-export default function LabsPage() {
+export default function WorkPage() {
   return (
     <main>
       <PageIntro
         eyebrow="Case studies"
         eyebrowRight="2017 – 2026"
-        title="Labs"
+        title="Work"
         intro="The problem, the thinking, and what I actually built, with screenshots and the numbers that moved."
       />
 
       <section className="container-x">
-        <LabsIndex projects={projects} />
+        <WorkIndex projects={projects} />
       </section>
 
       <section aria-labelledby="side-title" className="container-x pt-20 sm:pt-30">
@@ -88,7 +88,7 @@ export default function LabsPage() {
         </div>
       </section>
 
-      <ExploreCards items={["changelog", "sideQuests"]} />
+      <ExploreCards items={["about", "sideQuests"]} />
     </main>
   );
 }

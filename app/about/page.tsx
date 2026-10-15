@@ -5,28 +5,22 @@ import { Download } from "@/components/Icons";
 import { ButtonLink, PageIntro, SectionHeading } from "@/components/primitives";
 import { capabilities, experience, mailto, quickFacts, site } from "@/lib/content";
 
-export const metadata: Metadata = { title: "Changelog" };
+export const metadata: Metadata = { title: "About" };
 
 const cellGrid =
   "grid border-t border-l border-t-ink border-l-line [grid-template-columns:repeat(auto-fit,minmax(min(280px,100%),1fr))]";
 const cell = "border-r border-b border-line";
 
-export default function ChangelogPage() {
+export default function AboutPage() {
   const linkedin = site.socials.find((s) => s.label === "LinkedIn");
   const github = site.socials.find((s) => s.label === "GitHub");
 
   return (
     <main>
       <PageIntro
-        eyebrow="Changelog"
+        eyebrow="About"
         eyebrowRight="Last updated [Month 2026]"
-        title={
-          <>
-            Change
-            <br />
-            log
-          </>
-        }
+        title="About"
         action={
           <a
             href={site.cvUrl}
@@ -35,7 +29,7 @@ export default function ChangelogPage() {
             <Download /> Download CV
           </a>
         }
-        intro="A running log of where I've worked, the kind of work I can take on for you, and a few quick facts for when you just need the overview."
+        intro="Where I've worked, the kind of work I can take on for you, and a few quick facts for when you just need the overview."
       />
 
       <section aria-labelledby="history-title" className="container-x pt-20 sm:pt-30">
@@ -160,7 +154,7 @@ export default function ChangelogPage() {
         </div>
       </section>
 
-      <ExploreCards items={["labs", "sideQuests"]} />
+      <ExploreCards items={["work", "sideQuests"]} />
     </main>
   );
 }
