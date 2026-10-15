@@ -42,7 +42,7 @@ export default function SideQuestsPage() {
     <main>
       <PageIntro
         eyebrow="Side quests"
-        eyebrowRight="Last updated [date]"
+        eyebrowRight="Last updated [October 2026]"
         title={
           <>
             Side

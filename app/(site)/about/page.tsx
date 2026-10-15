@@ -22,7 +22,7 @@ export default function AboutPage() {
     <main>
       <PageIntro
         eyebrow="About"
-        eyebrowRight="Last updated [Month 2026]"
+        eyebrowRight="Last updated [October 2026]"
         title="About"
         action={
           <a
