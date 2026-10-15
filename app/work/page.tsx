@@ -4,7 +4,10 @@ import { ExploreCards } from "@/components/ExploreCards";
 import { ButtonLink, PageIntro, SectionHeading } from "@/components/primitives";
 import { mailto, projects, sideProjects, type SideProject } from "@/lib/content";
 
-export const metadata: Metadata = { title: "Work" };
+export const metadata: Metadata = {
+  title: "Work: Case studies & Side projects",
+  description: "Selected products and case studies, plus small builds and experiments.",
+};
 
 const statusStyle: Record<SideProject["status"], string> = {
   Live: "bg-accent text-on-accent",

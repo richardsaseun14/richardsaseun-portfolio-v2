@@ -5,7 +5,10 @@ import { ExploreCards } from "@/components/ExploreCards";
 import { PageIntro, Placeholder, ProgressBar, SectionHeading } from "@/components/primitives";
 import { anime, books, games, learning, music, roots, series } from "@/lib/content";
 
-export const metadata: Metadata = { title: "Side quests" };
+export const metadata: Metadata = {
+  title: "Side quests: Life outside code",
+  description: "Shows, anime, music and books: the person behind the code.",
+};
 
 function RootIcon({ kind }: { kind: (typeof roots)[number]["key"] }) {
   if (kind === "roots") {

@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import { ExploreCards } from "@/components/ExploreCards";
 import { ArrowLeft, ArrowRight } from "@/components/Icons";
 import { Placeholder } from "@/components/primitives";
-import { projects } from "@/lib/content";
+import { projects, site } from "@/lib/content";
 
 type Params = { params: Promise<{ slug: string }> };
 
@@ -15,7 +15,10 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: Params): Promise<Metadata> {
   const { slug } = await params;
   const project = projects.find((p) => p.slug === slug);
-  return { title: project ? project.name : "Case study" };
+  return {
+    title: project ? `${project.name} case study` : "Case study",
+    description: project?.caseStudy?.summary ?? site.bio,
+  };
 }
 
 function Block({ id, title, children }: { id: string; title: string; children: React.ReactNode }) {

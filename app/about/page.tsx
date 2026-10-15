@@ -5,7 +5,10 @@ import { Download } from "@/components/Icons";
 import { ButtonLink, PageIntro, SectionHeading } from "@/components/primitives";
 import { capabilities, experience, mailto, quickFacts, site } from "@/lib/content";
 
-export const metadata: Metadata = { title: "About" };
+export const metadata: Metadata = {
+  title: "About: Experience & Services",
+  description: "Where I've worked, what I can help with, and how to reach me.",
+};
 
 const cellGrid =
   "grid border-t border-l border-t-ink border-l-line [grid-template-columns:repeat(auto-fit,minmax(min(280px,100%),1fr))]";

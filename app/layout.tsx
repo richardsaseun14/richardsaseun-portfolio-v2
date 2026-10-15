@@ -14,7 +14,7 @@ const sans = Figtree({ subsets: ["latin"], variable: "--font-figtree", display: 
 const mono = JetBrains_Mono({ subsets: ["latin"], variable: "--font-jetbrains", display: "swap" });
 
 export const metadata: Metadata = {
-  title: { default: `${site.name} · Software engineer`, template: `${site.name} · %s` },
+  title: { default: `${site.name} · Software engineer, Web & Mobile`, template: `${site.name} · %s` },
   description: site.bio,
 };
 
