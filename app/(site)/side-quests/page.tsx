@@ -6,6 +6,7 @@ import { WatchSlide } from "@/components/WatchSlide";
 import { PageIntro, Placeholder, ProgressBar, SectionHeading } from "@/components/primitives";
 import { books, games, learning, music, roots } from "@/lib/content";
 import { getWatchLists } from "@/lib/simkl";
+import { getTopTrack } from "@/lib/spotify";
 
 export const metadata: Metadata = {
   title: "Side quests: Life outside code",
@@ -40,7 +41,11 @@ function RootIcon({ kind }: { kind: (typeof roots)[number]["key"] }) {
 }
 
 export default async function SideQuestsPage() {
-  const lists = await getWatchLists();
+  const [lists, track] = await Promise.all([getWatchLists(), getTopTrack()]);
+  // Spotify fills the track details; the note and links stay from Keystatic.
+  const nowPlaying = track
+    ? { ...music, title: track.title, artist: track.artist, cover: track.cover ?? music.cover, listenHref: track.href }
+    : music;
   const watch = [
     { id: "watching", eyebrow: "Watching now", title: "Currently watching.", items: lists.watching },
     { id: "finished", eyebrow: "Recently finished", title: "Just wrapped up.", items: lists.completed },
@@ -99,27 +104,37 @@ export default async function SideQuestsPage() {
         <section aria-labelledby="music" className="mt-16 sm:mt-24">
           <SectionHeading id="music" eyebrow="Music" title="Giving me joy right now." />
           <div className="flex flex-wrap items-center gap-x-12 gap-y-8 bg-invert p-[clamp(24px,4vw,48px)] text-invert-ink">
-            <div className="stripes-invert meta grid aspect-square w-[260px] max-w-full shrink-0 place-items-center border border-[rgba(128,128,128,0.35)] opacity-80">
-              [Album cover]
-            </div>
+            {nowPlaying.cover ? (
+              // eslint-disable-next-line @next/next/no-img-element -- remote Spotify artwork, already sized
+              <img
+                src={nowPlaying.cover}
+                alt={`${nowPlaying.title} cover`}
+                loading="lazy"
+                className="aspect-square w-[260px] max-w-full shrink-0 border border-[rgba(128,128,128,0.35)] object-cover"
+              />
+            ) : (
+              <div className="stripes-invert meta grid aspect-square w-[260px] max-w-full shrink-0 place-items-center border border-[rgba(128,128,128,0.35)] opacity-80">
+                [Album cover]
+              </div>
+            )}
             <div className="flex flex-[1_1_320px] flex-col gap-3">
               <span className="meta text-[13px] opacity-75">On repeat lately</span>
               <span className="font-display text-[clamp(32px,3.6vw,52px)] leading-none font-extrabold tracking-[-0.035em]">
-                {music.title}
+                {nowPlaying.title}
               </span>
-              <span className="text-lg opacity-80">{music.artist}</span>
-              <p className="mt-1 max-w-[520px] text-pretty opacity-85">{music.note}</p>
+              <span className="text-lg opacity-80">{nowPlaying.artist}</span>
+              <p className="mt-1 max-w-[520px] text-pretty opacity-85">{nowPlaying.note}</p>
               <div className="mt-3 flex flex-wrap gap-3">
                 <a
-                  href={music.listenHref}
+                  href={nowPlaying.listenHref}
                   target="_blank"
                   rel="noreferrer"
                   className="inline-flex h-13 items-center bg-accent px-6 font-semibold text-on-accent no-underline hover:text-on-accent"
                 >
-                  {music.listenLabel} ↗
+                  {nowPlaying.listenLabel} ↗
                 </a>
                 <a
-                  href={music.playlistsHref}
+                  href={nowPlaying.playlistsHref}
                   target="_blank"
                   rel="noreferrer"
                   className="inline-flex h-13 items-center border border-[rgba(128,128,128,0.5)] px-6 font-medium no-underline hover:border-current hover:text-[inherit]"

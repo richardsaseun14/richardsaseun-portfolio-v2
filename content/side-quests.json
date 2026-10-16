@@ -22,7 +22,6 @@
   "music": {
     "title": "[Album or playlist]",
     "artist": "[Artist]",
-    "note": "[One line on why it's on repeat.]",
     "listenLabel": "Listen on [Spotify]",
     "listenHref": "#",
     "playlistsHref": "#",

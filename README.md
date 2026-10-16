@@ -62,6 +62,24 @@ One-time setup:
    ```
 4. Put `SIMKL_CLIENT_ID` and the returned `access_token` as `SIMKL_ACCESS_TOKEN` in `.env.local` (see `.env.example`) and in your host's environment variables.
 
+## Music (Spotify)
+
+The Music block on `/side-quests` shows your most-played Spotify track from the last ~4 weeks (cover, title, artist, link). It refreshes hourly. The note and playlists link come from Keystatic, and the whole block falls back to Keystatic content when the env vars below aren't set.
+
+One-time setup:
+1. Create an app at https://developer.spotify.com/dashboard (select "Web API"). Add the redirect URI `http://127.0.0.1:3000/callback` (Spotify rejects `localhost`). Copy the Client ID and Client Secret.
+2. Open this URL, approve, then copy the `code` parameter from the address bar it redirects to (the page itself won't load, which is fine):
+   ```
+   https://accounts.spotify.com/authorize?client_id=YOUR_CLIENT_ID&response_type=code&redirect_uri=http://127.0.0.1:3000/callback&scope=user-top-read
+   ```
+3. Exchange the code for a refresh token (codes expire after a few minutes):
+   ```bash
+   curl -X POST "https://accounts.spotify.com/api/token" -u "YOUR_CLIENT_ID:YOUR_CLIENT_SECRET" -d "grant_type=authorization_code" -d "code=CODE" -d "redirect_uri=http://127.0.0.1:3000/callback"
+   ```
+4. Put `SPOTIFY_CLIENT_ID`, `SPOTIFY_CLIENT_SECRET` and the returned `refresh_token` as `SPOTIFY_REFRESH_TOKEN` in `.env.local` (see `.env.example`) and in your host's environment variables.
+
+Apps in development mode only work for users on the app's allowlist; the owner account is enough here.
+
 ## Design tokens
 
 - Fonts: **Unbounded** (headings), **Figtree** (body), **JetBrains Mono** (labels)
