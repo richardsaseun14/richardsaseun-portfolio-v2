@@ -1,14 +1,18 @@
 import type { Metadata } from "next";
-import { Carousel, Slide } from "@/components/Carousel";
+import { Carousel } from "@/components/Carousel";
 import { GameLibrary } from "@/components/GameLibrary";
 import { ExploreCards } from "@/components/ExploreCards";
+import { WatchSlide } from "@/components/WatchSlide";
 import { PageIntro, Placeholder, ProgressBar, SectionHeading } from "@/components/primitives";
-import { anime, books, games, learning, music, roots, series } from "@/lib/content";
+import { books, games, learning, music, roots } from "@/lib/content";
+import { getWatchLists } from "@/lib/simkl";
 
 export const metadata: Metadata = {
   title: "Side quests: Life outside code",
-  description: "Shows, anime, music and books: the person behind the code.",
+  description: "Movies, shows, anime, music and books: the person behind the code.",
 };
+
+export const revalidate = 3600;
 
 function RootIcon({ kind }: { kind: (typeof roots)[number]["key"] }) {
   if (kind === "roots") {
@@ -35,7 +39,13 @@ function RootIcon({ kind }: { kind: (typeof roots)[number]["key"] }) {
   );
 }
 
-export default function SideQuestsPage() {
+export default async function SideQuestsPage() {
+  const lists = await getWatchLists();
+  const watch = [
+    { id: "watching", eyebrow: "Watching now", title: "Currently watching.", items: lists.watching },
+    { id: "finished", eyebrow: "Recently finished", title: "Just wrapped up.", items: lists.completed },
+    { id: "up-next", eyebrow: "Up next", title: "On the watchlist.", items: lists.planned },
+  ];
   const readPct = Math.round((books.current.page / books.current.pages) * 100);
 
   return (
@@ -73,40 +83,17 @@ export default function SideQuestsPage() {
           </div>
         </section>
 
-        {/* Series */}
-        <Carousel id="watching" eyebrow="Series" title="Currently watching.">
-          {series.map((s, i) => (
-            <Slide key={i}>
-              <Placeholder label="[Poster]" className="aspect-[2/3]" />
-              <div className="flex flex-col gap-1.5">
-                <span className="text-lg font-semibold">{s.title}</span>
-                <span className="meta text-muted-foreground">{s.meta}</span>
-                <ProgressBar value={s.progress} />
-              </div>
-            </Slide>
-          ))}
-        </Carousel>
-
-        {/* Anime */}
-        <Carousel id="anime" eyebrow="Anime" title="Anime on the watchlist.">
-          {anime.map((a, i) => (
-            <Slide key={i}>
-              <Placeholder label="[Poster]" className="aspect-[2/3]" />
-              <div className="flex flex-col gap-1.5">
-                <span className="text-lg font-semibold">{a.title}</span>
-                <span className="meta text-muted-foreground">{a.meta}</span>
-                <ProgressBar value={a.progress} />
-                <span
-                  className={`meta mt-1 self-start px-2 py-1 text-[11px] tracking-[0.06em] ${
-                    a.status === "Watching" ? "bg-accent text-on-accent" : "border border-line text-muted-foreground"
-                  }`}
-                >
-                  {a.status}
-                </span>
-              </div>
-            </Slide>
-          ))}
-        </Carousel>
+        {/* Watching (live from Simkl) */}
+        {watch.map(
+          (w) =>
+            w.items.length > 0 && (
+              <Carousel key={w.id} id={w.id} eyebrow={w.eyebrow} title={w.title}>
+                {w.items.map((item) => (
+                  <WatchSlide key={item.href} item={item} />
+                ))}
+              </Carousel>
+            ),
+        )}
 
         {/* Music */}
         <section aria-labelledby="music" className="mt-16 sm:mt-24">

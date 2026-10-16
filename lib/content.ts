@@ -93,23 +93,6 @@ export type RootKey = "faith" | "roots" | "family";
 
 export const roots = sideQuestsData.roots.map((r) => ({ ...r, key: r.key as RootKey }));
 
-export type Watch = { title: string; meta: string; progress: number; status?: "Watching" | "Up next"; poster?: string };
-
-export const series: Watch[] = sideQuestsData.series.map((s) => ({
-  title: s.title,
-  meta: s.meta,
-  progress: s.progress,
-  poster: orUndefined<string>(s.poster),
-}));
-
-export const anime: Watch[] = sideQuestsData.anime.map((a) => ({
-  title: a.title,
-  meta: a.meta,
-  progress: a.progress,
-  status: a.status as Watch["status"],
-  poster: orUndefined<string>(a.poster),
-}));
-
 export const music = { ...sideQuestsData.music, cover: orUndefined<string>(sideQuestsData.music.cover) };
 
 export const books = sideQuestsData.books;

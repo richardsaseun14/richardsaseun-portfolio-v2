@@ -46,6 +46,22 @@ One-time setup:
 
 Only GitHub users with write access to the repo can sign in and save.
 
+## Watch lists (Simkl)
+
+The Watching now, Recently finished and Up next carousels on `/side-quests` come from Simkl. They refresh hourly and disappear when the env vars below aren't set.
+
+One-time setup:
+1. Create an app at https://simkl.com/settings/developer/ and choose "TV, devices & command line". Copy its Client ID.
+2. Request a device code, then open the returned `verification_uri` and enter the `user_code`:
+   ```bash
+   curl -X POST "https://api.simkl.com/oauth2/device" -d "client_id=YOUR_CLIENT_ID"
+   ```
+3. Once approved, exchange the `device_code` for a token (repeat if it answers `authorization_pending`):
+   ```bash
+   curl -X POST "https://api.simkl.com/oauth2/token" -d "grant_type=urn:ietf:params:oauth:grant-type:device_code" -d "device_code=DEVICE_CODE" -d "client_id=YOUR_CLIENT_ID"
+   ```
+4. Put `SIMKL_CLIENT_ID` and the returned `access_token` as `SIMKL_ACCESS_TOKEN` in `.env.local` (see `.env.example`) and in your host's environment variables.
+
 ## Design tokens
 
 - Fonts: **Unbounded** (headings), **Figtree** (body), **JetBrains Mono** (labels)

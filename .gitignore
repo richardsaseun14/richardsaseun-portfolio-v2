@@ -5,3 +5,6 @@ out
 *.tsbuildinfo
 .DS_Store
 .vercel
+
+# test coverage
+coverage/
