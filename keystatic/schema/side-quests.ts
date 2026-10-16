@@ -1,26 +1,6 @@
 import { fields, singleton } from "@keystatic/core";
 import { image, labelValueList, longText, text } from "./shared";
 
-const watchItem = (folder: string, withStatus: boolean) =>
-  fields.object({
-    title: text("Title"),
-    meta: text("Meta", "e.g. S2 · E4 · Netflix"),
-    progress: fields.integer({ label: "Progress (%)", defaultValue: 0, validation: { min: 0, max: 100 } }),
-    ...(withStatus
-      ? {
-          status: fields.select({
-            label: "Status",
-            options: [
-              { label: "Watching", value: "Watching" },
-              { label: "Up next", value: "Up next" },
-            ],
-            defaultValue: "Watching",
-          }),
-        }
-      : {}),
-    poster: image("Poster", folder),
-  });
-
 export const sideQuests = singleton({
   label: "Side quests",
   path: "content/side-quests",
@@ -43,14 +23,6 @@ export const sideQuests = singleton({
       }),
       { label: "Roots", itemLabel: (props) => props.fields.label.value || "Root" },
     ),
-    series: fields.array(watchItem("series", false), {
-      label: "Series",
-      itemLabel: (props) => props.fields.title.value || "Series",
-    }),
-    anime: fields.array(watchItem("anime", true), {
-      label: "Anime",
-      itemLabel: (props) => props.fields.title.value || "Anime",
-    }),
     music: fields.object(
       {
         title: text("Album or playlist"),
