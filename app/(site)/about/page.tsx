@@ -157,7 +157,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <ExploreCards items={["work", "sideQuests"]} />
+      <ExploreCards items={["work", "afterHours"]} />
     </main>
   );
 }

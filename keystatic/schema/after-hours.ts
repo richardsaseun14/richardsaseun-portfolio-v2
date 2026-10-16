@@ -1,9 +1,9 @@
 import { fields, singleton } from "@keystatic/core";
 import { image, labelValueList, longText, text } from "./shared";
 
-export const sideQuests = singleton({
-  label: "Side quests",
-  path: "content/side-quests",
+export const afterHours = singleton({
+  label: "After hours",
+  path: "content/after-hours",
   format: { data: "json" },
   schema: {
     roots: fields.array(

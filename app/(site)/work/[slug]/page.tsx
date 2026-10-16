@@ -179,7 +179,7 @@ export default async function CaseStudyPage({ params }: Params) {
         </Link>
       </section>
 
-      <ExploreCards items={["work", "about", "sideQuests"]} labels={{ work: "More case studies" }} />
+      <ExploreCards items={["work", "about", "afterHours"]} labels={{ work: "More case studies" }} />
     </main>
   );
 }

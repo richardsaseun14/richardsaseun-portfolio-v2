@@ -9,7 +9,7 @@ import { getWatchLists } from "@/lib/simkl";
 import { getTopTrack } from "@/lib/spotify";
 
 export const metadata: Metadata = {
-  title: "Side quests: Life outside code",
+  title: "After hours: Life outside code",
   description: "Movies, shows, anime, music and books: the person behind the code.",
 };
 
@@ -40,7 +40,7 @@ function RootIcon({ kind }: { kind: (typeof roots)[number]["key"] }) {
   );
 }
 
-export default async function SideQuestsPage() {
+export default async function AfterHoursPage() {
   const [lists, track] = await Promise.all([getWatchLists(), getTopTrack()]);
   // Spotify fills the track details; the note and links stay from Keystatic.
   const nowPlaying = track
@@ -56,13 +56,13 @@ export default async function SideQuestsPage() {
   return (
     <main>
       <PageIntro
-        eyebrow="Side quests"
+        eyebrow="After hours"
         eyebrowRight="Last updated [October 2026]"
         title={
           <>
-            Side
+            After
             <br />
-            quests
+            hours
           </>
         }
         intro="Life outside the codebase. The shows, music, games and books I'm into, what I'm learning, and a little about who I am."

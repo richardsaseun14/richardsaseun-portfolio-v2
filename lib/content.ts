@@ -5,7 +5,7 @@ import aboutData from "@/content/about.json";
 import homeData from "@/content/home.json";
 import profileData from "@/content/profile.json";
 import sideProjectsData from "@/content/side-projects.json";
-import sideQuestsData from "@/content/side-quests.json";
+import afterHoursData from "@/content/after-hours.json";
 
 const orUndefined = <T,>(value: T | null | ""): T | undefined =>
   value === null || value === "" ? undefined : value;
@@ -23,7 +23,7 @@ export const nav = [
   { label: "Home", href: "/" },
   { label: "Work", href: "/work" },
   { label: "About", href: "/about" },
-  { label: "Side quests", href: "/side-quests" },
+  { label: "After hours", href: "/after-hours" },
 ];
 
 /* ---------- Home ---------- */
@@ -87,33 +87,33 @@ export const experience = aboutData.experience.map((e) => ({ ...e, current: e.cu
 
 export const { capabilities, quickFacts } = aboutData;
 
-/* ---------- Side quests ---------- */
+/* ---------- After hours ---------- */
 
 export type RootKey = "faith" | "roots" | "family";
 
-export const roots = sideQuestsData.roots.map((r) => ({ ...r, key: r.key as RootKey }));
+export const roots = afterHoursData.roots.map((r) => ({ ...r, key: r.key as RootKey }));
 
-export const music = { ...sideQuestsData.music, cover: orUndefined<string>(sideQuestsData.music.cover) };
+export const music = { ...afterHoursData.music, cover: orUndefined<string>(afterHoursData.music.cover) };
 
-export const books = sideQuestsData.books;
+export const books = afterHoursData.books;
 
 export type Game = { title: string; meta: string; status: "Playing" | "Finished"; cover?: string };
 
-export const games: Game[] = sideQuestsData.games.map((g) => ({
+export const games: Game[] = afterHoursData.games.map((g) => ({
   title: g.title,
   meta: g.meta,
   status: g.status as Game["status"],
   cover: orUndefined<string>(g.cover),
 }));
 
-export const learning = sideQuestsData.learning;
+export const learning = afterHoursData.learning;
 
 /* ---------- Cross-page links ---------- */
 
 export const explore = {
   work: { href: "/work", title: "Work", label: "Case studies & builds" },
   about: { href: "/about", title: "About", label: "Experience & quick facts" },
-  sideQuests: { href: "/side-quests", title: "Side quests", label: "Music, screens & off-hours" },
+  afterHours: { href: "/after-hours", title: "After hours", label: "Music, screens & books" },
 };
 
 export const shortcuts = [

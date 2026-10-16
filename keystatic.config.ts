@@ -4,7 +4,7 @@ import { home } from "./keystatic/schema/home";
 import { profile } from "./keystatic/schema/profile";
 import { projects } from "./keystatic/schema/projects";
 import { sideProjects } from "./keystatic/schema/side-projects";
-import { sideQuests } from "./keystatic/schema/side-quests";
+import { afterHours } from "./keystatic/schema/after-hours";
 
 // Local mode edits files on disk during `npm run dev`.
 // GitHub mode (production) commits edits to the repo, which triggers a redeploy.
@@ -17,11 +17,11 @@ export default config({
   ui: {
     brand: { name: "RS Portfolio" },
     navigation: {
-      Pages: ["home", "about", "sideQuests"],
+      Pages: ["home", "about", "afterHours"],
       Work: ["projects", "sideProjects"],
       More: ["profile"]
     },
   },
-  singletons: { profile, home, about, sideQuests, sideProjects },
+  singletons: { profile, home, about, afterHours, sideProjects },
   collections: { projects },
 });
