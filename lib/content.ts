@@ -85,13 +85,15 @@ export const sideProjects: SideProject[] = sideProjectsData.items.map((p) => ({
 
 export const experience = aboutData.experience.map((e) => ({ ...e, current: e.current || undefined }));
 
-export const { capabilities, quickFacts } = aboutData;
+export const { capabilities, quickFacts, learning } = aboutData;
 
-/* ---------- After hours ---------- */
+export const aboutIntro = aboutData.intro.split(/\n\s*\n/);
 
 export type RootKey = "faith" | "roots" | "family";
 
-export const roots = afterHoursData.roots.map((r) => ({ ...r, key: r.key as RootKey }));
+export const roots = aboutData.roots.map((r) => ({ ...r, key: r.key as RootKey }));
+
+/* ---------- After hours ---------- */
 
 export const music = { ...afterHoursData.music, cover: orUndefined<string>(afterHoursData.music.cover) };
 
@@ -106,13 +108,11 @@ export const games: Game[] = afterHoursData.games.map((g) => ({
   cover: orUndefined<string>(g.cover),
 }));
 
-export const learning = afterHoursData.learning;
-
 /* ---------- Cross-page links ---------- */
 
 export const explore = {
   work: { href: "/work", title: "Work", label: "Case studies & builds" },
-  about: { href: "/about", title: "About", label: "Experience & quick facts" },
+  about: { href: "/about", title: "About", label: "Who I am & where I've worked" },
   afterHours: { href: "/after-hours", title: "After hours", label: "Music, screens & books" },
 };
 

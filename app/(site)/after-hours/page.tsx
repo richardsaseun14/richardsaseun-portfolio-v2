@@ -4,41 +4,16 @@ import { GameLibrary } from "@/components/GameLibrary";
 import { ExploreCards } from "@/components/ExploreCards";
 import { WatchSlide } from "@/components/WatchSlide";
 import { PageIntro, Placeholder, ProgressBar, SectionHeading } from "@/components/primitives";
-import { books, games, learning, music, roots } from "@/lib/content";
+import { books, games, music } from "@/lib/content";
 import { getWatchLists } from "@/lib/simkl";
 import { getTopTrack } from "@/lib/spotify";
 
 export const metadata: Metadata = {
   title: "After hours: Life outside code",
-  description: "Movies, shows, anime, music and books: the person behind the code.",
+  description: "Shows, music, games and books: what I'm into when the laptop closes.",
 };
 
 export const revalidate = 3600;
-
-function RootIcon({ kind }: { kind: (typeof roots)[number]["key"] }) {
-  if (kind === "roots") {
-    return (
-      <svg role="img" aria-label="Flag of Nigeria" width="112" height="56" viewBox="0 0 6 3" className="block border border-line">
-        <rect x="0" y="0" width="2" height="3" fill="#008751" />
-        <rect x="2" y="0" width="2" height="3" fill="#FFFFFF" />
-        <rect x="4" y="0" width="2" height="3" fill="#008751" />
-      </svg>
-    );
-  }
-  if (kind === "faith") {
-    return (
-      <svg aria-hidden width="44" height="56" viewBox="0 0 22 28" fill="none" stroke="var(--accent)" strokeWidth="2.2">
-        <path d="M11 1v26M3 9h16" />
-      </svg>
-    );
-  }
-  return (
-    <svg aria-hidden width="72" height="44" viewBox="0 0 36 22" fill="none" stroke="var(--accent)" strokeWidth="2">
-      <circle cx="12" cy="11" r="9" />
-      <circle cx="24" cy="11" r="9" />
-    </svg>
-  );
-}
 
 export default async function AfterHoursPage() {
   const [lists, track] = await Promise.all([getWatchLists(), getTopTrack()]);
@@ -65,29 +40,10 @@ export default async function AfterHoursPage() {
             hours
           </>
         }
-        intro="Life outside the codebase. The shows, music, games and books I'm into, what I'm learning, and a little about who I am."
+        intro="The shows, music, games and books I'm into when the laptop closes."
       />
 
       <div className="container-x pb-20 sm:pb-30">
-        {/* Beyond the screen */}
-        <section aria-labelledby="roots" className="mt-16 sm:mt-24">
-          <SectionHeading id="roots" eyebrow="Beyond the screen" title="The person behind the code." />
-          <div className="grid border-t border-l border-t-ink border-l-line [grid-template-columns:repeat(auto-fit,minmax(min(280px,100%),1fr))]">
-            {roots.map((r) => (
-              <div key={r.key} className="flex min-h-[260px] flex-col gap-3.5 border-r border-b border-line p-6 sm:min-h-[300px] sm:p-7">
-                <div className="flex h-16 items-center">
-                  <RootIcon kind={r.key} />
-                </div>
-                <span className="meta mt-auto text-muted-foreground">{r.label}</span>
-                <span className="font-display text-[clamp(26px,2.6vw,36px)] leading-[1.05] font-extrabold tracking-[-0.03em]">
-                  {r.title}
-                </span>
-                <p className="text-pretty text-muted-foreground">{r.body}</p>
-              </div>
-            ))}
-          </div>
-        </section>
-
         {/* Watching (live from Simkl) */}
         {watch.map(
           (w) =>
@@ -189,33 +145,6 @@ export default async function AfterHoursPage() {
         {/* Games */}
         <GameLibrary games={games} />
 
-        {/* Learning */}
-        <section aria-labelledby="learning" className="mt-16 sm:mt-24">
-          <div className="flex flex-wrap gap-x-16 gap-y-10 bg-invert p-[clamp(28px,5vw,64px)] text-invert-ink">
-            <div className="flex min-w-0 flex-[999_1_min(320px,100%)] flex-col gap-5">
-              <span className="meta text-[13px] opacity-75">Currently learning</span>
-              <h2 id="learning" className="font-display text-[clamp(34px,5.6vw,88px)] leading-[0.9] font-black tracking-[-0.045em] uppercase">
-                AI
-                <br />
-                engineering<span className="text-accent">.</span>
-              </h2>
-              <p className="max-w-[520px] text-[17px] leading-normal sm:text-[19px] text-pretty opacity-85">{learning.body}</p>
-            </div>
-            <dl className="flex min-w-0 flex-[1_1_min(300px,100%)] flex-col self-end text-[15px]">
-              {learning.facts.map((f, i, arr) => (
-                <div
-                  key={f.label}
-                  className={`flex justify-between gap-4 border-t border-[rgba(128,128,128,0.35)] py-4 ${
-                    i === arr.length - 1 ? "border-b" : ""
-                  }`}
-                >
-                  <dt className="opacity-70">{f.label}</dt>
-                  <dd className="text-right">{f.value}</dd>
-                </div>
-              ))}
-            </dl>
-          </div>
-        </section>
       </div>
 
       <ExploreCards items={["work", "about"]} />

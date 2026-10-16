@@ -1,28 +1,11 @@
 import { fields, singleton } from "@keystatic/core";
-import { image, labelValueList, longText, text } from "./shared";
+import { image, text } from "./shared";
 
 export const afterHours = singleton({
   label: "After hours",
   path: "content/after-hours",
   format: { data: "json" },
   schema: {
-    roots: fields.array(
-      fields.object({
-        key: fields.select({
-          label: "Icon",
-          options: [
-            { label: "Faith", value: "faith" },
-            { label: "Roots", value: "roots" },
-            { label: "Family", value: "family" },
-          ],
-          defaultValue: "faith",
-        }),
-        label: text("Label"),
-        title: text("Title"),
-        body: longText("Body"),
-      }),
-      { label: "Roots", itemLabel: (props) => props.fields.label.value || "Root" },
-    ),
     music: fields.object(
       {
         title: text("Album or playlist"),
@@ -70,14 +53,6 @@ export const afterHours = singleton({
         cover: image("Cover", "games"),
       }),
       { label: "Games", itemLabel: (props) => props.fields.title.value || "Game" },
-    ),
-    learning: fields.object(
-      {
-        title: text("Title"),
-        body: longText("Body"),
-        facts: labelValueList("Facts"),
-      },
-      { label: "Learning" },
     ),
   },
 });

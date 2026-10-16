@@ -1,4 +1,25 @@
 {
+  "intro": "I'm a front-end developer and designer. I like pairing creativity with attention to detail to build digital experiences that look good and feel intuitive.\n\nI enjoy experimenting with animation and fluid interactions, and sweating the small details that make a product feel simple, enjoyable and engaging.",
+  "roots": [
+    {
+      "key": "faith",
+      "label": "Faith",
+      "title": "Christian",
+      "body": "A practicing Christian. It sits at the centre of who I am."
+    },
+    {
+      "key": "roots",
+      "label": "Roots",
+      "title": "Yoruba · Nigerian",
+      "body": "Yoruba by heritage, proudly Nigerian, building from Lagos."
+    },
+    {
+      "key": "family",
+      "label": "Family",
+      "title": "Married",
+      "body": "Married to my best friend. Home is where I recharge and remember what matters."
+    }
+  ],
   "experience": [
     {
       "period": "Apr 2025 – Aug 2026",
@@ -128,5 +149,23 @@
       "label": "Education",
       "value": "[Degree] · [School]"
     }
-  ]
+  ],
+  "learning": {
+    "title": "AI engineering",
+    "body": "Going deep on artificial intelligence: how the models work, and how to engineer real products on top of them.",
+    "facts": [
+      {
+        "label": "Focus",
+        "value": "AI engineering"
+      },
+      {
+        "label": "Learning from",
+        "value": "[Course / book]"
+      },
+      {
+        "label": "Building",
+        "value": "[Side project]"
+      }
+    ]
+  }
 }

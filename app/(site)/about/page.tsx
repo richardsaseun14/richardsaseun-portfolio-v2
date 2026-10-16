@@ -1,13 +1,14 @@
 import type { Metadata } from "next";
 import { ExploreCards } from "@/components/ExploreCards";
 import { LagosClock } from "@/components/LagosClock";
+import { RootIcon } from "@/components/RootIcon";
 import { Download } from "@/components/Icons";
 import { ButtonLink, PageIntro, SectionHeading } from "@/components/primitives";
-import { capabilities, experience, mailto, quickFacts, site } from "@/lib/content";
+import { aboutIntro, capabilities, experience, learning, mailto, quickFacts, roots, site } from "@/lib/content";
 
 export const metadata: Metadata = {
-  title: "About: Experience & Services",
-  description: "Where I've worked, what I can help with, and how to reach me.",
+  title: "About: Who I am & where I've worked",
+  description: "Who I am, where I've worked, and what I can help with.",
 };
 
 const cellGrid =
@@ -32,8 +33,31 @@ export default function AboutPage() {
             <Download /> Download CV
           </a>
         }
-        intro="Where I've worked, the kind of work I can take on for you, and a few quick facts for when you just need the overview."
+        intro="Who I am, where I've worked, the kind of work I can take on for you, and a few quick facts for when you just need the overview."
       />
+
+      <section aria-labelledby="who-title" className="container-x pt-20 sm:pt-30">
+        <SectionHeading id="who-title" eyebrow="Who I am" title="The person behind the code." />
+        <div className="mb-10 flex max-w-[680px] flex-col gap-4 text-[17px] leading-normal text-pretty sm:text-[19px]">
+          {aboutIntro.map((para) => (
+            <p key={para}>{para}</p>
+          ))}
+        </div>
+        <div className={cellGrid}>
+          {roots.map((r) => (
+            <div key={r.key} className={`${cell} flex min-h-[260px] flex-col gap-3.5 p-6 sm:min-h-[300px] sm:p-7`}>
+              <div className="flex h-16 items-center">
+                <RootIcon kind={r.key} />
+              </div>
+              <span className="meta mt-auto text-muted-foreground">{r.label}</span>
+              <span className="font-display text-[clamp(26px,2.6vw,36px)] leading-[1.05] font-extrabold tracking-[-0.03em]">
+                {r.title}
+              </span>
+              <p className="text-pretty text-muted-foreground">{r.body}</p>
+            </div>
+          ))}
+        </div>
+      </section>
 
       <section aria-labelledby="history-title" className="container-x pt-20 sm:pt-30">
         <SectionHeading id="history-title" eyebrow="Experience" title="Where I've worked." aside={<span className="eyebrow">Newest first</span>} />
@@ -78,6 +102,33 @@ export default function AboutPage() {
             </li>
           ))}
         </ul>
+      </section>
+
+      <section aria-labelledby="learning-title" className="container-x pt-20 sm:pt-30">
+        <div className="flex flex-wrap gap-x-16 gap-y-10 bg-invert p-[clamp(28px,5vw,64px)] text-invert-ink">
+          <div className="flex min-w-0 flex-[999_1_min(320px,100%)] flex-col gap-5">
+            <span className="meta text-[13px] opacity-75">Currently learning</span>
+            <h2 id="learning-title" className="font-display text-[clamp(34px,5.6vw,88px)] leading-[0.9] font-black tracking-[-0.045em] uppercase">
+              AI
+              <br />
+              engineering<span className="text-accent">.</span>
+            </h2>
+            <p className="max-w-[520px] text-[17px] leading-normal sm:text-[19px] text-pretty opacity-85">{learning.body}</p>
+          </div>
+          <dl className="flex min-w-0 flex-[1_1_min(300px,100%)] flex-col self-end text-[15px]">
+            {learning.facts.map((f, i, arr) => (
+              <div
+                key={f.label}
+                className={`flex justify-between gap-4 border-t border-[rgba(128,128,128,0.35)] py-4 ${
+                  i === arr.length - 1 ? "border-b" : ""
+                }`}
+              >
+                <dt className="opacity-70">{f.label}</dt>
+                <dd className="text-right">{f.value}</dd>
+              </div>
+            ))}
+          </dl>
+        </div>
       </section>
 
       <section aria-labelledby="facts-title" className="container-x pt-20 sm:pt-30">
