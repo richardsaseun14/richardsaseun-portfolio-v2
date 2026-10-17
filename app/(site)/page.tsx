@@ -253,7 +253,7 @@ export default async function Home() {
         </div>
       </section>
 
-      <ExploreCards items={["about", "sideQuests"]} />
+      <ExploreCards items={["about", "afterHours"]} />
     </main>
   );
 }

@@ -1,4 +1,25 @@
 {
+  "intro": "I'm a software engineer and designer based in Lagos. For the last nine years I've built web and mobile products, from payment and booking flows to live dashboards that stay in sync across devices.\n\nBefore I write any code, I like to break the problem down. I think in systems: split the big thing into small pieces, then work out how each part of the product fits together and how the people using it will actually move through it.\n\nWhat I care about most is how a product feels. It shouldn't be rigid or feel like a chore. It should be fluid and simple enough that people forget they're getting something done, and enjoy it enough to come back.",
+  "roots": [
+    {
+      "key": "faith",
+      "label": "Faith",
+      "title": "Christian",
+      "body": "A practicing Christian. It sits at the centre of who I am."
+    },
+    {
+      "key": "roots",
+      "label": "Roots",
+      "title": "Yoruba · Nigerian",
+      "body": "Yoruba by heritage, proudly Nigerian, building from Lagos."
+    },
+    {
+      "key": "family",
+      "label": "Family",
+      "title": "Married",
+      "body": "Married to my best friend. Home is where I recharge and remember what matters."
+    }
+  ],
   "experience": [
     {
       "period": "Apr 2025 – Aug 2026",
@@ -128,5 +149,23 @@
       "label": "Education",
       "value": "[Degree] · [School]"
     }
-  ]
+  ],
+  "learning": {
+    "title": "AI engineering",
+    "body": "Going deep on artificial intelligence: how the models work, and how to engineer real products on top of them.",
+    "facts": [
+      {
+        "label": "Focus",
+        "value": "AI engineering"
+      },
+      {
+        "label": "Learning from",
+        "value": "[Course / book]"
+      },
+      {
+        "label": "Building",
+        "value": "[Side project]"
+      }
+    ]
+  }
 }

@@ -15,12 +15,12 @@ npm run typecheck
 
 | What | Where |
 | --- | --- |
-| All editable copy (profile, home, about, side quests, side projects) | `content/*.json`, edited at `/keystatic` |
+| All editable copy (profile, home, about, after hours, side projects) | `content/*.json`, edited at `/keystatic` |
 | Projects and case studies | `content/projects/<slug>.json`, edited at `/keystatic` |
 | Content schema (what the editor shows) | `keystatic.config.ts`, `keystatic/schema/*` |
 | Typed content for components, plus nav / shortcuts | `lib/content.ts`, `lib/projects.ts` |
 | Colours, fonts, shared utilities (eyebrow, page-title, stripes…) | `app/(site)/globals.css` |
-| Pages | `app/(site)/page.tsx` (Home), `app/(site)/work`, `app/(site)/work/[slug]` (case study), `app/(site)/about`, `app/(site)/side-quests` |
+| Pages | `app/(site)/page.tsx` (Home), `app/(site)/work`, `app/(site)/work/[slug]` (case study), `app/(site)/about`, `app/(site)/after-hours` |
 | Theme / sound / keyboard shortcuts / click sounds | `components/PrefsProvider.tsx` |
 | Nav, footer, scrolling top bar | `components/Header.tsx`, `Footer.tsx`, `Marquee.tsx` |
 | Portrait | `public/richard-portrait.jpg` |
@@ -48,7 +48,7 @@ Only GitHub users with write access to the repo can sign in and save.
 
 ## Watch lists (Simkl)
 
-The Watching now, Recently finished and Up next carousels on `/side-quests` come from Simkl. They refresh hourly and disappear when the env vars below aren't set.
+The Watching now, Recently finished and Up next carousels on `/after-hours` come from Simkl. They refresh hourly and disappear when the env vars below aren't set.
 
 One-time setup:
 1. Create an app at https://simkl.com/settings/developer/ and choose "TV, devices & command line". Copy its Client ID.
@@ -61,6 +61,24 @@ One-time setup:
    curl -X POST "https://api.simkl.com/oauth2/token" -d "grant_type=urn:ietf:params:oauth:grant-type:device_code" -d "device_code=DEVICE_CODE" -d "client_id=YOUR_CLIENT_ID"
    ```
 4. Put `SIMKL_CLIENT_ID` and the returned `access_token` as `SIMKL_ACCESS_TOKEN` in `.env.local` (see `.env.example`) and in your host's environment variables.
+
+## Music (Spotify)
+
+The Music block on `/after-hours` shows your most-played Spotify track from the last ~4 weeks (cover, title, artist, link). It refreshes hourly. The note and playlists link come from Keystatic, and the whole block falls back to Keystatic content when the env vars below aren't set.
+
+One-time setup:
+1. Create an app at https://developer.spotify.com/dashboard (select "Web API"). Add the redirect URI `http://127.0.0.1:3000/callback` (Spotify rejects `localhost`). Copy the Client ID and Client Secret.
+2. Open this URL, approve, then copy the `code` parameter from the address bar it redirects to (the page itself won't load, which is fine):
+   ```
+   https://accounts.spotify.com/authorize?client_id=YOUR_CLIENT_ID&response_type=code&redirect_uri=http://127.0.0.1:3000/callback&scope=user-top-read
+   ```
+3. Exchange the code for a refresh token (codes expire after a few minutes):
+   ```bash
+   curl -X POST "https://accounts.spotify.com/api/token" -u "YOUR_CLIENT_ID:YOUR_CLIENT_SECRET" -d "grant_type=authorization_code" -d "code=CODE" -d "redirect_uri=http://127.0.0.1:3000/callback"
+   ```
+4. Put `SPOTIFY_CLIENT_ID`, `SPOTIFY_CLIENT_SECRET` and the returned `refresh_token` as `SPOTIFY_REFRESH_TOKEN` in `.env.local` (see `.env.example`) and in your host's environment variables.
+
+Apps in development mode only work for users on the app's allowlist; the owner account is enough here.
 
 ## Design tokens
 

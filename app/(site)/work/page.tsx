@@ -93,7 +93,7 @@ export default async function WorkPage() {
         </div>
       </section>
 
-      <ExploreCards items={["about", "sideQuests"]} />
+      <ExploreCards items={["about", "afterHours"]} />
     </main>
   );
 }

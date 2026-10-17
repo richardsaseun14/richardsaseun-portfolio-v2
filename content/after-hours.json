@@ -1,28 +1,7 @@
 {
-  "roots": [
-    {
-      "key": "faith",
-      "label": "Faith",
-      "title": "Christian",
-      "body": "A practicing Christian. It sits at the centre of who I am."
-    },
-    {
-      "key": "roots",
-      "label": "Roots",
-      "title": "Yoruba · Nigerian",
-      "body": "Yoruba by heritage, proudly Nigerian, building from Lagos."
-    },
-    {
-      "key": "family",
-      "label": "Family",
-      "title": "Married",
-      "body": "Married to my best friend. Home is where I recharge and remember what matters."
-    }
-  ],
   "music": {
     "title": "[Album or playlist]",
     "artist": "[Artist]",
-    "note": "[One line on why it's on repeat.]",
     "listenLabel": "Listen on [Spotify]",
     "listenHref": "#",
     "playlistsHref": "#",
@@ -95,23 +74,5 @@
       "status": "Finished",
       "cover": null
     }
-  ],
-  "learning": {
-    "title": "AI engineering",
-    "body": "Going deep on artificial intelligence: how the models work, and how to engineer real products on top of them.",
-    "facts": [
-      {
-        "label": "Focus",
-        "value": "AI engineering"
-      },
-      {
-        "label": "Learning from",
-        "value": "[Course / book]"
-      },
-      {
-        "label": "Building",
-        "value": "[Side project]"
-      }
-    ]
-  }
+  ]
 }
