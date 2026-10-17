@@ -8,6 +8,7 @@ import { Footer } from "@/components/Footer";
 import { ShortcutsOverlay } from "@/components/Shortcuts";
 import { SiteCursor } from "@/components/SiteCursor";
 import { themeInitScript } from "@/lib/prefs";
+import { IntroPreloader } from "@/components/IntroPreloader";
 import { site } from "@/lib/content";
 
 const display = Unbounded({ subsets: ["latin"], variable: "--font-unbounded", display: "swap" });
@@ -41,6 +42,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         className="min-h-screen overflow-x-clip bg-bg text-ink"
       >
         <PrefsProvider>
+          <IntroPreloader label={site.name} />
           <Marquee />
           <Header />
           {children}
