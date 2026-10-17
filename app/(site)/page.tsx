@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { HeroName } from "@/components/HeroName";
+import { HeroStars } from "@/components/HeroStars";
 import { ExploreCards } from "@/components/ExploreCards";
 import { ArrowRight } from "@/components/Icons";
 import { ButtonLink, Placeholder, SectionHeading } from "@/components/primitives";
@@ -14,7 +15,8 @@ export default async function Home() {
   return (
     <main>
       {/* Hero */}
-      <section aria-labelledby="hero-title" className="container-x pt-12 pb-14 sm:pt-18">
+      <section aria-labelledby="hero-title" className="relative isolate container-x pt-12 pb-14 sm:pt-18">
+        <HeroStars />
         <div className="eyebrow flex flex-wrap justify-between gap-3 pb-7">
           <span>Full-stack engineer · Web &amp; mobile</span>
           <span>Building since 2017</span>
