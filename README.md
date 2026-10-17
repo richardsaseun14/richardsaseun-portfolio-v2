@@ -24,6 +24,7 @@ npm run typecheck
 | Theme / sound / keyboard shortcuts / click sounds | `components/PrefsProvider.tsx` |
 | Nav, footer, scrolling top bar | `components/Header.tsx`, `Footer.tsx`, `Marquee.tsx` |
 | Portrait | `public/richard-portrait.jpg` |
+| CV PDF and the `/cv` route | `content/cv/`, `app/(site)/cv/route.ts`, `lib/cv.ts` |
 
 ## Editing content (Keystatic)
 
@@ -33,6 +34,18 @@ Content is managed with [Keystatic](https://keystatic.com). It is stored as JSON
 - **Side projects:** Work > Side projects. Add new builds to the top.
 - **Case studies:** Work > Projects > Add. The slug becomes the URL (`/work/<slug>`); `Order` controls position.
 - **Images** (posters, covers) upload to `public/images/<folder>/`.
+
+### CV
+
+The CV is written in Google Docs and served from a permanent link: `/cv` downloads it as `Richard-Saseun-CV.pdf`, and `/cv?view=1` opens it in the browser. Share these links (LinkedIn, email); they never change.
+
+To update it:
+1. In Google Docs: File > Download > PDF document.
+2. Open `/keystatic` > More > Profile > CV (PDF), and upload the file. Replacing it overwrites `content/cv/cv.pdf`.
+3. Optionally set "CV last updated" to show "Updated <month year>" next to the buttons.
+4. Save. In GitHub mode this commits the file and redeploys.
+
+Only upload PDFs. Keystatic's file field can't restrict file types, so the site checks instead: anything that isn't a real PDF is treated as no CV. When there's no CV, `/cv` returns 404 and the CV buttons on Home, About and the footer are hidden.
 
 ### Editing from the live site (GitHub mode)
 

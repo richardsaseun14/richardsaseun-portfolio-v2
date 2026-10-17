@@ -2,6 +2,7 @@ import Link from "next/link";
 import { HeroName } from "@/components/HeroName";
 import { HeroStars } from "@/components/HeroStars";
 import { ExploreCards } from "@/components/ExploreCards";
+import { CvButtons } from "@/components/CvLinks";
 import { GetInTouchLink } from "@/components/GetInTouchLink";
 import { ArrowRight } from "@/components/Icons";
 import { ButtonLink, Placeholder, SectionHeading } from "@/components/primitives";
@@ -35,6 +36,7 @@ export default async function Home() {
             <ButtonLink href="/work" variant="ghost" icon={false} full>
               Explore my work
             </ButtonLink>
+            <CvButtons location="home" variant="ghost" full />
           </div>
         </div>
       </section>

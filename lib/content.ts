@@ -6,12 +6,18 @@ import homeData from "@/content/home.json";
 import profileData from "@/content/profile.json";
 import sideProjectsData from "@/content/side-projects.json";
 import afterHoursData from "@/content/after-hours.json";
+import { getCvMeta, type CvFields } from "./cv-meta";
 
 const orUndefined = <T,>(value: T | null | ""): T | undefined =>
   value === null || value === "" ? undefined : value;
 
+// Keystatic drops empty fields from the JSON, so `cv` and `cvUpdated` may be missing.
+const { cv: cvFile, cvUpdated, ...profile }: typeof profileData & CvFields = profileData;
+
+export const cv = getCvMeta({ cv: cvFile, cvUpdated });
+
 export const site = {
-  ...profileData,
+  ...profile,
   wordmark: { pre: "r", post: "saseun" },
   timeZone: "Africa/Lagos",
   tzLabel: "WAT",

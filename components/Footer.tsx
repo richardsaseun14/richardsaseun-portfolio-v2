@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { mailto, nav, site } from "@/lib/content";
+import { CvFooterLink } from "./CvLinks";
 import { Wordmark } from "./Wordmark";
 import { LagosClock } from "./LagosClock";
 import { ShortcutsButton } from "./Shortcuts";
@@ -33,6 +34,7 @@ export function Footer() {
                 </a>
               ))}
               <a href={mailto} className="no-underline">Email ↗</a>
+              <CvFooterLink className="no-underline" />
             </nav>
           </div>
         </div>
