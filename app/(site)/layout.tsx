@@ -7,7 +7,7 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { ShortcutsOverlay } from "@/components/Shortcuts";
 import { SiteCursor } from "@/components/SiteCursor";
-import { themeInitScript } from "@/lib/prefs";
+import { introInitScript, themeInitScript } from "@/lib/prefs";
 import { IntroPreloader } from "@/components/IntroPreloader";
 import { site } from "@/lib/content";
 
@@ -37,6 +37,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
     >
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
+        <script dangerouslySetInnerHTML={{ __html: introInitScript }} />
       </head>
       <body
         className="min-h-screen overflow-x-clip bg-bg text-ink"

@@ -285,3 +285,8 @@
     transition: none;
   }
 }
+
+/* Session intro: hidden before paint once it has played (see introInitScript). */
+html[data-intro-seen] .intro-gate {
+  display: none;
+}

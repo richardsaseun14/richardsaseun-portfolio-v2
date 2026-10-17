@@ -2,10 +2,37 @@
 
 import { useEffect, useState } from "react";
 import WeightSweepPreloader from "@/components/ui/weight-sweep-preloader";
+import { PREF_KEYS } from "@/lib/prefs";
 
-/** Full-screen type-specimen intro shown on every hard load. */
+/** Skip unless the visitor landed on the home page and hasn't seen the intro this session. */
+function shouldSkipIntro(): boolean {
+  if (window.location.pathname !== "/") return true;
+  try {
+    return sessionStorage.getItem(PREF_KEYS.intro) === "1";
+  } catch {
+    return false;
+  }
+}
+
+function markIntroSeen() {
+  try {
+    sessionStorage.setItem(PREF_KEYS.intro, "1");
+  } catch {
+    // Storage blocked: the intro simply plays again next load.
+  }
+  document.documentElement.dataset.introSeen = "1";
+}
+
+/**
+ * Full-screen type-specimen intro shown when a session lands on the home page.
+ * Returning loads are hidden before paint by introInitScript + the .intro-gate CSS rule.
+ */
 export function IntroPreloader({ label }: { label: string }) {
   const [active, setActive] = useState(true);
+
+  useEffect(() => {
+    if (shouldSkipIntro()) setActive(false);
+  }, []);
 
   // Lock page scroll only while the gate is up.
   useEffect(() => {
@@ -21,7 +48,7 @@ export function IntroPreloader({ label }: { label: string }) {
 
   return (
     <div
-      className="fixed inset-0 z-[200]"
+      className="intro-gate fixed inset-0 z-[200]"
       style={
         {
           "--wsp-line-style": "normal",
@@ -41,7 +68,10 @@ export function IntroPreloader({ label }: { label: string }) {
         label={label}
         caption="Thinking it through"
         message="Made with intent."
-        onComplete={() => setActive(false)}
+        onComplete={() => {
+          markIntroSeen();
+          setActive(false);
+        }}
       />
     </div>
   );
