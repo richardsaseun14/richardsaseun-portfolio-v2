@@ -6,6 +6,7 @@ import { Marquee } from "@/components/Marquee";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { ShortcutsOverlay } from "@/components/Shortcuts";
+import { SiteCursor } from "@/components/SiteCursor";
 import { themeInitScript } from "@/lib/prefs";
 import { site } from "@/lib/content";
 
@@ -45,6 +46,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
           {children}
           <Footer />
           <ShortcutsOverlay />
+          <SiteCursor />
         </PrefsProvider>
       </body>
     </html>
