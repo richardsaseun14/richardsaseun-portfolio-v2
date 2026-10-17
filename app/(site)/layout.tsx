@@ -6,7 +6,9 @@ import { Marquee } from "@/components/Marquee";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { ShortcutsOverlay } from "@/components/Shortcuts";
-import { themeInitScript } from "@/lib/prefs";
+import { SiteCursor } from "@/components/SiteCursor";
+import { introInitScript, themeInitScript } from "@/lib/prefs";
+import { IntroPreloader } from "@/components/IntroPreloader";
 import { site } from "@/lib/content";
 
 const display = Unbounded({ subsets: ["latin"], variable: "--font-unbounded", display: "swap" });
@@ -35,16 +37,19 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
     >
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
+        <script dangerouslySetInnerHTML={{ __html: introInitScript }} />
       </head>
       <body
         className="min-h-screen overflow-x-clip bg-bg text-ink"
       >
         <PrefsProvider>
+          <IntroPreloader label={site.name} />
           <Marquee />
           <Header />
           {children}
           <Footer />
           <ShortcutsOverlay />
+          <SiteCursor />
         </PrefsProvider>
       </body>
     </html>

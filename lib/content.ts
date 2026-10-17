@@ -95,7 +95,14 @@ export const roots = aboutData.roots.map((r) => ({ ...r, key: r.key as RootKey }
 
 /* ---------- After hours ---------- */
 
-export const music = { ...afterHoursData.music, cover: orUndefined<string>(afterHoursData.music.cover) };
+// Keystatic drops empty text fields from the JSON, so `note` may be missing.
+const musicData: typeof afterHoursData.music & { note?: string } = afterHoursData.music;
+
+export const music = {
+  ...musicData,
+  note: orUndefined<string>(musicData.note ?? null),
+  cover: orUndefined<string>(musicData.cover),
+};
 
 export const books = afterHoursData.books;
 

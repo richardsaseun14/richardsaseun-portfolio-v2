@@ -2,7 +2,7 @@
   "music": {
     "title": "[Album or playlist]",
     "artist": "[Artist]",
-    "listenLabel": "Listen on [Spotify]",
+    "listenLabel": "Listen on Spotify",
     "listenHref": "#",
     "playlistsHref": "#",
     "cover": null

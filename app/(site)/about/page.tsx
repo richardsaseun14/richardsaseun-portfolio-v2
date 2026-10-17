@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { ExploreCards } from "@/components/ExploreCards";
+import { GetInTouchLink } from "@/components/GetInTouchLink";
 import { LagosClock } from "@/components/LagosClock";
 import { RootIcon } from "@/components/RootIcon";
 import { Download } from "@/components/Icons";
@@ -158,9 +159,7 @@ export default function AboutPage() {
               </p>
             </div>
             <div className="flex flex-wrap gap-3">
-              <ButtonLink href={mailto} variant="accent" full>
-                Email me
-              </ButtonLink>
+              <GetInTouchLink href={mailto} defaultText="Email me" />
               {linkedin && (
                 <ButtonLink href={linkedin.href} variant="ghost-invert" icon={false}>
                   LinkedIn ↗

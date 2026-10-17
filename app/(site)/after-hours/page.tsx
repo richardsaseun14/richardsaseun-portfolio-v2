@@ -79,7 +79,7 @@ export default async function AfterHoursPage() {
                 {nowPlaying.title}
               </span>
               <span className="text-lg opacity-80">{nowPlaying.artist}</span>
-              <p className="mt-1 max-w-[520px] text-pretty opacity-85">{nowPlaying.note}</p>
+              {nowPlaying.note && <p className="mt-1 max-w-[520px] text-pretty opacity-85">{nowPlaying.note}</p>}
               <div className="mt-3 flex flex-wrap gap-3">
                 <a
                   href={nowPlaying.listenHref}
