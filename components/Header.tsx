@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { nav } from "@/lib/content";
@@ -10,9 +11,25 @@ import { Availability, LagosTime, SoundToggle, ThemeSwitch, Tip } from "./Header
 
 export function Header() {
   const pathname = usePathname();
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 8);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   return (
-    <header className="border-b border-line">
+    <header className="sticky top-0 z-40 isolate border-b border-line">
+      {/* Glass layer lives on its own element: backdrop-filter on the header
+          would trap the fixed-position MobileMenu inside the header box. */}
+      <div
+        aria-hidden
+        className={`pointer-events-none absolute inset-0 -z-10 bg-bg/70 backdrop-blur-md backdrop-saturate-150 transition-opacity duration-300 ${
+          scrolled ? "opacity-100" : "opacity-0"
+        }`}
+      />
       <div className="container-x flex items-center justify-between gap-4 py-[18px]">
         <Wordmark />
 
