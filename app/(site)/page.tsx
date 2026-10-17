@@ -2,6 +2,7 @@ import Link from "next/link";
 import { HeroName } from "@/components/HeroName";
 import { HeroStars } from "@/components/HeroStars";
 import { ExploreCards } from "@/components/ExploreCards";
+import { GetInTouchLink } from "@/components/GetInTouchLink";
 import { ArrowRight } from "@/components/Icons";
 import { ButtonLink, Placeholder, SectionHeading } from "@/components/primitives";
 import { mailto, pipeline, principles, site, stack, stats } from "@/lib/content";
@@ -248,9 +249,7 @@ export default async function Home() {
               Open to full-time engineering roles and select client builds. Tell me what you&apos;re working on.{" "}
               {site.replyTime}
             </p>
-            <ButtonLink href={mailto} variant="accent" full>
-              Start the conversation
-            </ButtonLink>
+            <GetInTouchLink href={mailto} defaultText="Start the conversation" />
           </div>
         </div>
       </section>
