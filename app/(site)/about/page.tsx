@@ -3,7 +3,7 @@ import { ExploreCards } from "@/components/ExploreCards";
 import { GetInTouchLink } from "@/components/GetInTouchLink";
 import { LagosClock } from "@/components/LagosClock";
 import { RootIcon } from "@/components/RootIcon";
-import { Download } from "@/components/Icons";
+import { CvButtons } from "@/components/CvLinks";
 import { ButtonLink, PageIntro, SectionHeading } from "@/components/primitives";
 import { aboutIntro, capabilities, experience, learning, mailto, quickFacts, roots, site } from "@/lib/content";
 
@@ -26,14 +26,7 @@ export default function AboutPage() {
         eyebrow="About"
         eyebrowRight="Last updated [October 2026]"
         title="About"
-        action={
-          <a
-            href={site.cvUrl}
-            className="inline-flex h-12 items-center gap-2.5 bg-ink px-5 font-semibold sm:h-14 sm:px-7 text-bg no-underline hover:bg-accent hover:text-on-accent"
-          >
-            <Download /> Download CV
-          </a>
-        }
+        action={<CvButtons location="about" />}
         intro="Who I am, where I've worked, the kind of work I can take on for you, and a few quick facts for when you just need the overview."
       />
 
