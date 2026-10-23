@@ -1,7 +1,7 @@
 import { cv } from "@/lib/content";
 import { Download } from "./Icons";
 
-export type CvLocation = "about" | "home" | "footer";
+export type CvLocation = "about" | "work" | "footer";
 
 // Plain <a> (not next/link): /cv is a route handler that returns a file, not a page.
 // data-cv-* attributes are the hooks for the `resume_clicked` analytics event (#8).
