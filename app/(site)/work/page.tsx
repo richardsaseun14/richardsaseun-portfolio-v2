@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { WorkIndex } from "@/components/WorkIndex";
+import { CvButtons } from "@/components/CvLinks";
 import { ExploreCards } from "@/components/ExploreCards";
 import { ButtonLink, PageIntro, SectionHeading } from "@/components/primitives";
 import { mailto, sideProjects, type SideProject } from "@/lib/content";
@@ -87,9 +88,12 @@ export default async function WorkPage() {
             <span className="font-display text-[clamp(24px,7vw,32px)] font-extrabold tracking-[-0.03em]">Some work is under NDA.</span>
             <span className="text-muted-foreground">Happy to walk through it on a call.</span>
           </div>
-          <ButtonLink href={mailto} full>
-            Discuss a role
-          </ButtonLink>
+          <div className="flex w-full flex-wrap items-center gap-3 sm:w-auto">
+            <ButtonLink href={mailto} full>
+              Discuss a role
+            </ButtonLink>
+            <CvButtons location="work" variant="ghost" full />
+          </div>
         </div>
       </section>
 
