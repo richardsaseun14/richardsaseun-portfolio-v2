@@ -61,6 +61,22 @@ export const checks: Check[] = [
     },
   },
   {
+    id: "steam",
+    name: "Steam",
+    description: "Game library in After hours",
+    async probe(signal) {
+      const { STEAM_API_KEY: key, STEAM_ID: steamId } = process.env;
+      if (!key || !steamId) return null;
+      // Same endpoint as lib/steam.ts. The key rides in the query string, so never log or return this URL.
+      const params = new URLSearchParams({ key, steamid: steamId, format: "json" });
+      const res = await fetch(`https://api.steampowered.com/IPlayerService/GetOwnedGames/v1/?${params}`, {
+        signal,
+        cache: "no-store",
+      });
+      return asResult(res);
+    },
+  },
+  {
     id: "github",
     name: "GitHub",
     description: "Content editing via Keystatic",
