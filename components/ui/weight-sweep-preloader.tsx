@@ -79,7 +79,7 @@ const HOLD_MS = 1300
 const LIFT_MS = 700
 
 // #region timeline
-// Pure helpers, lifted out and executed by tests/weight-sweep-preloader.test.mjs.
+// Pure helpers for the preloader timeline.
 
 /** Clamp to [0, 1]. */
 export function wspClamp01(v: number) {
