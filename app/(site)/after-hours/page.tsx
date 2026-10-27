@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
 import { Carousel } from "@/components/Carousel";
 import { GameLibrary } from "@/components/GameLibrary";
+import { GameSlide } from "@/components/GameSlide";
 import { ExploreCards } from "@/components/ExploreCards";
 import { WatchSlide } from "@/components/WatchSlide";
 import { PageIntro, Placeholder, ProgressBar, SectionHeading } from "@/components/primitives";
 import { books, games, music } from "@/lib/content";
+import { getGames } from "@/lib/steam";
 import { getWatchLists } from "@/lib/simkl";
 import { getTopTrack } from "@/lib/spotify";
 
@@ -16,7 +18,7 @@ export const metadata: Metadata = {
 export const revalidate = 3600;
 
 export default async function AfterHoursPage() {
-  const [lists, track] = await Promise.all([getWatchLists(), getTopTrack()]);
+  const [lists, track, gameLists] = await Promise.all([getWatchLists(), getTopTrack(), getGames()]);
   // Spotify fills the track details; the note and links stay from Keystatic.
   const nowPlaying = track
     ? { ...music, title: track.title, artist: track.artist, cover: track.cover ?? music.cover, listenHref: track.href }
@@ -26,6 +28,12 @@ export default async function AfterHoursPage() {
     { id: "finished", eyebrow: "Recently finished", title: "Just wrapped up.", items: lists.completed },
     { id: "up-next", eyebrow: "Up next", title: "On the watchlist.", items: lists.planned },
   ];
+  const gaming = [
+    { id: "playing-now", eyebrow: "Playing now", title: "On the screen lately.", items: gameLists.playing },
+    { id: "recently-played", eyebrow: "Recently played", title: "Back on the shelf.", items: gameLists.recent },
+  ];
+  const steamHasGames = gaming.some((g) => g.items.length > 0);
+  const gamesSource = steamHasGames ? "steam" : games.length > 0 ? "keystatic" : "none";
   const readPct = Math.round((books.current.page / books.current.pages) * 100);
 
   return (
@@ -142,9 +150,26 @@ export default async function AfterHoursPage() {
           </div>
         </section>
 
-        {/* Games */}
-        <GameLibrary games={games} />
-
+        {/* Games (live from Steam; falls back to the Keystatic list when Steam has nothing).
+            data-games-source / data-games-status show in DevTools; the badge only renders in `next dev`. */}
+        <div className="contents" data-games-source={gamesSource} data-games-status={gameLists.status}>
+          {process.env.NODE_ENV === "development" && (
+            <p className="meta mt-16 text-[11px] text-muted-foreground sm:mt-24">
+              [dev] Games source: {gamesSource} ({gameLists.status})
+            </p>
+          )}
+          {!steamHasGames && games.length > 0 && <GameLibrary games={games} />}
+          {gaming.map(
+            (g) =>
+              g.items.length > 0 && (
+                <Carousel key={g.id} id={g.id} eyebrow={g.eyebrow} title={g.title}>
+                  {g.items.map((item) => (
+                    <GameSlide key={item.appid} item={item} />
+                  ))}
+                </Carousel>
+              ),
+          )}
+        </div>
       </div>
 
       <ExploreCards items={["work", "about"]} />
