@@ -1,6 +1,5 @@
-import assert from "node:assert/strict";
-import { describe, it } from "node:test";
-import { formatPlaytime, selectGames, toGameItem } from "./steam.ts";
+import { describe, expect, it } from "vitest";
+import { formatPlaytime, selectGames, toGameItem } from "./steam";
 
 const NOW = Date.UTC(2026, 9, 27) / 1000;
 const DAY = 86_400;
@@ -27,7 +26,7 @@ describe("formatPlaytime", () => {
     [12_300, "200+ hrs"],
   ];
   for (const [minutes, expected] of cases) {
-    it(`${minutes} min -> ${expected}`, () => assert.equal(formatPlaytime(minutes), expected));
+    it(`${minutes} min -> ${expected}`, () => expect(formatPlaytime(minutes)).toBe(expected));
   }
 });
 
@@ -36,7 +35,7 @@ describe("toGameItem", () => {
 
   it("maps a playing-now game with a fortnight meta", () => {
     const item = toGameItem({ ...base, playtime_2weeks: 380 }, "playing", nowMs);
-    assert.deepEqual(item, {
+    expect(item).toStrictEqual({
       title: "Dota 2",
       appid: 570,
       cover: "https://cdn.akamai.steamstatic.com/steam/apps/570/library_600x900.jpg",
@@ -48,24 +47,24 @@ describe("toGameItem", () => {
 
   it("maps a recently played game with a relative date and total playtime", () => {
     const item = toGameItem(base, "recent", nowMs);
-    assert.equal(item?.meta, "Played 3 weeks ago · 150+ hrs");
+    expect(item?.meta).toBe("Played 3 weeks ago · 150+ hrs");
   });
 
   it("returns null for a game with no playtime", () => {
-    assert.equal(toGameItem({ ...base, playtime_forever: 0 }, "recent", nowMs), null);
+    expect(toGameItem({ ...base, playtime_forever: 0 }, "recent", nowMs)).toBe(null);
   });
 
   it("returns null for a playing-now game without two-week playtime", () => {
-    assert.equal(toGameItem(base, "playing", nowMs), null);
+    expect(toGameItem(base, "playing", nowMs)).toBe(null);
   });
 
   it("words relative dates naturally", () => {
     const meta = (days: number) => toGameItem({ ...base, rtime_last_played: daysAgo(days) }, "recent", nowMs)?.meta;
-    assert.match(meta(0) ?? "", /^Played today/);
-    assert.match(meta(1) ?? "", /^Played yesterday/);
-    assert.match(meta(4) ?? "", /^Played 4 days ago/);
-    assert.match(meta(7) ?? "", /^Played 1 week ago/);
-    assert.match(meta(60) ?? "", /^Played 2 months ago/);
+    expect(meta(0) ?? "").toMatch(/^Played today/);
+    expect(meta(1) ?? "").toMatch(/^Played yesterday/);
+    expect(meta(4) ?? "").toMatch(/^Played 4 days ago/);
+    expect(meta(7) ?? "").toMatch(/^Played 1 week ago/);
+    expect(meta(60) ?? "").toMatch(/^Played 2 months ago/);
   });
 });
 
@@ -79,13 +78,13 @@ describe("selectGames", () => {
   });
 
   it("returns empty lists for no data (private profile)", () => {
-    assert.deepEqual(selectGames([], nowMs), { playing: [], recent: [] });
+    expect(selectGames([], nowMs)).toStrictEqual({ playing: [], recent: [] });
   });
 
   it("sorts playing now by two-week playtime and caps at 4", () => {
     const raws = [1, 2, 3, 4, 5].map((id) => game(id, { playtime_2weeks: id * 10 }));
     const { playing } = selectGames(raws, nowMs);
-    assert.deepEqual(playing.map((g) => g.appid), [5, 4, 3, 2]);
+    expect(playing.map((g) => g.appid)).toStrictEqual([5, 4, 3, 2]);
   });
 
   it("fills recently played by last played, excluding games shown in playing now", () => {
@@ -95,14 +94,14 @@ describe("selectGames", () => {
       game(3, { rtime_last_played: daysAgo(20) }),
     ];
     const { playing, recent } = selectGames(raws, nowMs);
-    assert.deepEqual(playing.map((g) => g.appid), [1]);
-    assert.deepEqual(recent.map((g) => g.appid), [3, 2]);
+    expect(playing.map((g) => g.appid)).toStrictEqual([1]);
+    expect(recent.map((g) => g.appid)).toStrictEqual([3, 2]);
   });
 
   it("keeps playing-now overflow eligible for recently played", () => {
     const raws = [1, 2, 3, 4, 5].map((id) => game(id, { playtime_2weeks: id * 10, rtime_last_played: daysAgo(id) }));
     const { recent } = selectGames(raws, nowMs);
-    assert.deepEqual(recent.map((g) => g.appid), [1]);
+    expect(recent.map((g) => g.appid)).toStrictEqual([1]);
   });
 
   it("drops games older than six months and games with zero playtime", () => {
@@ -112,11 +111,11 @@ describe("selectGames", () => {
       game(3, { rtime_last_played: 0 }),
       game(4),
     ];
-    assert.deepEqual(selectGames(raws, nowMs).recent.map((g) => g.appid), [4]);
+    expect(selectGames(raws, nowMs).recent.map((g) => g.appid)).toStrictEqual([4]);
   });
 
   it("caps recently played at 6", () => {
     const raws = Array.from({ length: 9 }, (_, i) => game(i + 1, { rtime_last_played: daysAgo(i + 1) }));
-    assert.equal(selectGames(raws, nowMs).recent.length, 6);
+    expect(selectGames(raws, nowMs).recent.length).toBe(6);
   });
 });
