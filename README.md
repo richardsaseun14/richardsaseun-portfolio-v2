@@ -93,6 +93,20 @@ One-time setup:
 
 Apps in development mode only work for users on the app's allowlist; the owner account is enough here.
 
+## Games (Steam)
+
+The Playing now and Recently played carousels on `/after-hours` come from your Steam library (cover, title, rounded playtime). They refresh hourly. When the env vars below aren't set, the profile is private, or Steam errors, the page falls back to the games list managed in Keystatic.
+
+One-time setup:
+1. Create a key at https://steamcommunity.com/dev/apikey (any domain name works).
+2. Find your 64-bit SteamID (the 17-digit number, not the vanity URL), e.g. via https://steamid.io.
+3. In Steam, set Profile -> Edit Profile -> Privacy Settings -> Game details to Public. A private setting returns no games, so the section stays hidden.
+4. Put the key as `STEAM_API_KEY` and the ID as `STEAM_ID` in `.env.local` (see `.env.example`) and in your host's environment variables.
+
+The rendered source is exposed as `data-games-source` (`steam`, `keystatic` or `none`) and `data-games-status` (`ok`, `no-credentials`, `api-error`, `no-recent-games`) on the games wrapper, and `next dev` also prints a small `[dev]` line above it.
+
+Playtime is floored so it never overstates: `<1 hr`, `4 hrs`, `40+ hrs`, `200+ hrs`.
+
 ## Design tokens
 
 - Fonts: **Unbounded** (headings), **Figtree** (body), **JetBrains Mono** (labels)
