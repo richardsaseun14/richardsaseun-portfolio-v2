@@ -61,7 +61,7 @@ Only GitHub users with write access to the repo can sign in and save.
 
 ## Watch lists (Simkl)
 
-The Watching now, Recently finished and Up next carousels on `/after-hours` come from Simkl. They refresh hourly and disappear when the env vars below aren't set.
+The Watching now, Recently finished and Up next carousels on `/after-hours` come from Simkl. Following Simkl's sync guide, the site checks `/sync/activities` hourly and refetches the library (one `/sync/all-items` call) only when something changed, or once a day. They disappear when the env vars below aren't set.
 
 One-time setup:
 1. Create an app at https://simkl.com/settings/developer/ and choose "TV, devices & command line". Copy its Client ID.
@@ -73,7 +73,10 @@ One-time setup:
    ```bash
    curl -X POST "https://api.simkl.com/oauth2/token" -d "grant_type=urn:ietf:params:oauth:grant-type:device_code" -d "device_code=DEVICE_CODE" -d "client_id=YOUR_CLIENT_ID"
    ```
-4. Put `SIMKL_CLIENT_ID` and the returned `access_token` as `SIMKL_ACCESS_TOKEN` in `.env.local` (see `.env.example`) and in your host's environment variables.
+4. Put `SIMKL_CLIENT_ID` and the returned `refresh_token` (not the `access_token`) as `SIMKL_REFRESH_TOKEN` in `.env.local` (see `.env.example`) and in your host's environment variables.
+   - **Authorize production and local dev separately** (repeat steps 2 to 4 for each). Each authorization holds one live access token, and refreshing it invalidates the previous one, so two environments sharing a refresh token keep logging each other out.
+
+The site exchanges the refresh token for a 7-day access token, shares it across server instances through the data cache, and mints a new one every 6 days (or retries once on a `401`). The refresh token lasts 180 days and every refresh extends it, so it never needs updating unless you revoke the app in [Connected Apps](https://simkl.com/settings/connected-apps/) or the site makes no Simkl calls for 180 days. If the token refresh fails, the server logs `Simkl token refresh failed`; authorize again and update the env var.
 
 ## Music (Spotify)
 
