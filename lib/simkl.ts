@@ -56,7 +56,9 @@ export function toWatchItem(raw: RawItem, type: ListType, status: Status): Watch
 }
 
 async function fetchList(type: ListType, status: Status, clientId: string, token: string) {
-  const res = await fetch(`${API}/sync/all-items/${type}/${status}?app-name=richardsaseun-portfolio&app-version=1.0`, {
+  // Simkl's debug log identifies the app by these URL params.
+  const params = new URLSearchParams({ client_id: clientId, "app-name": "richardsaseun-portfolio", "app-version": "1.0" });
+  const res = await fetch(`${API}/sync/all-items/${type}/${status}?${params}`, {
     headers: { Authorization: `Bearer ${token}`, "simkl-api-key": clientId },
     next: { revalidate: REVALIDATE },
   });
