@@ -26,9 +26,10 @@ export function toTopTrack(raw: RawTrack): TopTrack {
   };
 }
 
-async function getAccessToken(clientId: string, clientSecret: string, refreshToken: string) {
+export async function getAccessToken(clientId: string, clientSecret: string, refreshToken: string, signal?: AbortSignal) {
   const res = await fetch(TOKEN_URL, {
     method: "POST",
+    signal,
     headers: {
       Authorization: `Basic ${Buffer.from(`${clientId}:${clientSecret}`).toString("base64")}`,
       "Content-Type": "application/x-www-form-urlencoded",
