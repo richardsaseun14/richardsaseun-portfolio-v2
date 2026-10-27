@@ -15,6 +15,7 @@
   --accent: #7c3aed;
   --on-accent: #ffffff;
   --live: #1fa855;
+  --warn: #b45309;
   --danger: #c2410c;
   color-scheme: light;
 }
@@ -28,6 +29,7 @@
   --invert-bg: #f1f0eb;
   --invert-ink: #0d0d0c;
   --accent: #8b5cf6;
+  --warn: #f59e0b;
   --danger: #f97316;
   color-scheme: dark;
 }
@@ -68,6 +70,8 @@
   --color-accent: var(--accent);
   --color-on-accent: var(--on-accent);
   --color-live: var(--live);
+  --color-warn: var(--warn);
+  --color-danger: var(--danger);
 
   /* shadcn/ui */
   --color-background: var(--background);

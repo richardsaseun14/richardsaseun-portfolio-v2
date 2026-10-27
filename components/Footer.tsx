@@ -42,6 +42,9 @@ export function Footer() {
         <div className="meta flex flex-wrap justify-between gap-4 border-t border-line pt-6 text-muted-foreground">
           <span className="flex flex-wrap items-center gap-5">
             <span>© {new Date().getFullYear()} {site.name} · Built in Lagos</span>
+            <Link href="/status" className="inline-flex min-h-8 items-center text-ink no-underline">
+              Status
+            </Link>
             <ShortcutsButton />
           </span>
           <span>
