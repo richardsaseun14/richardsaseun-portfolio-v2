@@ -73,9 +73,10 @@ export function toWatchItem(raw: RawItem, type: ListType, status: Status): Watch
 }
 
 /** Exchanges the long-lived refresh token for a new access token (https://api.simkl.org/api-reference/oauth2-tokens). */
-async function refreshAccessToken(): Promise<string> {
+async function refreshAccessToken(signal = AbortSignal.timeout(5000)): Promise<string> {
   const res = await fetch(`${API}/oauth2/token`, {
     method: "POST",
+    signal,
     headers: { "Content-Type": "application/x-www-form-urlencoded", "User-Agent": USER_AGENT },
     body: new URLSearchParams({
       grant_type: "refresh_token",
@@ -110,21 +111,45 @@ function sharedAccessToken(): Promise<string> {
   return cachedAccessToken(grant, Math.floor(Date.now() / TOKEN_WINDOW_MS));
 }
 
-function request(path: string, token: string): Promise<Response> {
+function request(path: string, token: string, signal?: AbortSignal): Promise<Response> {
   const clientId = process.env.SIMKL_CLIENT_ID ?? "";
   // Simkl's debug log identifies the app by these URL params.
   const params = new URLSearchParams({ client_id: clientId, "app-name": APP_NAME, "app-version": APP_VERSION });
   return fetch(`${API}${path}?${params}`, {
+    signal,
     headers: { Authorization: `Bearer ${token}`, "simkl-api-key": clientId, "User-Agent": USER_AGENT },
     // The results are cached below, not the raw fetches.
     cache: "no-store",
   });
 }
 
-async function api<T>(path: string): Promise<T | null> {
-  let res = await request(path, await sharedAccessToken());
+/** Authenticated request shared by the watch lists and health probe. */
+export async function requestSimkl(path: string, signal?: AbortSignal): Promise<Response> {
+  signal?.throwIfAborted();
+  // Stop waiting on the shared cache when this caller times out, without cancelling
+  // a token refresh that another request may also need.
+  const pendingToken = sharedAccessToken();
+  const token = signal
+    ? await new Promise<string>((resolve, reject) => {
+        const abort = () => reject(signal.reason);
+        signal.addEventListener("abort", abort, { once: true });
+        pendingToken.then(resolve, reject).finally(() => signal.removeEventListener("abort", abort));
+        if (signal.aborted) abort();
+      })
+    : await pendingToken;
+  signal?.throwIfAborted();
+  let res = await request(path, token, signal);
   // The shared token was invalidated (e.g. two instances minted one at once): refresh once and retry.
-  if (res.status === 401) res = await request(path, await refreshAccessToken());
+  if (res.status === 401) {
+    const refreshed = await refreshAccessToken(signal);
+    signal?.throwIfAborted();
+    res = await request(path, refreshed, signal);
+  }
+  return res;
+}
+
+async function api<T>(path: string): Promise<T | null> {
+  const res = await requestSimkl(path);
   if (!res.ok) throw new Error(`Simkl ${path} failed: ${res.status}`);
 
   // Simkl answers an empty result with an empty body (or `null`).

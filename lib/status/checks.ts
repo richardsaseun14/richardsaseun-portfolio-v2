@@ -1,4 +1,5 @@
 import "server-only";
+import { requestSimkl } from "@/lib/simkl";
 import { getAccessToken } from "@/lib/spotify";
 import { classifyIndicator } from "./classify";
 import type { Status } from "./types";
@@ -50,13 +51,8 @@ export const checks: Check[] = [
     name: "Simkl",
     description: "Watch lists in After hours",
     async probe(signal) {
-      const { SIMKL_CLIENT_ID: id, SIMKL_ACCESS_TOKEN: token } = process.env;
-      if (!id || !token) return null;
-      const res = await fetch("https://api.simkl.com/sync/activities?app-name=richardsaseun-portfolio&app-version=1.0", {
-        headers: { Authorization: `Bearer ${token}`, "simkl-api-key": id },
-        signal,
-        cache: "no-store",
-      });
+      if (!process.env.SIMKL_CLIENT_ID || !process.env.SIMKL_REFRESH_TOKEN) return null;
+      const res = await requestSimkl("/sync/activities", signal);
       return asResult(res);
     },
   },
