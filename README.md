@@ -61,7 +61,7 @@ Only GitHub users with write access to the repo can sign in and save.
 
 ## Watch lists (Simkl)
 
-The Watching now, Recently finished and Up next carousels on `/after-hours` come from Simkl. They refresh hourly and disappear when the env vars below aren't set.
+The Watching now, Recently finished and Up next carousels on `/after-hours` come from Simkl. Following Simkl's sync guide, the site checks `/sync/activities` hourly and refetches the library (one `/sync/all-items` call) only when something changed, or once a day. They disappear when the env vars below aren't set.
 
 One-time setup:
 1. Create an app at https://simkl.com/settings/developer/ and choose "TV, devices & command line". Copy its Client ID.
