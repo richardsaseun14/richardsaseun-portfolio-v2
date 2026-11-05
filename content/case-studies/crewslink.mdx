@@ -1,0 +1,80 @@
+---
+role: "Software Engineer"
+team: "Built with the team at Tempo Labs"
+scope: "Product, frontend, backend and mobile"
+links: []
+stats: []
+---
+
+<Summary
+  project="A real-time platform connecting dispatch operations, drivers and airline crew journeys."
+  problem="CrewsLink relied on a paid third-party system and wanted a platform it owned, with control over its operational data."
+  work="Working with the team at Tempo Labs, I built the driver mobile app, dispatcher operations application and crew-facing trip updates, contributing across the frontend and backend."
+  result="A driver app available on the App Store, a dispatch dashboard used to manage more than 500 drivers and crew members across multiple international flights, and a new customer-facing website."
+/>
+
+<Chapter id="brief" number="01" title="An owned platform for crew transportation">
+
+CrewsLink coordinates ground transportation for airline crews. Dispatchers manage the trips, drivers carry them out, and crew members need clear pickup information and updates as their journeys change.
+
+The company was using an existing SaaS product to run these operations. It wanted to bring that capability into a system of its own, with control over its data and where it was stored, rather than depending on the existing provider.
+
+I worked on the project as a software engineer at Tempo Labs, alongside other team members. My contribution covered the driver mobile application, the dispatcher operations application and crew-facing trip updates, with work across the frontend and backend.
+
+</Chapter>
+
+<Chapter id="problems" number="02" title="From a third-party service to an owned product">
+
+The starting point was an operational system that CrewsLink was already paying to use. The goal was to build the capabilities the business needed into a platform it could own and develop around its operations.
+
+### Ownership of the product and its data
+
+CrewsLink wanted control over its operational data and the ability to store it on its own servers. Replacing the existing SaaS service meant bringing the dispatch and driver workflows into the new product.
+
+### Connected dispatch and driver experiences
+
+The dispatcher dashboard and driver app had to support the same transport operation. Dispatchers needed to manage crew trips, while the mobile application and crew-facing updates connected those trips to the people carrying them out and travelling on them.
+
+### Support for more than one company
+
+We built the platform as a multi-tenant system. Alongside CrewsLink, other transport companies working with it or running similar operations could use the dashboard for their own businesses.
+
+</Chapter>
+
+<Chapter id="implementation" number="03" title="Building across web, backend and mobile">
+
+I worked across the frontend and backend using React and Supabase, and built the mobile application with React Native. This let us prototype quickly while developing one mobile codebase for both iOS and Android. I used AI-assisted workflows throughout development.
+
+Resend handled email, and Vercel hosted the web application.
+
+The dispatcher operations application gave the team a place to manage crew transportation. The driver app supported the driver side of those trips, with crew-facing updates completing the connection between dispatch and the journey.
+
+The delivered product included a driver app available on the App Store, the dispatch dashboard and a new customer-facing website. The dashboard was used to manage more than 500 drivers and crew members across multiple international flights. Development continued as an ongoing project.
+
+### The web application
+
+<Figure src="/images/projects/crewslink-web-sign-in.webp" aspectRatio={5 / 3} alt="CrewsLink Connect web sign-in with Google and email options" caption="The sign-in experience for the CrewsLink Connect operations platform." />
+
+### The driver mobile app
+
+<MobileGallery>
+  <Figure src="/images/projects/crewslink-driver-sign-in.webp" aspectRatio={274 / 592} alt="CrewsLink driver app welcome screen with email and password sign-in" caption="Sign in to the driver app." />
+  <Figure src="/images/projects/crewslink-driver-trips.webp" aspectRatio={274 / 592} alt="Driver app showing an assigned trip with pickup, destination, time and passenger count" caption="See assigned trips and pickup information." />
+  <Figure src="/images/projects/crewslink-driver-trip-details.webp" aspectRatio={274 / 592} alt="Driver trip details with a route map, booking information and a swipe-to-start control" caption="View the route, trip details and current status." />
+  <Figure src="/images/projects/crewslink-driver-profile.webp" aspectRatio={274 / 592} alt="Driver profile with on-duty and off-duty controls, vehicle details and contact settings" caption="Manage availability, vehicle and profile settings." />
+</MobileGallery>
+
+</Chapter>
+
+<Chapter id="frontend" number="04" title="A consistent component system">
+
+The designer established the design system. I followed that system when building the React and React Native interfaces, creating reusable components and documenting them for the team.
+
+On the web, we used shadcn/ui and established React accessibility patterns to support accessible components. Across web and mobile, the work focused on translating the designer's system into consistent interfaces and documented components that the team could build on.
+
+</Chapter>
+
+<Credits items={[
+  { role: "Software engineering", name: "Richard Saseun, alongside the team at Tempo Labs" },
+  { role: "Design system", name: "Created by the project designer" }
+]} />

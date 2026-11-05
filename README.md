@@ -16,7 +16,8 @@ npm run typecheck
 | What | Where |
 | --- | --- |
 | All editable copy (profile, home, about, after hours, side projects) | `content/*.json`, edited at `/keystatic` |
-| Projects and case studies | `content/projects/<slug>.json`, edited at `/keystatic` |
+| Project listing metadata | `content/projects/<slug>.json`, edited at `/keystatic` |
+| Case study body and hero facts | `content/case-studies/<slug>.mdx` |
 | Content schema (what the editor shows) | `keystatic.config.ts`, `keystatic/schema/*` |
 | Typed content for components, plus nav / shortcuts | `lib/content.ts`, `lib/projects.ts` |
 | Colours, fonts, shared utilities (eyebrow, page-title, stripes…) | `app/(site)/globals.css` |
@@ -32,8 +33,19 @@ Content is managed with [Keystatic](https://keystatic.com). It is stored as JSON
 
 - **Locally:** run `npm run dev` and open http://localhost:3000/keystatic. Saves write straight to `content/`; commit and push as usual.
 - **Side projects:** Work > Side projects. Add new builds to the top.
-- **Case studies:** Work > Projects > Add. The slug becomes the URL (`/work/<slug>`); `Order` controls position.
+- **Projects:** Work > Projects. Edit listing metadata, hero image and links; `Order` controls position.
+- **Case studies:** Edit `content/case-studies/<slug>.mdx` for hero facts and the full narrative. Replace the `TODO:` prompts with verified details. See the authoring notes below.
 - **Images** (posters, covers) upload to `public/images/<folder>/`.
+
+### Case study authoring
+
+Each MDX file has YAML frontmatter for `role`, `team`, `scope`, `stack`, `timeline`, `status`, `links` and `stats`. Empty `links` falls back to the project links in Keystatic. Stats accept `value`, `label` and an optional `source`; do not publish placeholder measurements as real results.
+
+Write chapters as `<Chapter id="brief" number="01" title="The brief">…</Chapter>` with these three literal attributes in this order. The loader derives the index from those opening tags; keep IDs unique. The index appears above the article on smaller screens and stays in the sidebar on desktop. Native anchor navigation respects reduced motion.
+
+Components are mapped in `mdx-components.tsx`: Summary, ProblemList / Problem, Decision, Figure / FigurePair, Architecture, CodeBlock, StackTable, Metrics, Timeline, Lessons, Callout and Credits. The two existing MDX files show their props. Code examples are plain text in a `code` prop, with filename and caption. Missing figure sources render labelled placeholders.
+
+To add a project, create its Keystatic entry and matching MDX file, then add the MDX import to `bodies` in `app/(site)/work/[slug]/page.tsx`. The filename, entry slug and import key must match. Run `npm test`, `npm run typecheck` and `npm run build` before publishing.
 
 ### CV
 

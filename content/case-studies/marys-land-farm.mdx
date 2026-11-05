@@ -1,0 +1,132 @@
+---
+role: "Software Engineer"
+team: "Sole engineer, working with the team at Tempo Labs"
+scope: "Product, frontend and backend"
+stack: "React · TypeScript · Supabase · Stripe"
+links: []
+stats:
+  - value: "~$20K"
+    label: "Monthly booking revenue"
+    source: "Approximately, during my time on the project."
+  - value: "~1,000"
+    label: "Active booking users"
+    source: "By the time I left the project in 2026."
+---
+
+<Summary
+  project="A booking and operations platform for a farm offering rooms, venues, appointments and experiences."
+  problem="Mary's Land Farm wanted to move away from a third-party booking service and an early prototype to a system it owned, built around its own operating rules."
+  work="As the sole engineer working with the Tempo Labs team, I built the customer booking platform and admin dashboard from scratch, including payments, messaging and access integrations."
+  result="The platform recorded almost $20,000 in monthly booking revenue and around 1,000 active booking users before I left in 2026."
+/>
+
+<Chapter id="brief" number="01" title="A booking system shaped around the farm">
+
+Mary's Land Farm brings together accommodation, venues, animals, activities and farm experiences. Customers need a way to book what they want to do, while staff need to manage those reservations and deliver everything included in each booking.
+
+The project started with two challenges: an existing third-party SaaS booking solution and an early, rapidly assembled prototype. The farm wanted ownership of its code and a system built around its own requirements.
+
+I was the sole engineer on the project, working with the team at Tempo Labs. I built the customer booking platform and the administration dashboard from scratch, covering product implementation, frontend and backend work through 2026. I used AI-assisted workflows throughout development.
+
+</Chapter>
+
+<Chapter id="problems" number="02" title="Different bookings, one place to manage them">
+
+The challenge was bringing the farm's different booking types into one system while preserving the rules that made each one work.
+
+### One platform across rooms, venues and appointments
+
+Each booking type had its own availability and pricing requirements. The customer experience needed to accommodate those differences, and staff needed a unified dashboard for managing reservations across them.
+
+### A clear view of the day's operations
+
+Administrators needed an availability calendar that showed which rooms, events and appointments were booked on each day, alongside the relevant customer details. This made the calendar an operational view of the farm's bookings.
+
+### Tracking what customers had paid for
+
+A reservation could include add-ons as well as the main booking. Staff needed to check customers in, see their purchases and manage those add-ons so they could track what had been paid for and what had been provided.
+
+### Communication and access tied to the booking
+
+Different appointment types needed different messages. Some reservations also required access to locked gates or spaces, so the system needed to connect the booking with the right email, SMS and access PIN.
+
+</Chapter>
+
+<Chapter id="booking" number="03" title="The customer booking experience">
+
+I built a customer platform for booking rooms, venues and farm appointments. Availability and pricing followed the farm's requirements for each booking type, with the goal of keeping the path from choosing an experience to completing a reservation straightforward.
+
+Stripe handled payments. I also implemented tax calculations across the different appointment types and included add-ons in the booking experience, so customers could pay for the options associated with their visit.
+
+The work involved connecting those business rules to the interface: showing availability, presenting the applicable price and collecting the information needed for the reservation.
+
+<Figure src="/images/projects/marys-land-farm-staging-home.webp" aspectRatio={5 / 3} alt="Mary's Land Farm homepage with featured animal encounters and venues" caption="The staging customer homepage brings farm experiences and venues into one booking entry point." />
+
+<Figure src="/images/projects/marys-land-farm-venues.webp" aspectRatio={5 / 3} alt="Venue listings with search, date selection, hire rates, guest capacity and booking links" caption="Venue discovery combines date selection, hire rates, capacity and included features. Shown with staging data." />
+
+</Chapter>
+
+<Chapter id="operations" number="04" title="An admin dashboard for the whole visit">
+
+The admin dashboard brought booking management into one place. Staff could work across rooms, venues and appointments while keeping the specific rules for each type of reservation.
+
+The availability calendar showed bookings by day with customer details, helping administrators understand what was booked and who was coming. Alongside that view, the dashboard supported customer check-in and add-on management.
+
+This extended the system beyond taking a payment. Staff could track a customer's reservation and purchases through their visit, including the extras they had paid for and received.
+
+The dashboard was highly customised to the farm's operating requirements, including the rules around availability, pricing, communication and access.
+
+<Figure src="/images/projects/marys-land-farm-admin-dashboard.webp" aspectRatio={5 / 3} alt="Admin dashboard with revenue overview, booking totals and quick actions" caption="The admin overview connects revenue trends, upcoming bookings and common actions. Shown with staging data." />
+
+<Figure src="/images/projects/marys-land-farm-admin-bookings.webp" aspectRatio={5 / 3} alt="Admin reservation list with type and status filters, customer details, check-in dates and guest counts" caption="A unified reservation list for searching and filtering bookings across the farm. Shown with staging data." />
+
+<Figure src="/images/projects/marys-land-farm-admin-calendar.webp" aspectRatio={5 / 3} alt="Monthly booking calendar with product filters and controls for week, day, timeline and room views" caption="The availability calendar places reservations in a daily operational context. Shown with staging data." />
+
+</Chapter>
+
+<Chapter id="integrations" number="05" title="Connecting payments, messages and physical access">
+
+The integrations supported the booking and administration workflows, from collecting payment to sending the information a customer needed for their visit.
+
+<StackTable rows={[
+  { layer: "Payments", choice: "Stripe", why: "Collect payments for reservations and their selected options." },
+  { layer: "Email", choice: "SendGrid", why: "Send custom email templates for specific appointment types." },
+  { layer: "SMS", choice: "Twilio", why: "Send booking-related text messages, including access PINs." },
+  { layer: "Physical access", choice: "RemoteLock", why: "Automatically generate access PINs for bookings that require entry to locked gates or spaces." },
+  { layer: "Analytics", choice: "Google Analytics", why: "Track use of the customer-facing platform." }
+]} />
+
+### From reservation to access PIN
+
+For bookings that required access, the RemoteLock integration generated a PIN automatically. The system then sent that PIN to the customer by SMS according to the configuration set by an administrator.
+
+### Messages suited to each appointment
+
+I built custom email templates for specific appointment types. Together with SMS, this let the farm tailor booking communication to the experience a customer had reserved.
+
+</Chapter>
+
+<Chapter id="frontend" number="06" title="Building the interface and supporting services">
+
+The application used React and TypeScript, with Supabase and Postgres supporting the backend and data storage. Netlify hosted the web application.
+
+I used shadcn/ui and established React accessibility patterns when building the interfaces. The customer platform focused on a clear booking process, while the admin dashboard organised the farm's more detailed operational controls.
+
+As the sole engineer, I implemented the connected customer and administration experiences, including the backend work and external integrations needed to support them.
+
+</Chapter>
+
+<Chapter id="results" number="07" title="A working platform for bookings and operations">
+
+Before I left the project in 2026, the platform was recording almost $20,000 in monthly booking revenue and had around 1,000 active users using it to make bookings.
+
+The delivered system combined a customer booking platform with an admin dashboard for reservations, availability, check-in and add-ons. Payments, email, SMS and physical access were integrated around the farm's requirements.
+
+The project remained ongoing when my involvement ended. These figures describe the platform during my time on it.
+
+</Chapter>
+
+<Credits items={[
+  { role: "Software engineering", name: "Richard Saseun · Sole engineer" },
+  { role: "Team", name: "Built with the team at Tempo Labs" }
+]} />

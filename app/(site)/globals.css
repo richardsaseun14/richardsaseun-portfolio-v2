@@ -294,3 +294,27 @@
 html[data-intro-seen] .intro-gate {
   display: none;
 }
+
+/* ---------- Developer case studies ---------- */
+.cs-layout { display: grid; gap: 48px; }
+.cs-index { align-self: start; border-top: 1px solid var(--line); padding-top: 24px; }
+.cs-index ol { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 4px 16px; }
+.cs-index-link { display: flex; align-items: baseline; gap: 12px; min-height: 44px; padding: 10px 0; text-decoration: none; font-size: 14px; color: var(--muted); }
+.cs-index-link[aria-current] { color: var(--accent); font-weight: 600; }
+.cs-index-link:focus-visible, .cs-body a:focus-visible, .cs-body pre:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
+.cs-body { display: flex; flex-direction: column; gap: 80px; }
+.cs-chapter { scroll-margin-top: 112px; border-top: 1px solid var(--line); padding-top: 32px; }
+.cs-prose { display: flex; flex-direction: column; gap: 28px; }
+.cs-prose > p { max-width: 70ch; font-size: 18px; line-height: 1.75; color: var(--muted); text-wrap: pretty; }
+.cs-prose h3 { text-wrap: balance; }
+.cs-table { width: 100%; border-collapse: collapse; text-align: left; font-size: 15px; }
+.cs-table th, .cs-table td { padding: 16px 12px; border-bottom: 1px solid var(--line); vertical-align: top; min-width: 100px; }
+.cs-table thead { font-family: var(--font-mono); font-size: 12px; text-transform: uppercase; }
+.cs-table tbody td { color: var(--muted); }
+@media (min-width: 1100px) {
+  .cs-layout { grid-template-columns: 240px minmax(0, 1fr); gap: 64px; }
+  .cs-index { position: sticky; top: 104px; max-height: calc(100dvh - 128px); overflow-y: auto; }
+  .cs-index ol { grid-template-columns: 1fr; }
+  .cs-body { gap: 112px; }
+}
+@media (max-width: 480px) { .cs-index ol { grid-template-columns: 1fr; } }

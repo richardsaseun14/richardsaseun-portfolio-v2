@@ -4,8 +4,8 @@
   "featured": false,
   "blurb": "Ground transport coordination for airline crews, dispatchers and drivers.",
   "type": "Operations platform",
-  "role": "Product Engineer",
-  "year": "",
+  "role": "Software Engineer",
+  "year": "2025",
   "tags": [
     "Web",
     "Mobile"
@@ -14,43 +14,12 @@
   "caseStudy": {
     "industry": "Transportation",
     "summary": "A real-time platform connecting flight crew journeys with dispatch operations and driver workflows.",
-    "heroImage": null,
-    "scope": "Product engineering across the platform",
-    "timeline": "",
-    "team": "",
-    "stack": "",
+    "heroImage": "/images/projects/crewslink-website.webp",
     "links": [
       {
         "label": "Product site",
         "href": "https://www.crewslink.com/"
       }
-    ],
-    "sections": [
-      {
-        "label": "TRIP OPERATIONS",
-        "title": "Keep every trip moving in sync.",
-        "body": "CrewsLink brings dispatch, drivers and flight crews into one transport workflow, with shared trip updates as plans change."
-      },
-      {
-        "label": "ACROSS THE PLATFORM",
-        "title": "One connected experience for each role.",
-        "body": "I worked across the platform, contributing to dispatcher operations, driver workflows and crew-facing trip updates."
-      }
-    ],
-    "problem": [
-      "Dispatchers, drivers and flight crews need to stay aligned as trips and pickup times change."
-    ],
-    "thinking": {
-      "intro": "I worked across the platform, connecting dispatch operations, driver workflows and the crew experience.",
-      "quote": "",
-      "decisions": []
-    },
-    "built": {
-      "intro": "Contributed across dispatcher operations, the driver app and crew-facing trip updates.",
-      "screenshots": [],
-      "mobileShots": [],
-      "webShot": ""
-    },
-    "outcome": "One platform connects dispatch, drivers and crew around shared trip updates."
+    ]
   }
 }

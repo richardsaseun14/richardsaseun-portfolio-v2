@@ -18,13 +18,14 @@ export async function getProjects(): Promise<Project[]> {
       year: entry.year,
       tags: [...entry.tags] as ProjectTag[],
       featured: entry.featured,
-      metrics: entry.metrics.map((m) => ({ value: m.value, accent: m.accent || undefined, label: m.label })),
+      metrics: entry.metrics.map((m) => ({
+        value: m.value,
+        accent: m.accent || undefined,
+        label: m.label,
+      })),
       caseStudy: {
         ...entry.caseStudy,
         links: [...entry.caseStudy.links],
-        problem: [...entry.caseStudy.problem],
-        thinking: { ...entry.caseStudy.thinking, decisions: [...entry.caseStudy.thinking.decisions] },
-        built: { ...entry.caseStudy.built, mobileShots: [...entry.caseStudy.built.mobileShots] },
       },
     }));
 }

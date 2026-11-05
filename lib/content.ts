@@ -59,26 +59,7 @@ export type CaseStudy = {
   industry: string;
   summary: string;
   heroImage?: string | null;
-  scope?: string;
-  timeline: string;
-  team: string;
-  stack: string;
   links: { label: string; href: string }[];
-  sections?: readonly {
-    label: string;
-    title: string;
-    body: string;
-    images?: readonly { image: string | null; caption: string }[];
-  }[];
-  problem: string[];
-  thinking: { intro: string; quote: string; decisions: string[] };
-  built: {
-    intro: string;
-    screenshots?: readonly { image: string | null; caption: string }[];
-    mobileShots: string[];
-    webShot: string;
-  };
-  outcome: string;
 };
 
 export const projectFilters = ["All", "Web", "Mobile", "AI", "Open source"] as const;
