@@ -98,84 +98,86 @@ export default async function Home() {
       </section>
 
       {/* Selected work */}
-      <section aria-labelledby="work-title" className="container-x pt-20 sm:pt-30">
-        <SectionHeading
-          id="work-title"
-          eyebrow="Selected work"
-          title="Products, not just pages."
-          aside={
-            <Link
-              href="/work"
-              className="meta inline-flex h-11 items-center gap-2.5 border border-line px-[18px] text-ink no-underline hover:border-ink"
-            >
-              View all projects <ArrowRight size={16} />
-            </Link>
-          }
-        />
+      {featured && (
+        <section aria-labelledby="work-title" className="container-x pt-20 sm:pt-30">
+          <SectionHeading
+            id="work-title"
+            eyebrow="Selected work"
+            title="Products, not just pages."
+            aside={
+              <Link
+                href="/work"
+                className="meta inline-flex h-11 items-center gap-2.5 border border-line px-[18px] text-ink no-underline hover:border-ink"
+              >
+                View all projects <ArrowRight size={16} />
+              </Link>
+            }
+          />
 
-        <Link
-          href={`/work/${featured.slug}`}
-          className="group grid overflow-hidden border border-line bg-surface text-ink no-underline hover:text-ink [grid-template-columns:repeat(auto-fit,minmax(min(480px,100%),1fr))]"
-        >
-          <div className="overflow-hidden border-b border-line md:border-r md:border-b-0">
-            <Placeholder
-              label="[Product screenshot]"
-              className="aspect-[4/3] border-0 transition-transform duration-400 group-hover:scale-[1.015]"
-            />
-          </div>
-          <div className="flex flex-col justify-between gap-8 p-6 sm:p-10">
-            <div className="flex flex-col gap-4">
-              <div className="meta flex flex-wrap gap-2">
-                <span className="bg-accent px-2.5 py-1.5 text-on-accent">Featured</span>
-                <span className="border border-line px-2.5 py-1.5 text-muted-foreground">{featured.type}</span>
-                <span className="border border-line px-2.5 py-1.5 text-muted-foreground">{featured.role}</span>
-              </div>
-              <h3 className="font-display text-[clamp(32px,8vw,44px)] leading-none font-extrabold tracking-[-0.03em]">{featured.name}</h3>
-              <p className="max-w-[460px] text-lg text-pretty text-muted-foreground">{featured.blurb}</p>
+          <Link
+            href={`/work/${featured.slug}`}
+            className="group grid overflow-hidden border border-line bg-surface text-ink no-underline hover:text-ink [grid-template-columns:repeat(auto-fit,minmax(min(480px,100%),1fr))]"
+          >
+            <div className="overflow-hidden border-b border-line md:border-r md:border-b-0">
+              <Placeholder
+                label="[Product screenshot]"
+                className="aspect-[4/3] border-0 transition-transform duration-400 group-hover:scale-[1.015]"
+              />
             </div>
-            {featured.metrics && (
-              <div className="grid grid-cols-2 border-t border-line">
-                {featured.metrics.slice(0, 2).map((m, i) => (
-                  <div key={m.label} className={`py-5 ${i === 0 ? "border-r border-line pr-4" : "pl-4 sm:pl-6"}`}>
-                    <div className="font-display text-[clamp(26px,7vw,32px)] font-extrabold tracking-[-0.03em]">
-                      {m.value}
-                      {m.accent}
+            <div className="flex flex-col justify-between gap-8 p-6 sm:p-10">
+              <div className="flex flex-col gap-4">
+                <div className="meta flex flex-wrap gap-2">
+                  <span className="bg-accent px-2.5 py-1.5 text-on-accent">Featured</span>
+                  <span className="border border-line px-2.5 py-1.5 text-muted-foreground">{featured.type}</span>
+                  <span className="border border-line px-2.5 py-1.5 text-muted-foreground">{featured.role}</span>
+                </div>
+                <h3 className="font-display text-[clamp(32px,8vw,44px)] leading-none font-extrabold tracking-[-0.03em]">{featured.name}</h3>
+                <p className="max-w-[460px] text-lg text-pretty text-muted-foreground">{featured.blurb}</p>
+              </div>
+              {featured.metrics && featured.metrics.length > 0 && (
+                <div className="grid grid-cols-2 border-t border-line">
+                  {featured.metrics.slice(0, 2).map((m, i) => (
+                    <div key={m.label} className={`py-5 ${i === 0 ? "border-r border-line pr-4" : "pl-4 sm:pl-6"}`}>
+                      <div className="font-display text-[clamp(26px,7vw,32px)] font-extrabold tracking-[-0.03em]">
+                        {m.value}
+                        {m.accent}
+                      </div>
+                      <div className="meta text-muted-foreground">{m.label}</div>
                     </div>
-                    <div className="meta text-muted-foreground">{m.label}</div>
-                  </div>
-                ))}
-              </div>
-            )}
-            <span className="inline-flex items-center gap-2.5 font-semibold">
-              Read the case study <ArrowRight />
-            </span>
-          </div>
-        </Link>
+                  ))}
+                </div>
+              )}
+              <span className="inline-flex items-center gap-2.5 font-semibold">
+                Read the case study <ArrowRight />
+              </span>
+            </div>
+          </Link>
 
-        <div className="mt-6 grid gap-6 [grid-template-columns:repeat(auto-fit,minmax(min(400px,100%),1fr))]">
-          {more.map((p) => (
-            <Link
-              key={p.slug}
-              href={`/work/${p.slug}`}
-              className="group flex flex-col overflow-hidden border border-line bg-surface text-ink no-underline hover:text-ink"
-            >
-              <div className="overflow-hidden border-b border-line">
-                <Placeholder
-                  label="[Screenshot]"
-                  className="aspect-[16/10] border-0 transition-transform duration-400 group-hover:scale-[1.015]"
-                />
-              </div>
-              <div className="flex flex-col gap-2.5 p-6 sm:p-7">
-                <span className="meta text-muted-foreground">
-                  {p.type} · {p.year}
-                </span>
-                <h3 className="font-display text-[clamp(26px,7vw,30px)] font-extrabold tracking-[-0.03em]">{p.name}</h3>
-                <p className="text-muted-foreground">{p.blurb}</p>
-              </div>
-            </Link>
-          ))}
-        </div>
-      </section>
+          <div className="mt-6 grid gap-6 [grid-template-columns:repeat(auto-fit,minmax(min(400px,100%),1fr))]">
+            {more.map((p) => (
+              <Link
+                key={p.slug}
+                href={`/work/${p.slug}`}
+                className="group flex flex-col overflow-hidden border border-line bg-surface text-ink no-underline hover:text-ink"
+              >
+                <div className="overflow-hidden border-b border-line">
+                  <Placeholder
+                    label="[Screenshot]"
+                    className="aspect-[16/10] border-0 transition-transform duration-400 group-hover:scale-[1.015]"
+                  />
+                </div>
+                <div className="flex flex-col gap-2.5 p-6 sm:p-7">
+                  <span className="meta text-muted-foreground">
+                  {p.type}{p.year && ` · ${p.year}`}
+                  </span>
+                  <h3 className="font-display text-[clamp(26px,7vw,30px)] font-extrabold tracking-[-0.03em]">{p.name}</h3>
+                  <p className="text-muted-foreground">{p.blurb}</p>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </section>
+      )}
 
       {/* How I work */}
       <section aria-labelledby="approach-title" className="container-x pt-20 sm:pt-30">

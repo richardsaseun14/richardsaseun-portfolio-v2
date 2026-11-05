@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useState } from "react";
 import { projectFilters, type Project } from "@/lib/content";
 import { ArrowUpRight } from "./Icons";
@@ -8,6 +9,14 @@ import { ArrowUpRight } from "./Icons";
 export function WorkIndex({ projects }: { projects: Project[] }) {
   const [filter, setFilter] = useState<(typeof projectFilters)[number]>("All");
   const shown = filter === "All" ? projects : projects.filter((p) => p.tags.includes(filter));
+
+  if (projects.length === 0) {
+    return (
+      <p className="mt-12 border-t border-line py-8 text-muted-foreground sm:mt-16">
+        Case studies will be added here soon.
+      </p>
+    );
+  }
 
   return (
     <>
@@ -34,7 +43,9 @@ export function WorkIndex({ projects }: { projects: Project[] }) {
             href={`/work/${p.slug}`}
             className="group grid items-center gap-x-10 gap-y-6 border-b border-line py-7 text-ink no-underline hover:bg-surface hover:text-ink [grid-template-columns:repeat(auto-fit,minmax(min(260px,100%),1fr))]"
           >
-            <div className="stripes aspect-[16/10] w-full border border-line sm:w-40" />
+            <div className="stripes relative aspect-[16/10] w-full overflow-hidden border border-line sm:w-40">
+              {p.caseStudy?.heroImage && <Image src={p.caseStudy.heroImage} alt="" fill sizes="(max-width: 640px) 100vw, 160px" className="object-cover" />}
+            </div>
             <div className="flex flex-col gap-1.5">
               <span className="font-display text-[clamp(26px,7vw,30px)] leading-[1.05] font-extrabold tracking-[-0.03em]">{p.name}</span>
               <span className="text-muted-foreground">{p.blurb}</span>
@@ -43,7 +54,7 @@ export function WorkIndex({ projects }: { projects: Project[] }) {
               <div className="meta flex flex-col gap-1 text-muted-foreground">
                 <span>{p.type}</span>
                 <span>
-                  {p.role} · {p.year}
+                  {p.role}{p.year && ` · ${p.year}`}
                 </span>
               </div>
               <span className="grid size-12 shrink-0 place-items-center border border-line group-hover:border-accent group-hover:bg-accent group-hover:text-on-accent">

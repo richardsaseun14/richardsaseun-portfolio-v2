@@ -58,14 +58,8 @@ export type Project = {
 export type CaseStudy = {
   industry: string;
   summary: string;
-  timeline: string;
-  team: string;
-  stack: string;
+  heroImage?: string | null;
   links: { label: string; href: string }[];
-  problem: string[];
-  thinking: { intro: string; quote: string; decisions: string[] };
-  built: { intro: string; mobileShots: string[]; webShot: string };
-  outcome: string;
 };
 
 export const projectFilters = ["All", "Web", "Mobile", "AI", "Open source"] as const;
@@ -80,11 +74,13 @@ export type SideProject = {
   code?: string;
 };
 
-export const sideProjects: SideProject[] = sideProjectsData.items.map((p) => ({
+type SideProjectContent = Omit<SideProject, "status"> & { status: string };
+
+export const sideProjects: SideProject[] = sideProjectsData.items.map((p: SideProjectContent) => ({
   ...p,
   status: p.status as SideProject["status"],
-  demo: orUndefined(p.demo),
-  code: orUndefined(p.code),
+  demo: orUndefined(p.demo ?? null),
+  code: orUndefined(p.code ?? null),
 }));
 
 /* ---------- About ---------- */

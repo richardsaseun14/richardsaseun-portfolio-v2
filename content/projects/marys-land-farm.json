@@ -1,0 +1,24 @@
+{
+  "name": "Mary's Land Farm",
+  "order": 1,
+  "featured": true,
+  "blurb": "One booking platform for farm stays, events and experiences.",
+  "type": "Booking platform",
+  "role": "Software Engineer",
+  "year": "2025–2026",
+  "tags": [
+    "Web"
+  ],
+  "metrics": [],
+  "caseStudy": {
+    "industry": "Hospitality",
+    "summary": "A custom booking and operations platform for farm rooms, venues, appointments and experiences, built around the farm’s availability, pricing and administration rules.",
+    "heroImage": "/images/projects/marys-land-farm-customer-home.webp",
+    "links": [
+      {
+        "label": "Booking site",
+        "href": "https://it.maryslandfarm.com/"
+      }
+    ]
+  }
+}

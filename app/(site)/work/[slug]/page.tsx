@@ -2,184 +2,123 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ExploreCards } from "@/components/ExploreCards";
-import { ArrowLeft, ArrowRight } from "@/components/Icons";
-import { Placeholder } from "@/components/primitives";
+import { ArrowLeft } from "@/components/Icons";
+import { ChapterIndex } from "@/components/case-study/ChapterIndex";
+import { Media } from "@/components/case-study/Media";
+import { ProjectNav } from "@/components/case-study/ProjectNav";
+import { Stat, Stats } from "@/components/case-study/Stats";
 import { site } from "@/lib/content";
 import { getProjects } from "@/lib/projects";
+import { getCaseStudy } from "@/lib/case-studies";
 
+const bodies = {
+  "marys-land-farm": () => import("@/content/case-studies/marys-land-farm.mdx"),
+  crewslink: () => import("@/content/case-studies/crewslink.mdx"),
+};
 type Params = { params: Promise<{ slug: string }> };
-
 export async function generateStaticParams() {
-  const projects = await getProjects();
-  return projects.map((p) => ({ slug: p.slug }));
+  return (await getProjects()).map(({ slug }) => ({ slug }));
 }
-
 export async function generateMetadata({ params }: Params): Promise<Metadata> {
   const { slug } = await params;
-  const projects = await getProjects();
-  const project = projects.find((p) => p.slug === slug);
+  const project = (await getProjects()).find(
+    (project) => project.slug === slug,
+  );
   return {
     title: project ? `${project.name} case study` : "Case study",
     description: project?.caseStudy?.summary ?? site.bio,
   };
 }
-
-function Block({ id, title, children }: { id: string; title: string; children: React.ReactNode }) {
-  return (
-    <section aria-labelledby={id} className="flex flex-wrap gap-x-16 gap-y-8">
-      <h2 id={id} className="flex-[1_1_300px] font-display text-[clamp(32px,8vw,44px)] leading-[0.95] font-extrabold tracking-[-0.035em]">
-        {title}
-      </h2>
-      <div className="flex max-w-[760px] flex-[999_1_560px] flex-col gap-5 text-[17px] leading-[1.6] sm:text-[19px]">{children}</div>
-    </section>
-  );
-}
-
 export default async function CaseStudyPage({ params }: Params) {
   const { slug } = await params;
-  const projects = await getProjects();
-  const index = projects.findIndex((p) => p.slug === slug);
-  const project = projects[index];
-  const cs = project?.caseStudy;
-  if (!project || !cs) notFound();
-  const next = projects[(index + 1) % projects.length];
-
+  const [projects, study] = await Promise.all([
+    getProjects(),
+    getCaseStudy(slug),
+  ]);
+  const project = projects.find((project) => project.slug === slug);
+  const loadBody = bodies[slug as keyof typeof bodies];
+  if (!project?.caseStudy || !study || !loadBody) notFound();
+  const { default: Body } = await loadBody();
+  const { facts, chapters } = study;
+  const cs = project.caseStudy;
+  const details = [
+    ["Role", facts.role ?? project.role],
+    ["Scope", facts.scope],
+    ["Year", project.year],
+    ["Timeline", facts.timeline],
+    ["Team", facts.team],
+    ["Stack", facts.stack],
+    ["Status", facts.status],
+  ].filter(([, value]) => value);
+  const links = facts.links.length ? facts.links : cs.links;
   return (
     <main>
-      <section className="container-x pt-8 sm:pt-12">
-        <Link href="/work" className="meta inline-flex min-h-11 items-center gap-2 text-[13px] no-underline">
+      <header className="container-x pt-8 sm:pt-12">
+        <Link
+          href="/work"
+          className="meta inline-flex min-h-11 items-center gap-2 text-[13px] no-underline"
+        >
           <ArrowLeft size={16} /> Back to Work
         </Link>
-        <div className="meta mt-8 flex flex-wrap gap-2">
-          <span className="bg-accent px-2.5 py-1.5 text-on-accent">Case study</span>
-          <span className="border border-line px-2.5 py-1.5 text-muted-foreground">{project.type}</span>
-          <span className="border border-line px-2.5 py-1.5 text-muted-foreground">{cs.industry}</span>
-        </div>
-        <h1 className="page-title mt-6">
+        <p className="meta mt-8 text-muted-foreground">
+          {[project.type, cs.industry, project.year]
+            .filter(Boolean)
+            .join(" · ")}
+        </p>
+        <h1 className="page-title mt-4 [overflow-wrap:anywhere]">
           {project.name}
           <span className="text-accent">.</span>
         </h1>
-        <p className="mt-9 max-w-[820px] text-[clamp(22px,2.2vw,30px)] leading-[1.25] tracking-[-0.02em] text-pretty">
+        <p className="mt-6 max-w-[740px] text-[19px] leading-relaxed sm:text-[22px]">
           {cs.summary}
         </p>
-
-        <dl className="mt-14 grid border-t border-b border-t-ink border-b-line [grid-template-columns:repeat(auto-fit,minmax(min(200px,100%),1fr))]">
-          {[
-            { k: "Role", v: project.role },
-            { k: "Timeline", v: cs.timeline },
-            { k: "Team", v: cs.team },
-            { k: "Stack", v: cs.stack },
-          ].map((row, i) => (
-            <div
-              key={row.k}
-              className={`flex flex-col gap-1.5 border-t border-line py-4 first:border-t-0 sm:border-t-0 sm:py-5 ${
-                i === 0 ? "sm:pr-5" : "sm:border-l sm:px-5"
-              }`}
-            >
-              <dt className="meta text-muted-foreground">{row.k}</dt>
-              <dd className="font-medium">{row.v}</dd>
+        <dl className="mt-10 grid gap-6 border-t border-line pt-6 sm:grid-cols-2 lg:[grid-template-columns:repeat(auto-fit,minmax(180px,1fr))]">
+          {details.map(([label, value]) => (
+            <div key={label}>
+              <dt className="meta text-muted-foreground">{label}</dt>
+              <dd className="mt-2 font-medium">{value}</dd>
             </div>
           ))}
-          <div className="flex flex-col gap-1.5 border-t border-line py-4 sm:border-t-0 sm:border-l sm:px-5 sm:py-5">
-            <dt className="meta text-muted-foreground">Links</dt>
-            <dd className="flex flex-wrap gap-x-4 gap-y-1 font-medium">
-              {cs.links.map((l) => (
-                <a key={l.label} href={l.href} target="_blank" rel="noreferrer">
-                  {l.label} ↗
-                </a>
-              ))}
-            </dd>
-          </div>
         </dl>
-      </section>
-
-      <section aria-label="Hero screenshot" className="container-x pt-14">
-        <Placeholder label="[Hero screenshot: web + mobile together]" className="aspect-[2/1]" />
-      </section>
-
-      {project.metrics && (
-        <section aria-label="Outcomes" className="container-x pt-14">
-          <div className="grid bg-invert text-invert-ink [grid-template-columns:repeat(auto-fit,minmax(min(240px,100%),1fr))]">
-            {project.metrics.map((m) => (
-              <div key={m.label} className="p-6 sm:p-9">
-                <div className="font-display text-[clamp(44px,12vw,64px)] leading-none font-extrabold tracking-[-0.04em]">
-                  {m.value}
-                  <span className="text-accent">{m.accent}</span>
-                </div>
-                <div className="meta mt-3 opacity-75">{m.label}</div>
-              </div>
+        {links.length > 0 && (
+          <div className="meta mt-8 flex flex-wrap gap-6">
+            {links.map((link) => (
+              <a
+                key={link.href}
+                href={link.href}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex min-h-11 items-center underline underline-offset-4"
+              >
+                {link.label} ↗
+              </a>
             ))}
           </div>
-        </section>
-      )}
-
-      <article className="container-x flex flex-col gap-16 pt-20 sm:gap-24 sm:pt-30">
-        <Block id="cs-problem" title="The problem">
-          <p className="text-pretty">{cs.problem[0]}</p>
-          {cs.problem.slice(1).map((p) => (
-            <p key={p} className="text-pretty text-muted-foreground">
-              {p}
-            </p>
-          ))}
-        </Block>
-
-        <Block id="cs-thinking" title="The thinking">
-          <p className="text-pretty">{cs.thinking.intro}</p>
-          <blockquote className="border-t border-b border-t-ink border-b-line py-7 font-display text-[clamp(22px,6vw,30px)] leading-[1.15] font-bold tracking-[-0.025em] text-pretty">
-            “{cs.thinking.quote}”
-          </blockquote>
-          <ol className="border-t border-line text-base">
-            {cs.thinking.decisions.map((d, i) => (
-              <li key={i} className="flex gap-5 border-b border-line py-[18px]">
-                <span className="pt-[3px] font-mono text-[13px] text-muted-foreground">{String.fromCharCode(65 + i)}</span>
-                <span>{d}</span>
-              </li>
+        )}
+      </header>
+      <div className="container-x pt-10 sm:pt-14">
+        <Media src={cs.heroImage} alt={`${project.name} interface`} priority />
+        {facts.stats.length > 0 && <div className="mt-8">
+          <Stats>
+            {facts.stats.map((stat) => (
+              <Stat key={stat.label} {...stat} />
             ))}
-          </ol>
-        </Block>
-
-        <section aria-labelledby="cs-built" className="flex flex-col gap-10">
-          <div className="flex flex-wrap gap-x-16 gap-y-8">
-            <h2 id="cs-built" className="flex-[1_1_300px] font-display text-[clamp(32px,8vw,44px)] leading-[0.95] font-extrabold tracking-[-0.035em]">
-              What I built
-            </h2>
-            <p className="max-w-[760px] flex-[999_1_560px] text-[17px] leading-[1.6] text-pretty sm:text-[19px]">{cs.built.intro}</p>
-          </div>
-          <div className="grid gap-5 [grid-template-columns:repeat(auto-fit,minmax(min(280px,100%),1fr))]">
-            {cs.built.mobileShots.map((caption, i) => (
-              <figure key={i} className="flex flex-col gap-3">
-                <Placeholder label="[Mobile screen]" className="aspect-[9/16]" />
-                <figcaption className="meta text-muted-foreground">{caption}</figcaption>
-              </figure>
-            ))}
-          </div>
-          <figure className="flex flex-col gap-3">
-            <Placeholder label="[Web dashboard screenshot]" className="aspect-video" />
-            <figcaption className="meta text-muted-foreground">{cs.built.webShot}</figcaption>
-          </figure>
-        </section>
-
-        <Block id="cs-outcome" title="Outcome & lessons">
-          <p className="text-pretty">{cs.outcome}</p>
-        </Block>
-      </article>
-
-      <section aria-label="Next case study" className="container-x py-20 sm:py-30">
-        <Link
-          href={`/work/${next.slug}`}
-          className="flex flex-wrap items-center justify-between gap-6 bg-invert p-[clamp(28px,4vw,56px)] text-invert-ink no-underline transition-colors hover:bg-accent hover:text-on-accent"
-        >
-          <div className="flex flex-col gap-2.5">
-            <span className="meta text-[13px] opacity-75">Next case study</span>
-            <span className="font-display text-[clamp(32px,5vw,72px)] leading-[0.9] font-black tracking-[-0.04em] uppercase [overflow-wrap:anywhere]">
-              {next.name}
-            </span>
-          </div>
-          <ArrowRight size={56} className="size-10 sm:size-14" />
-        </Link>
-      </section>
-
-      <ExploreCards items={["work", "about", "afterHours"]} labels={{ work: "More case studies" }} />
+          </Stats>
+        </div>}
+      </div>
+      <div className="container-x pt-16 sm:pt-24">
+        <div className="cs-layout">
+          <ChapterIndex chapters={chapters} />
+          <article className="cs-body min-w-0">
+            <Body />
+          </article>
+        </div>
+      </div>
+      <ProjectNav projects={projects} slug={slug} />
+      <ExploreCards
+        items={["work", "about", "afterHours"]}
+        labels={{ work: "More case studies" }}
+      />
     </main>
   );
 }

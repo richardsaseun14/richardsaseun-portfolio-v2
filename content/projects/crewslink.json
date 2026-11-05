@@ -1,0 +1,25 @@
+{
+  "name": "CrewsLink",
+  "order": 2,
+  "featured": false,
+  "blurb": "Ground transport coordination for airline crews, dispatchers and drivers.",
+  "type": "Operations platform",
+  "role": "Software Engineer",
+  "year": "2025",
+  "tags": [
+    "Web",
+    "Mobile"
+  ],
+  "metrics": [],
+  "caseStudy": {
+    "industry": "Transportation",
+    "summary": "A real-time platform connecting flight crew journeys with dispatch operations and driver workflows.",
+    "heroImage": "/images/projects/crewslink-website.webp",
+    "links": [
+      {
+        "label": "Product site",
+        "href": "https://www.crewslink.com/"
+      }
+    ]
+  }
+}
