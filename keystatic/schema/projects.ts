@@ -1,5 +1,5 @@
 import { collection, fields } from "@keystatic/core";
-import { longText, text, textList } from "./shared";
+import { image, longText, text, textList } from "./shared";
 
 export const projects = collection({
   label: "Projects",
@@ -36,12 +36,26 @@ export const projects = collection({
       {
         industry: text("Industry"),
         summary: longText("Summary"),
+        heroImage: image("Hero screenshot", "projects"),
+        scope: text("Scope of work"),
         timeline: text("Timeline"),
         team: text("Team"),
         stack: text("Stack", "e.g. React Native · Next.js · Node · Postgres"),
         links: fields.array(
           fields.object({ label: text("Label"), href: text("URL") }),
           { label: "Links", itemLabel: (props) => props.fields.label.value || "Link" },
+        ),
+        sections: fields.array(
+          fields.object({
+            label: text("Section label", "e.g. BOOKING EXPERIENCE"),
+            title: text("Heading"),
+            body: longText("Description"),
+            images: fields.array(
+              fields.object({ image: image("Screenshot", "projects"), caption: text("Caption") }),
+              { label: "Screenshots", itemLabel: (props) => props.fields.caption.value || "Screenshot" },
+            ),
+          }),
+          { label: "Case study sections", itemLabel: (props) => props.fields.title.value || "Section" },
         ),
         problem: fields.array(longText("Paragraph"), {
           label: "Problem",
@@ -58,6 +72,13 @@ export const projects = collection({
         built: fields.object(
           {
             intro: longText("Intro"),
+            screenshots: fields.array(
+              fields.object({
+                image: image("Screenshot", "projects"),
+                caption: text("Caption"),
+              }),
+              { label: "Screenshots", itemLabel: (props) => props.fields.caption.value || "Screenshot" },
+            ),
             mobileShots: textList("Mobile screenshot captions", "Caption"),
             webShot: text("Web screenshot caption"),
           },

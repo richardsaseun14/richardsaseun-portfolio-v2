@@ -1,0 +1,55 @@
+{
+  "name": "Mary's Land Farm",
+  "order": 1,
+  "featured": true,
+  "blurb": "One booking platform for farm stays, events and experiences.",
+  "type": "Booking platform",
+  "role": "Senior Frontend Developer",
+  "year": "",
+  "tags": [
+    "Web"
+  ],
+  "metrics": [],
+  "caseStudy": {
+    "industry": "Hospitality",
+    "summary": "A booking experience for farm stays, venues and activities, each with different availability and pricing rules.",
+    "heroImage": null,
+    "scope": "Booking and admin experiences",
+    "timeline": "",
+    "team": "",
+    "stack": "React · TypeScript · Supabase · Stripe",
+    "links": [
+      {
+        "label": "Booking site",
+        "href": "https://it.maryslandfarm.com/"
+      }
+    ],
+    "sections": [
+      {
+        "label": "BOOKING EXPERIENCE",
+        "title": "Different farm experiences, one place to book.",
+        "body": "The site brings stays, events and activities together, with availability and pricing shaped around each experience."
+      },
+      {
+        "label": "CUSTOMER + ADMIN FLOWS",
+        "title": "A smoother path from discovery to reservation.",
+        "body": "I worked on responsive booking and admin interfaces, connecting customer reservations to a shared operations workflow."
+      }
+    ],
+    "problem": [
+      "Stays, events and activities each had different booking rules. The farm needed one place for customers to book and staff to manage reservations."
+    ],
+    "thinking": {
+      "intro": "I worked on customer booking and admin flows around shared reservation data, while accounting for the rules of each experience.",
+      "quote": "",
+      "decisions": []
+    },
+    "built": {
+      "intro": "Built responsive booking and admin interfaces in React and TypeScript, connected to Supabase and Stripe.",
+      "screenshots": [],
+      "mobileShots": [],
+      "webShot": ""
+    },
+    "outcome": "Customers can book different farm experiences through one platform, while staff manage reservations in a shared admin workflow."
+  }
+}

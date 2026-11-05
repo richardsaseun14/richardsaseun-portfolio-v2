@@ -1,16 +1,3 @@
 {
-  "items": [
-    {
-      "name": "[Side project]",
-      "blurb": "[One line: what it does and why you built it]",
-      "date": "[Mon 2026]",
-      "status": "Building",
-      "tags": [
-        "AI",
-        "Next.js"
-      ],
-      "demo": "#",
-      "code": "#"
-    }
-  ]
+  "items": []
 }

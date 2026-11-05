@@ -58,13 +58,26 @@ export type Project = {
 export type CaseStudy = {
   industry: string;
   summary: string;
+  heroImage?: string | null;
+  scope?: string;
   timeline: string;
   team: string;
   stack: string;
   links: { label: string; href: string }[];
+  sections?: readonly {
+    label: string;
+    title: string;
+    body: string;
+    images?: readonly { image: string | null; caption: string }[];
+  }[];
   problem: string[];
   thinking: { intro: string; quote: string; decisions: string[] };
-  built: { intro: string; mobileShots: string[]; webShot: string };
+  built: {
+    intro: string;
+    screenshots?: readonly { image: string | null; caption: string }[];
+    mobileShots: string[];
+    webShot: string;
+  };
   outcome: string;
 };
 
@@ -80,11 +93,13 @@ export type SideProject = {
   code?: string;
 };
 
-export const sideProjects: SideProject[] = sideProjectsData.items.map((p) => ({
+type SideProjectContent = Omit<SideProject, "status"> & { status: string };
+
+export const sideProjects: SideProject[] = sideProjectsData.items.map((p: SideProjectContent) => ({
   ...p,
   status: p.status as SideProject["status"],
-  demo: orUndefined(p.demo),
-  code: orUndefined(p.code),
+  demo: orUndefined(p.demo ?? null),
+  code: orUndefined(p.code ?? null),
 }));
 
 /* ---------- About ---------- */

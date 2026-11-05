@@ -9,6 +9,14 @@ export function WorkIndex({ projects }: { projects: Project[] }) {
   const [filter, setFilter] = useState<(typeof projectFilters)[number]>("All");
   const shown = filter === "All" ? projects : projects.filter((p) => p.tags.includes(filter));
 
+  if (projects.length === 0) {
+    return (
+      <p className="mt-12 border-t border-line py-8 text-muted-foreground sm:mt-16">
+        Case studies will be added here soon.
+      </p>
+    );
+  }
+
   return (
     <>
       <div role="group" aria-label="Filter projects" className="mt-12 flex flex-wrap gap-2.5 sm:mt-16">
@@ -43,7 +51,7 @@ export function WorkIndex({ projects }: { projects: Project[] }) {
               <div className="meta flex flex-col gap-1 text-muted-foreground">
                 <span>{p.type}</span>
                 <span>
-                  {p.role} · {p.year}
+                  {p.role}{p.year && ` · ${p.year}`}
                 </span>
               </div>
               <span className="grid size-12 shrink-0 place-items-center border border-line group-hover:border-accent group-hover:bg-accent group-hover:text-on-accent">
