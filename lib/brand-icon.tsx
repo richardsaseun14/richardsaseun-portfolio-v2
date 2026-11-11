@@ -17,27 +17,25 @@ async function loadUnbounded(text: string): Promise<ArrayBuffer> {
 export async function renderBrandIcon(size: number, { rounded = true } = {}) {
   const font = await loadUnbounded("r.s");
   return new ImageResponse(
-    (
-      <div
-        style={{
-          width: "100%",
-          height: "100%",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          background: INK,
-          borderRadius: rounded ? size * 0.22 : 0,
-          color: PAPER,
-          fontFamily: "Unbounded",
-          fontWeight: 800,
-          fontSize: size * 0.52,
-          letterSpacing: `-${size * 0.02}px`,
-          paddingBottom: size * 0.04,
-        }}
-      >
-        r<span style={{ color: ACCENT }}>.</span>s
-      </div>
-    ),
+    <div
+      style={{
+        width: "100%",
+        height: "100%",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        background: INK,
+        borderRadius: rounded ? size * 0.22 : 0,
+        color: PAPER,
+        fontFamily: "Unbounded",
+        fontWeight: 800,
+        fontSize: size * 0.52,
+        letterSpacing: `-${size * 0.02}px`,
+        paddingBottom: size * 0.04,
+      }}
+    >
+      r<span style={{ color: ACCENT }}>.</span>s
+    </div>,
     {
       width: size,
       height: size,

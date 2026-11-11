@@ -16,7 +16,8 @@ describe("Simkl health probe", () => {
     vi.stubEnv("SIMKL_CLIENT_ID", "test-client");
     vi.stubEnv("SIMKL_REFRESH_TOKEN", "test-refresh");
     vi.stubEnv("SIMKL_ACCESS_TOKEN", "");
-    const fetchMock = vi.fn()
+    const fetchMock = vi
+      .fn()
       .mockResolvedValueOnce(Response.json({ access_token: "fresh-access" }))
       .mockResolvedValueOnce(Response.json({ all: "2026-10-27" }));
     vi.stubGlobal("fetch", fetchMock);
@@ -45,7 +46,10 @@ describe("Simkl health probe", () => {
   it("stops waiting when the probe is aborted during token refresh", async () => {
     vi.stubEnv("SIMKL_CLIENT_ID", "test-client");
     vi.stubEnv("SIMKL_REFRESH_TOKEN", "test-refresh");
-    vi.stubGlobal("fetch", vi.fn(() => new Promise(() => {})));
+    vi.stubGlobal(
+      "fetch",
+      vi.fn(() => new Promise(() => {})),
+    );
     const controller = new AbortController();
     const result = simkl.probe(controller.signal);
     controller.abort();
@@ -56,9 +60,13 @@ describe("Simkl health probe", () => {
   it("preserves a failing upstream HTTP code", async () => {
     vi.stubEnv("SIMKL_CLIENT_ID", "test-client");
     vi.stubEnv("SIMKL_REFRESH_TOKEN", "test-refresh");
-    vi.stubGlobal("fetch", vi.fn()
-      .mockResolvedValueOnce(Response.json({ access_token: "fresh-access" }))
-      .mockResolvedValueOnce(new Response(null, { status: 503 })));
+    vi.stubGlobal(
+      "fetch",
+      vi
+        .fn()
+        .mockResolvedValueOnce(Response.json({ access_token: "fresh-access" }))
+        .mockResolvedValueOnce(new Response(null, { status: 503 })),
+    );
 
     expect(await simkl.probe(new AbortController().signal)).toEqual({ ok: false, code: 503 });
   });

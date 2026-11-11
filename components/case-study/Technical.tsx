@@ -1,17 +1,9 @@
 import type { ReactNode } from "react";
 import { Figure } from "./Figure";
-export function CodeBlock({
-  filename,
-  caption,
-  code,
-}: {
-  filename: string;
-  caption?: string;
-  code: string;
-}) {
+export function CodeBlock({ filename, caption, code }: { filename: string; caption?: string; code: string }) {
   return (
     <figure className="min-w-0 border border-line">
-      <div className="meta border-b border-line px-5 py-3">{filename}</div>
+      <div className="border-b border-line px-5 py-3 meta">{filename}</div>
       <pre
         tabIndex={0}
         aria-label={filename}
@@ -19,19 +11,11 @@ export function CodeBlock({
       >
         <code>{code}</code>
       </pre>
-      {caption && (
-        <figcaption className="px-5 py-3 text-sm text-muted-foreground">
-          {caption}
-        </figcaption>
-      )}
+      {caption && <figcaption className="px-5 py-3 text-sm text-muted-foreground">{caption}</figcaption>}
     </figure>
   );
 }
-export function StackTable({
-  rows,
-}: {
-  rows: { layer: string; choice: string; why: string }[];
-}) {
+export function StackTable({ rows }: { rows: { layer: string; choice: string; why: string }[] }) {
   return (
     <div className="overflow-x-auto">
       <table className="cs-table">
@@ -56,11 +40,7 @@ export function StackTable({
     </div>
   );
 }
-export function Metrics({
-  rows,
-}: {
-  rows: { metric: string; before: string; after: string; method: string }[];
-}) {
+export function Metrics({ rows }: { rows: { metric: string; before: string; after: string; method: string }[] }) {
   return (
     <div className="overflow-x-auto">
       <table className="cs-table">
@@ -87,13 +67,7 @@ export function Metrics({
     </div>
   );
 }
-export function Architecture({
-  src,
-  legend,
-}: {
-  src?: string;
-  legend: string[];
-}) {
+export function Architecture({ src, legend }: { src?: string; legend: string[] }) {
   return (
     <div>
       <Figure
@@ -112,16 +86,10 @@ export function Architecture({
     </div>
   );
 }
-export function Callout({
-  kind = "note",
-  children,
-}: {
-  kind?: "note" | "unknown" | "QA";
-  children: ReactNode;
-}) {
+export function Callout({ kind = "note", children }: { kind?: "note" | "unknown" | "QA"; children: ReactNode }) {
   return (
     <aside className="border-l-2 border-accent bg-line/15 p-5">
-      <p className="meta mb-2 text-accent">{kind}</p>
+      <p className="mb-2 meta text-accent">{kind}</p>
       {children}
     </aside>
   );

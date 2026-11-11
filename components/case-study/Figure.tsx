@@ -14,9 +14,7 @@ export function Figure({
   return (
     <figure>
       <Media src={src} alt={alt} aspectRatio={aspectRatio} />
-      <figcaption className="meta mt-3 text-muted-foreground">
-        {caption}
-      </figcaption>
+      <figcaption className="mt-3 meta text-muted-foreground">{caption}</figcaption>
     </figure>
   );
 }

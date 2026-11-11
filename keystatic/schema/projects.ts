@@ -44,18 +44,14 @@ export const projects = collection({
         industry: text("Industry"),
         summary: longText("Summary"),
         heroImage: image("Hero screenshot", "projects"),
-        links: fields.array(
-          fields.object({ label: text("Label"), href: text("URL") }),
-          {
-            label: "Links",
-            itemLabel: (props) => props.fields.label.value || "Link",
-          },
-        ),
+        links: fields.array(fields.object({ label: text("Label"), href: text("URL") }), {
+          label: "Links",
+          itemLabel: (props) => props.fields.label.value || "Link",
+        }),
       },
       {
         label: "Project preview",
-        description:
-          "Full case study content is authored in content/case-studies/<slug>.mdx.",
+        description: "Full case study content is authored in content/case-studies/<slug>.mdx.",
       },
     ),
   },

@@ -43,7 +43,7 @@ export default function AboutPage() {
               <div className="flex h-16 items-center">
                 <RootIcon kind={r.key} />
               </div>
-              <span className="meta mt-auto text-muted-foreground">{r.label}</span>
+              <span className="mt-auto meta text-muted-foreground">{r.label}</span>
               <span className="font-display text-[clamp(26px,2.6vw,36px)] leading-[1.05] font-extrabold tracking-[-0.03em]">
                 {r.title}
               </span>
@@ -54,18 +54,25 @@ export default function AboutPage() {
       </section>
 
       <section aria-labelledby="history-title" className="container-x pt-20 sm:pt-30">
-        <SectionHeading id="history-title" eyebrow="Experience" title="Where I've worked." aside={<span className="eyebrow">Newest first</span>} />
+        <SectionHeading
+          id="history-title"
+          eyebrow="Experience"
+          title="Where I've worked."
+          aside={<span className="eyebrow">Newest first</span>}
+        />
         <ol className="border-t border-ink">
           {experience.map((job, i) => (
             <li key={i} className="flex flex-wrap gap-x-10 gap-y-4 border-b border-line py-7 hover:bg-surface sm:py-8">
               <div className="flex basis-full flex-row flex-wrap items-center gap-2.5 sm:flex-[0_0_200px] sm:flex-col sm:items-start">
                 <span className="font-mono text-[13px] text-muted-foreground">{job.period}</span>
                 {job.current && (
-                  <span className="meta bg-accent px-2 py-1 text-[11px] tracking-[0.06em] text-on-accent">Current</span>
+                  <span className="bg-accent px-2 py-1 meta text-[11px] tracking-[0.06em] text-on-accent">Current</span>
                 )}
               </div>
               <div className="flex flex-[1_1_320px] flex-col gap-3">
-                <h3 className="font-display text-[clamp(24px,6.5vw,28px)] font-extrabold tracking-[-0.025em]">{job.company}</h3>
+                <h3 className="font-display text-[clamp(24px,6.5vw,28px)] font-extrabold tracking-[-0.025em]">
+                  {job.company}
+                </h3>
                 <span className="font-medium">{job.role}</span>
                 <ul className="flex flex-col gap-1.5 text-muted-foreground">
                   {job.notes.map((n, j) => (
@@ -84,7 +91,12 @@ export default function AboutPage() {
       </section>
 
       <section aria-labelledby="cap-title" className="container-x pt-20 sm:pt-30">
-        <SectionHeading id="cap-title" eyebrow="Services" title="What I can work on." aside={<span className="eyebrow">Bring me in for</span>} />
+        <SectionHeading
+          id="cap-title"
+          eyebrow="Services"
+          title="What I can work on."
+          aside={<span className="eyebrow">Bring me in for</span>}
+        />
         <ul className={cellGrid}>
           {capabilities.map((c) => (
             <li key={c.title} className={`${cell} flex flex-col gap-2.5 p-6 hover:bg-surface sm:p-7`}>
@@ -102,12 +114,17 @@ export default function AboutPage() {
         <div className="flex flex-wrap gap-x-16 gap-y-10 bg-invert p-[clamp(28px,5vw,64px)] text-invert-ink">
           <div className="flex min-w-0 flex-[999_1_min(320px,100%)] flex-col gap-5">
             <span className="meta text-[13px] opacity-75">Currently learning</span>
-            <h2 id="learning-title" className="font-display text-[clamp(34px,5.6vw,88px)] leading-[0.9] font-black tracking-[-0.045em] uppercase">
+            <h2
+              id="learning-title"
+              className="font-display text-[clamp(34px,5.6vw,88px)] leading-[0.9] font-black tracking-[-0.045em] uppercase"
+            >
               AI
               <br />
               engineering<span className="text-accent">.</span>
             </h2>
-            <p className="max-w-[520px] text-[17px] leading-normal sm:text-[19px] text-pretty opacity-85">{learning.body}</p>
+            <p className="max-w-[520px] text-[17px] leading-normal text-pretty opacity-85 sm:text-[19px]">
+              {learning.body}
+            </p>
           </div>
           <dl className="flex min-w-0 flex-[1_1_min(300px,100%)] flex-col self-end text-[15px]">
             {learning.facts.map((f, i, arr) => (
@@ -126,7 +143,12 @@ export default function AboutPage() {
       </section>
 
       <section aria-labelledby="facts-title" className="container-x pt-20 sm:pt-30">
-        <SectionHeading id="facts-title" eyebrow="Overview" title="Quick facts." aside={<span className="eyebrow">The CV in 30 seconds</span>} />
+        <SectionHeading
+          id="facts-title"
+          eyebrow="Overview"
+          title="Quick facts."
+          aside={<span className="eyebrow">The CV in 30 seconds</span>}
+        />
         <dl className={cellGrid}>
           {quickFacts.map((f) => (
             <div key={f.label} className={`${cell} flex flex-col gap-2 p-6`}>
@@ -138,11 +160,14 @@ export default function AboutPage() {
       </section>
 
       <section aria-labelledby="reach-title" className="container-x py-20 sm:py-30">
-        <div className="flex flex-wrap gap-x-18 gap-y-10 bg-invert sm:gap-y-14 p-[clamp(28px,5vw,72px)] text-invert-ink">
+        <div className="flex flex-wrap gap-x-18 gap-y-10 bg-invert p-[clamp(28px,5vw,72px)] text-invert-ink sm:gap-y-14">
           <div className="flex min-w-0 flex-[999_1_min(320px,100%)] flex-col justify-between gap-10">
             <div className="flex flex-col gap-5">
               <span className="meta text-[13px] opacity-75">Reach out</span>
-              <h2 id="reach-title" className="font-display text-[clamp(36px,6vw,96px)] leading-[0.9] font-black tracking-[-0.045em] uppercase">
+              <h2
+                id="reach-title"
+                className="font-display text-[clamp(36px,6vw,96px)] leading-[0.9] font-black tracking-[-0.045em] uppercase"
+              >
                 Let&apos;s build
                 <br />
                 something<span className="text-accent">.</span>

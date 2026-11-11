@@ -26,7 +26,12 @@ export function toTopTrack(raw: RawTrack): TopTrack {
   };
 }
 
-export async function getAccessToken(clientId: string, clientSecret: string, refreshToken: string, signal?: AbortSignal) {
+export async function getAccessToken(
+  clientId: string,
+  clientSecret: string,
+  refreshToken: string,
+  signal?: AbortSignal,
+) {
   const res = await fetch(TOKEN_URL, {
     method: "POST",
     signal,

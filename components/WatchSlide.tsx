@@ -25,7 +25,7 @@ export function WatchSlide({ item }: { item: WatchItem }) {
         </a>
         <span className="meta text-muted-foreground">{item.meta}</span>
         {item.progress !== undefined && <ProgressBar value={item.progress} />}
-        <span className="meta mt-1 self-start border border-line px-2 py-1 text-[11px] tracking-[0.06em] text-muted-foreground">
+        <span className="mt-1 self-start border border-line px-2 py-1 meta text-[11px] tracking-[0.06em] text-muted-foreground">
           {item.kind}
         </span>
       </div>

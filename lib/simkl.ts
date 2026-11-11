@@ -107,7 +107,10 @@ const cachedAccessToken = unstable_cache(
 
 function sharedAccessToken(): Promise<string> {
   // Key on a fingerprint of the refresh token, so a new one in the env starts a new cache entry.
-  const grant = createHash("sha256").update(process.env.SIMKL_REFRESH_TOKEN ?? "").digest("hex").slice(0, 16);
+  const grant = createHash("sha256")
+    .update(process.env.SIMKL_REFRESH_TOKEN ?? "")
+    .digest("hex")
+    .slice(0, 16);
   return cachedAccessToken(grant, Math.floor(Date.now() / TOKEN_WINDOW_MS));
 }
 

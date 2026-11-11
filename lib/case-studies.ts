@@ -17,11 +17,9 @@ export type StudyFacts = {
 
 export function parseCaseStudy(source: string) {
   const { data, content } = matter(source);
-  const chapters = [
-    ...content.matchAll(
-      /<Chapter\s+id="([^"]+)"\s+number="([^"]+)"\s+title="([^"]+)"/g,
-    ),
-  ].map(([, id, number, title]) => ({ id, number, title }));
+  const chapters = [...content.matchAll(/<Chapter\s+id="([^"]+)"\s+number="([^"]+)"\s+title="([^"]+)"/g)].map(
+    ([, id, number, title]) => ({ id, number, title }),
+  );
   if (new Set(chapters.map((chapter) => chapter.id)).size !== chapters.length)
     throw new Error("Duplicate chapter anchor");
   return {
@@ -37,12 +35,7 @@ export function parseCaseStudy(source: string) {
 export async function getCaseStudy(slug: string) {
   if (!/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(slug)) return null;
   try {
-    return parseCaseStudy(
-      await readFile(
-        path.join(process.cwd(), "content/case-studies", `${slug}.mdx`),
-        "utf8",
-      ),
-    );
+    return parseCaseStudy(await readFile(path.join(process.cwd(), "content/case-studies", `${slug}.mdx`), "utf8"));
   } catch (error) {
     if ((error as NodeJS.ErrnoException).code === "ENOENT") return null;
     throw error;

@@ -8,8 +8,7 @@ import sideProjectsData from "@/content/side-projects.json";
 import afterHoursData from "@/content/after-hours.json";
 import { getCvMeta, type CvFields } from "./cv-meta";
 
-const orUndefined = <T,>(value: T | null | ""): T | undefined =>
-  value === null || value === "" ? undefined : value;
+const orUndefined = <T>(value: T | null | ""): T | undefined => (value === null || value === "" ? undefined : value);
 
 // Keystatic drops empty fields from the JSON, so `cv` and `cvUpdated` may be missing.
 const { cv: cvFile, cvUpdated, ...profile }: typeof profileData & CvFields = profileData;
@@ -122,7 +121,11 @@ export const games: Game[] = afterHoursData.games.map((g) => ({
 export const explore = {
   work: { href: "/work", title: "Work", label: "Case studies & builds" },
   about: { href: "/about", title: "About", label: "Who I am & where I've worked" },
-  afterHours: { href: "/after-hours", title: "After hours", label: "Music, screens & books" },
+  afterHours: {
+    href: "/after-hours",
+    title: "After hours",
+    label: books.show ? "Music, screens & books" : "Music, screens & games",
+  },
 };
 
 export const shortcuts = [

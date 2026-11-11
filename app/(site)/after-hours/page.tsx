@@ -10,9 +10,12 @@ import { getGames } from "@/lib/steam";
 import { getWatchLists } from "@/lib/simkl";
 import { getTopTrack } from "@/lib/spotify";
 
+// Books stay hidden until `books.show` is switched on in Keystatic.
+const interests = books.show ? "shows, music, games and books" : "shows, music and games";
+
 export const metadata: Metadata = {
   title: "After hours: Life outside code",
-  description: "Shows, music, games and books: what I'm into when the laptop closes.",
+  description: `${interests[0].toUpperCase()}${interests.slice(1)}: what I'm into when the laptop closes.`,
 };
 
 export const revalidate = 3600;
@@ -48,7 +51,7 @@ export default async function AfterHoursPage() {
             hours
           </>
         }
-        intro="The shows, music, games and books I'm into when the laptop closes."
+        intro={`The ${interests} I'm into when the laptop closes.`}
       />
 
       <div className="container-x pb-20 sm:pb-30">
@@ -77,7 +80,7 @@ export default async function AfterHoursPage() {
                 className="aspect-square w-[260px] max-w-full shrink-0 border border-[rgba(128,128,128,0.35)] object-cover"
               />
             ) : (
-              <div className="stripes-invert meta grid aspect-square w-[260px] max-w-full shrink-0 place-items-center border border-[rgba(128,128,128,0.35)] opacity-80">
+              <div className="grid aspect-square w-[260px] max-w-full shrink-0 place-items-center border border-[rgba(128,128,128,0.35)] stripes-invert meta opacity-80">
                 [Album cover]
               </div>
             )}
@@ -110,51 +113,56 @@ export default async function AfterHoursPage() {
           </div>
         </section>
 
-        {/* Books */}
-        <section aria-labelledby="reading" className="mt-16 sm:mt-24">
-          <SectionHeading id="reading" eyebrow="Books" title="On the nightstand." />
-          <div className="grid gap-6 [grid-template-columns:repeat(auto-fit,minmax(min(380px,100%),1fr))]">
-            <div className="flex flex-wrap gap-7 border border-line bg-surface p-6 sm:p-8">
-              <Placeholder label="[Cover]" className="aspect-[2/3] w-40 shrink-0" />
-              <div className="flex flex-[1_1_220px] flex-col gap-2.5">
-                <span className="meta self-start bg-accent px-2 py-1 text-[11px] tracking-[0.06em] text-on-accent">
-                  Currently reading
-                </span>
-                <span className="font-display text-[clamp(26px,7vw,34px)] leading-[1.02] font-extrabold tracking-[-0.03em]">
-                  {books.current.title}
-                </span>
-                <span className="text-muted-foreground">{books.current.author}</span>
-                <p className="mt-1.5 text-pretty">{books.current.note}</p>
-                <div className="mt-auto flex flex-col gap-2 pt-3">
-                  <span className="meta text-muted-foreground">
-                    Page {books.current.page} of {books.current.pages}
+        {/* Books (hidden until `books.show` is on) */}
+        {books.show && (
+          <section aria-labelledby="reading" className="mt-16 sm:mt-24">
+            <SectionHeading id="reading" eyebrow="Books" title="On the nightstand." />
+            <div className="grid [grid-template-columns:repeat(auto-fit,minmax(min(380px,100%),1fr))] gap-6">
+              <div className="flex flex-wrap gap-7 border border-line bg-surface p-6 sm:p-8">
+                <Placeholder label="[Cover]" className="aspect-[2/3] w-40 shrink-0" />
+                <div className="flex flex-[1_1_220px] flex-col gap-2.5">
+                  <span className="self-start bg-accent px-2 py-1 meta text-[11px] tracking-[0.06em] text-on-accent">
+                    Currently reading
                   </span>
-                  <ProgressBar value={readPct} />
+                  <span className="font-display text-[clamp(26px,7vw,34px)] leading-[1.02] font-extrabold tracking-[-0.03em]">
+                    {books.current.title}
+                  </span>
+                  <span className="text-muted-foreground">{books.current.author}</span>
+                  <p className="mt-1.5 text-pretty">{books.current.note}</p>
+                  <div className="mt-auto flex flex-col gap-2 pt-3">
+                    <span className="meta text-muted-foreground">
+                      Page {books.current.page} of {books.current.pages}
+                    </span>
+                    <ProgressBar value={readPct} />
+                  </div>
                 </div>
               </div>
+              <div className="flex flex-col gap-5 border border-line p-6 sm:p-8">
+                <h3 className="eyebrow font-medium">Recently finished</h3>
+                <ul className="border-t border-ink">
+                  {books.finished.map((b, i) => (
+                    <li
+                      key={i}
+                      className="flex flex-wrap items-center gap-x-5 gap-y-0.5 border-b border-line py-4 hover:bg-surface"
+                    >
+                      <span className="min-w-[60%] flex-1 font-semibold">{b.title}</span>
+                      <span className="text-muted-foreground">{b.author}</span>
+                    </li>
+                  ))}
+                </ul>
+                <a href={books.listHref} className="inline-flex min-h-11 items-center meta text-[13px]">
+                  Full reading list ↗
+                </a>
+              </div>
             </div>
-            <div className="flex flex-col gap-5 border border-line p-6 sm:p-8">
-              <h3 className="eyebrow font-medium">Recently finished</h3>
-              <ul className="border-t border-ink">
-                {books.finished.map((b, i) => (
-                  <li key={i} className="flex flex-wrap items-center gap-x-5 gap-y-0.5 border-b border-line py-4 hover:bg-surface">
-                    <span className="min-w-[60%] flex-1 font-semibold">{b.title}</span>
-                    <span className="text-muted-foreground">{b.author}</span>
-                  </li>
-                ))}
-              </ul>
-              <a href={books.listHref} className="meta inline-flex min-h-11 items-center text-[13px]">
-                Full reading list ↗
-              </a>
-            </div>
-          </div>
-        </section>
+          </section>
+        )}
 
         {/* Games (live from Steam; falls back to the Keystatic list when Steam has nothing).
             data-games-source / data-games-status show in DevTools; the badge only renders in `next dev`. */}
         <div className="contents" data-games-source={gamesSource} data-games-status={gameLists.status}>
           {process.env.NODE_ENV === "development" && (
-            <p className="meta mt-16 text-[11px] text-muted-foreground sm:mt-24">
+            <p className="mt-16 meta text-[11px] text-muted-foreground sm:mt-24">
               [dev] Games source: {gamesSource} ({gameLists.status})
             </p>
           )}

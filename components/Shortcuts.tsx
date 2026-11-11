@@ -112,7 +112,7 @@ export function ShortcutsOverlay() {
                 </li>
               ))}
             </ul>
-            <p className="meta px-6 pt-3.5 pb-[18px] text-muted-foreground">Shortcuts pause while you&apos;re typing</p>
+            <p className="px-6 pt-3.5 pb-[18px] meta text-muted-foreground">Shortcuts pause while you&apos;re typing</p>
           </div>
         </div>
       )}

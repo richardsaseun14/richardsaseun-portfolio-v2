@@ -8,7 +8,7 @@ export function HeroName() {
   const { sparkle } = usePrefs();
   return (
     <div className="hero-name relative inline-block max-w-full" onMouseEnter={sparkle}>
-      <h1 id="hero-title" className="page-title cursor-default" style={{ fontSize: "clamp(52px, 10.4vw, 168px)" }}>
+      <h1 id="hero-title" className="cursor-default page-title" style={{ fontSize: "clamp(52px, 10.4vw, 168px)" }}>
         Richard
         <br />
         Saseun<span className="text-accent">.</span>

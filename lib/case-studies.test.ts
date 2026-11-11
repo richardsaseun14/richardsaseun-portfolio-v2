@@ -8,9 +8,7 @@ describe("case study authoring", () => {
     );
     expect(result.facts.role).toBe("Engineer");
     expect(result.facts.stats[0].label).toBe("Latency");
-    expect(result.chapters).toEqual([
-      { id: "brief", number: "01", title: "The brief" },
-    ]);
+    expect(result.chapters).toEqual([{ id: "brief", number: "01", title: "The brief" }]);
   });
   it("defaults missing optional fields", () => {
     expect(parseCaseStudy("Some text").facts).toEqual({ links: [], stats: [] });
@@ -21,9 +19,7 @@ describe("case study authoring", () => {
   });
   it("rejects duplicate chapter anchors", () => {
     expect(() =>
-      parseCaseStudy(
-        '<Chapter id="a" number="01" title="A" />\n<Chapter id="a" number="02" title="B" />',
-      ),
+      parseCaseStudy('<Chapter id="a" number="01" title="A" />\n<Chapter id="a" number="02" title="B" />'),
     ).toThrow("Duplicate");
   });
 });

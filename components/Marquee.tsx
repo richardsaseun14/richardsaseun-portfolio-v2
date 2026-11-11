@@ -13,7 +13,7 @@ export function Marquee() {
           <div
             key={copy}
             aria-hidden={copy === 1}
-            className="flex h-10 shrink-0 items-center gap-9 pr-9 font-mono text-[13px] font-medium uppercase tracking-[0.08em] whitespace-nowrap"
+            className="flex h-10 shrink-0 items-center gap-9 pr-9 font-mono text-[13px] font-medium tracking-[0.08em] whitespace-nowrap uppercase"
           >
             {marquee.map((word) => (
               <span key={word} className="flex items-center gap-9">

@@ -39,9 +39,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
         <script dangerouslySetInnerHTML={{ __html: introInitScript }} />
       </head>
-      <body
-        className="min-h-screen overflow-x-clip bg-bg text-ink"
-      >
+      <body className="min-h-screen overflow-x-clip bg-bg text-ink">
         <PrefsProvider>
           <IntroPreloader label={site.name} />
           <Marquee />
