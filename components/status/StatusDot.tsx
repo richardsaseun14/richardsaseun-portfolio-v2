@@ -28,7 +28,7 @@ export function StatusDot({ status, size = "size-2.5" }: { status: Status; size?
 
 export function StatusPill({ status }: { status: Status }) {
   return (
-    <span className="meta inline-flex sm:min-w-[148px] items-center gap-2 border border-line px-3 py-1.5 text-ink">
+    <span className="inline-flex items-center gap-2 border border-line px-3 py-1.5 meta text-ink sm:min-w-[148px]">
       <StatusDot status={status} size="size-2" />
       {STATUS_LABEL[status]}
     </span>

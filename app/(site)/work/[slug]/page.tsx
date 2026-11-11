@@ -21,9 +21,7 @@ export async function generateStaticParams() {
 }
 export async function generateMetadata({ params }: Params): Promise<Metadata> {
   const { slug } = await params;
-  const project = (await getProjects()).find(
-    (project) => project.slug === slug,
-  );
+  const project = (await getProjects()).find((project) => project.slug === slug);
   return {
     title: project ? `${project.name} case study` : "Case study",
     description: project?.caseStudy?.summary ?? site.bio,
@@ -31,10 +29,7 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
 }
 export default async function CaseStudyPage({ params }: Params) {
   const { slug } = await params;
-  const [projects, study] = await Promise.all([
-    getProjects(),
-    getCaseStudy(slug),
-  ]);
+  const [projects, study] = await Promise.all([getProjects(), getCaseStudy(slug)]);
   const project = projects.find((project) => project.slug === slug);
   const loadBody = bodies[slug as keyof typeof bodies];
   if (!project?.caseStudy || !study || !loadBody) notFound();
@@ -54,24 +49,17 @@ export default async function CaseStudyPage({ params }: Params) {
   return (
     <main>
       <header className="container-x pt-8 sm:pt-12">
-        <Link
-          href="/work"
-          className="meta inline-flex min-h-11 items-center gap-2 text-[13px] no-underline"
-        >
+        <Link href="/work" className="inline-flex min-h-11 items-center gap-2 meta text-[13px] no-underline">
           <ArrowLeft size={16} /> Back to Work
         </Link>
-        <p className="meta mt-8 text-muted-foreground">
-          {[project.type, cs.industry, project.year]
-            .filter(Boolean)
-            .join(" · ")}
+        <p className="mt-8 meta text-muted-foreground">
+          {[project.type, cs.industry, project.year].filter(Boolean).join(" · ")}
         </p>
-        <h1 className="page-title mt-4 [overflow-wrap:anywhere]">
+        <h1 className="mt-4 page-title [overflow-wrap:anywhere]">
           {project.name}
           <span className="text-accent">.</span>
         </h1>
-        <p className="mt-6 max-w-[740px] text-[19px] leading-relaxed sm:text-[22px]">
-          {cs.summary}
-        </p>
+        <p className="mt-6 max-w-[740px] text-[19px] leading-relaxed sm:text-[22px]">{cs.summary}</p>
         <dl className="mt-10 grid gap-6 border-t border-line pt-6 sm:grid-cols-2 lg:[grid-template-columns:repeat(auto-fit,minmax(180px,1fr))]">
           {details.map(([label, value]) => (
             <div key={label}>
@@ -81,7 +69,7 @@ export default async function CaseStudyPage({ params }: Params) {
           ))}
         </dl>
         {links.length > 0 && (
-          <div className="meta mt-8 flex flex-wrap gap-6">
+          <div className="mt-8 flex flex-wrap gap-6 meta">
             {links.map((link) => (
               <a
                 key={link.href}
@@ -98,13 +86,15 @@ export default async function CaseStudyPage({ params }: Params) {
       </header>
       <div className="container-x pt-10 sm:pt-14">
         <Media src={cs.heroImage} alt={`${project.name} interface`} priority />
-        {facts.stats.length > 0 && <div className="mt-8">
-          <Stats>
-            {facts.stats.map((stat) => (
-              <Stat key={stat.label} {...stat} />
-            ))}
-          </Stats>
-        </div>}
+        {facts.stats.length > 0 && (
+          <div className="mt-8">
+            <Stats>
+              {facts.stats.map((stat) => (
+                <Stat key={stat.label} {...stat} />
+              ))}
+            </Stats>
+          </div>
+        )}
       </div>
       <div className="container-x pt-16 sm:pt-24">
         <div className="cs-layout">
@@ -115,10 +105,7 @@ export default async function CaseStudyPage({ params }: Params) {
         </div>
       </div>
       <ProjectNav projects={projects} slug={slug} />
-      <ExploreCards
-        items={["work", "about", "afterHours"]}
-        labels={{ work: "More case studies" }}
-      />
+      <ExploreCards items={["work", "about", "afterHours"]} labels={{ work: "More case studies" }} />
     </main>
   );
 }

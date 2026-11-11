@@ -18,12 +18,12 @@ export default async function Home() {
       {/* Hero */}
       <section aria-labelledby="hero-title" className="relative isolate container-x pt-12 pb-14 sm:pt-18">
         <HeroStars />
-        <div className="eyebrow flex flex-wrap justify-between gap-3 pb-7">
+        <div className="flex flex-wrap justify-between gap-3 pb-7 eyebrow">
           <span>Full-stack engineer · Web &amp; mobile</span>
           <span>Building since 2017</span>
         </div>
         <HeroName />
-        <div className="mt-12 grid items-end gap-10 [grid-template-columns:repeat(auto-fit,minmax(min(420px,100%),1fr))]">
+        <div className="mt-12 grid [grid-template-columns:repeat(auto-fit,minmax(min(420px,100%),1fr))] items-end gap-10">
           <p className="max-w-[640px] text-[clamp(22px,2.2vw,30px)] leading-[1.25] tracking-[-0.02em] text-pretty">
             A software engineer who thinks like a product owner. I use AI-assisted workflows to move faster and
             engineering discipline to make sure what ships, lasts.
@@ -53,7 +53,7 @@ export default async function Home() {
                 {s.value}
                 {s.accent && <span className="text-accent">{s.accent}</span>}
               </div>
-              <div className="meta mt-3 text-muted-foreground">{s.label}</div>
+              <div className="mt-3 meta text-muted-foreground">{s.label}</div>
             </div>
           ))}
         </div>
@@ -62,7 +62,7 @@ export default async function Home() {
       {/* End to end */}
       <section aria-labelledby="solo-title" className="container-x pt-20 sm:pt-30">
         <div className="flex flex-wrap gap-x-16 gap-y-8">
-          <span className="eyebrow flex-[1_1_200px] pt-2.5">End to end</span>
+          <span className="flex-[1_1_200px] pt-2.5 eyebrow">End to end</span>
           <div className="flex flex-[999_1_640px] flex-col gap-7">
             <h2
               id="solo-title"
@@ -75,7 +75,10 @@ export default async function Home() {
               So I can own a feature end to end or slot into any part of a team and understand how my piece connects to
               everyone else&apos;s.
             </p>
-            <ol aria-label="What I cover" className="mt-2 flex flex-wrap items-center gap-2.5 font-mono text-xs uppercase tracking-[0.06em]">
+            <ol
+              aria-label="What I cover"
+              className="mt-2 flex flex-wrap items-center gap-2.5 font-mono text-xs tracking-[0.06em] uppercase"
+            >
               {pipeline.map((step, i) => (
                 <li key={step} className="contents">
                   <span
@@ -107,7 +110,7 @@ export default async function Home() {
             aside={
               <Link
                 href="/work"
-                className="meta inline-flex h-11 items-center gap-2.5 border border-line px-[18px] text-ink no-underline hover:border-ink"
+                className="inline-flex h-11 items-center gap-2.5 border border-line px-[18px] meta text-ink no-underline hover:border-ink"
               >
                 View all projects <ArrowRight size={16} />
               </Link>
@@ -116,7 +119,7 @@ export default async function Home() {
 
           <Link
             href={`/work/${featured.slug}`}
-            className="group grid overflow-hidden border border-line bg-surface text-ink no-underline hover:text-ink [grid-template-columns:repeat(auto-fit,minmax(min(480px,100%),1fr))]"
+            className="group grid [grid-template-columns:repeat(auto-fit,minmax(min(480px,100%),1fr))] overflow-hidden border border-line bg-surface text-ink no-underline hover:text-ink"
           >
             <div className="overflow-hidden border-b border-line md:border-r md:border-b-0">
               <Placeholder
@@ -126,12 +129,14 @@ export default async function Home() {
             </div>
             <div className="flex flex-col justify-between gap-8 p-6 sm:p-10">
               <div className="flex flex-col gap-4">
-                <div className="meta flex flex-wrap gap-2">
+                <div className="flex flex-wrap gap-2 meta">
                   <span className="bg-accent px-2.5 py-1.5 text-on-accent">Featured</span>
                   <span className="border border-line px-2.5 py-1.5 text-muted-foreground">{featured.type}</span>
                   <span className="border border-line px-2.5 py-1.5 text-muted-foreground">{featured.role}</span>
                 </div>
-                <h3 className="font-display text-[clamp(32px,8vw,44px)] leading-none font-extrabold tracking-[-0.03em]">{featured.name}</h3>
+                <h3 className="font-display text-[clamp(32px,8vw,44px)] leading-none font-extrabold tracking-[-0.03em]">
+                  {featured.name}
+                </h3>
                 <p className="max-w-[460px] text-lg text-pretty text-muted-foreground">{featured.blurb}</p>
               </div>
               {featured.metrics && featured.metrics.length > 0 && (
@@ -153,7 +158,7 @@ export default async function Home() {
             </div>
           </Link>
 
-          <div className="mt-6 grid gap-6 [grid-template-columns:repeat(auto-fit,minmax(min(400px,100%),1fr))]">
+          <div className="mt-6 grid [grid-template-columns:repeat(auto-fit,minmax(min(400px,100%),1fr))] gap-6">
             {more.map((p) => (
               <Link
                 key={p.slug}
@@ -168,9 +173,12 @@ export default async function Home() {
                 </div>
                 <div className="flex flex-col gap-2.5 p-6 sm:p-7">
                   <span className="meta text-muted-foreground">
-                  {p.type}{p.year && ` · ${p.year}`}
+                    {p.type}
+                    {p.year && ` · ${p.year}`}
                   </span>
-                  <h3 className="font-display text-[clamp(26px,7vw,30px)] font-extrabold tracking-[-0.03em]">{p.name}</h3>
+                  <h3 className="font-display text-[clamp(26px,7vw,30px)] font-extrabold tracking-[-0.03em]">
+                    {p.name}
+                  </h3>
                   <p className="text-muted-foreground">{p.blurb}</p>
                 </div>
               </Link>
@@ -192,7 +200,7 @@ export default async function Home() {
             </>
           }
         />
-        <div className="grid border-t border-ink [grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr))]">
+        <div className="grid [grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr))] border-t border-ink">
           {principles.map((p, i) => (
             <div
               key={p.title}
@@ -217,13 +225,16 @@ export default async function Home() {
         />
         <div className="border-t border-ink">
           {stack.map((row) => (
-            <div key={row.group} className="flex flex-wrap items-center gap-x-6 gap-y-4 border-b border-line py-6 hover:bg-surface">
-              <span className="eyebrow basis-full sm:flex-[0_0_200px]">{row.group}</span>
+            <div
+              key={row.group}
+              className="flex flex-wrap items-center gap-x-6 gap-y-4 border-b border-line py-6 hover:bg-surface"
+            >
+              <span className="basis-full eyebrow sm:flex-[0_0_200px]">{row.group}</span>
               <div className="flex flex-[1_1_320px] flex-wrap gap-2">
                 {row.items.map((item) => (
                   <span
                     key={item}
-                    className="border border-line px-3 py-2 font-medium sm:px-4 sm:py-2.5 transition-colors hover:bg-ink hover:text-bg"
+                    className="border border-line px-3 py-2 font-medium transition-colors hover:bg-ink hover:text-bg sm:px-4 sm:py-2.5"
                   >
                     {item}
                   </span>

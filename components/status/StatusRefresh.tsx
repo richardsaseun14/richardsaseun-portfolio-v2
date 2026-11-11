@@ -24,7 +24,7 @@ export function StatusRefresh({ checkedAt, everyMs }: { checkedAt: string; every
   const ago = now === null ? "just now" : formatAgo(now - Date.parse(checkedAt));
 
   return (
-    <div className="meta flex items-center gap-3 opacity-80">
+    <div className="flex items-center gap-3 meta opacity-80">
       <time dateTime={checkedAt} aria-live="polite">
         Checked {ago}
       </time>

@@ -19,7 +19,7 @@ export function GameLibrary({ games }: { games: Game[] }) {
           type="button"
           aria-pressed={shelf === s}
           onClick={() => setShelf(s)}
-          className={`meta h-11 cursor-pointer border px-[18px] ${
+          className={`h-11 cursor-pointer border px-[18px] meta ${
             shelf === s ? "border-ink bg-ink text-bg" : "border-line text-ink hover:border-ink"
           }`}
         >
@@ -39,7 +39,7 @@ export function GameLibrary({ games }: { games: Game[] }) {
             <span className="meta text-muted-foreground">{g.meta}</span>
           </div>
           <span
-            className={`meta self-start px-2 py-1 text-[11px] tracking-[0.06em] ${
+            className={`self-start px-2 py-1 meta text-[11px] tracking-[0.06em] ${
               g.status === "Playing" ? "bg-accent text-on-accent" : "border border-line text-muted-foreground"
             }`}
           >

@@ -19,7 +19,9 @@ export function Footer() {
 
           <div className="flex flex-wrap gap-x-12 gap-y-10 sm:gap-x-20">
             <nav aria-labelledby="ft-sitemap" className="flex flex-col gap-1.5">
-              <h2 id="ft-sitemap" className={colTitle}>Sitemap</h2>
+              <h2 id="ft-sitemap" className={colTitle}>
+                Sitemap
+              </h2>
               {nav.map((item) => (
                 <Link key={item.href} href={item.href} className="no-underline">
                   {item.label}
@@ -27,21 +29,27 @@ export function Footer() {
               ))}
             </nav>
             <nav aria-labelledby="ft-social" className="flex flex-col gap-1.5">
-              <h2 id="ft-social" className={colTitle}>Elsewhere</h2>
+              <h2 id="ft-social" className={colTitle}>
+                Elsewhere
+              </h2>
               {site.socials.map((s) => (
                 <a key={s.label} href={s.href} target="_blank" rel="noreferrer" className="no-underline">
                   {s.label} ↗
                 </a>
               ))}
-              <a href={mailto} className="no-underline">Email ↗</a>
+              <a href={mailto} className="no-underline">
+                Email ↗
+              </a>
               <CvFooterLink className="no-underline" />
             </nav>
           </div>
         </div>
 
-        <div className="meta flex flex-wrap justify-between gap-4 border-t border-line pt-6 text-muted-foreground">
+        <div className="flex flex-wrap justify-between gap-4 border-t border-line pt-6 meta text-muted-foreground">
           <span className="flex flex-wrap items-center gap-5">
-            <span>© {new Date().getFullYear()} {site.name} · Built in Lagos</span>
+            <span>
+              © {new Date().getFullYear()} {site.name} · Built in Lagos
+            </span>
             <Link href="/status" className="inline-flex min-h-8 items-center text-ink no-underline">
               Status
             </Link>

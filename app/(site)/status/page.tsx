@@ -25,7 +25,7 @@ export default async function StatusPage() {
 
       <section aria-label="Service status" className="container-x pt-12 pb-20 sm:pt-16 sm:pb-30">
         <StatusBoard report={report} refreshMs={REVALIDATE * 1000} />
-        <p className="meta mt-6 text-muted-foreground">
+        <p className="mt-6 meta text-muted-foreground">
           Response times measured from the server. Over {SLOW_MS / 1000} s counts as degraded; no answer within{" "}
           {TIMEOUT_MS / 1000} s counts as an outage.
         </p>

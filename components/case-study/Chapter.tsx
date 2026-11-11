@@ -12,12 +12,7 @@ export function Chapter({
   children: ReactNode;
 }) {
   return (
-    <section
-      id={id}
-      data-chapter
-      aria-labelledby={`${id}-title`}
-      className="cs-chapter"
-    >
+    <section id={id} data-chapter aria-labelledby={`${id}-title`} className="cs-chapter">
       <p className="meta text-accent">Chapter {number}</p>
       <h2
         id={`${id}-title`}

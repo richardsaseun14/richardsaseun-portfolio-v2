@@ -56,7 +56,8 @@ export function CursorFollower() {
       ring.x = lerp(ring.x, mouse.x, ringF);
       ring.y = lerp(ring.y, mouse.y, ringF);
       if (dotRef.current) dotRef.current.style.transform = `translate(${dot.x}px, ${dot.y}px) translate(-50%, -50%)`;
-      if (ringRef.current) ringRef.current.style.transform = `translate(${ring.x}px, ${ring.y}px) translate(-50%, -50%)`;
+      if (ringRef.current)
+        ringRef.current.style.transform = `translate(${ring.x}px, ${ring.y}px) translate(-50%, -50%)`;
       frame = requestAnimationFrame(tick);
     };
 
@@ -82,7 +83,7 @@ export function CursorFollower() {
       <div ref={dotRef} className="absolute top-0 left-0 size-2 rounded-full bg-ink will-change-transform" />
       <div
         ref={ringRef}
-        className="absolute top-0 left-0 rounded-full border border-ink will-change-transform transition-[width,height] duration-300"
+        className="absolute top-0 left-0 rounded-full border border-ink transition-[width,height] duration-300 will-change-transform"
         style={{ width: hovering ? 44 : 28, height: hovering ? 44 : 28 }}
       />
     </div>

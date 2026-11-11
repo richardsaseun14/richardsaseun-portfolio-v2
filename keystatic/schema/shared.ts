@@ -4,8 +4,7 @@ import { fields } from "@keystatic/core";
 
 export const text = (label: string, description?: string) => fields.text({ label, description });
 
-export const longText = (label: string, description?: string) =>
-  fields.text({ label, description, multiline: true });
+export const longText = (label: string, description?: string) => fields.text({ label, description, multiline: true });
 
 export const textList = (label: string, itemLabel: string) =>
   fields.array(fields.text({ label: itemLabel }), {

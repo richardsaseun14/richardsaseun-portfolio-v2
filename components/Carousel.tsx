@@ -34,16 +34,29 @@ export function Carousel({
         <div className="flex flex-wrap items-center gap-x-6 gap-y-3">
           {controls}
           <div className="hidden gap-2 sm:flex">
-            <button type="button" aria-label={`Scroll ${eyebrow.toLowerCase()} left`} onClick={() => slide(-1)} className={navBtn}>
+            <button
+              type="button"
+              aria-label={`Scroll ${eyebrow.toLowerCase()} left`}
+              onClick={() => slide(-1)}
+              className={navBtn}
+            >
               <ArrowLeft />
             </button>
-            <button type="button" aria-label={`Scroll ${eyebrow.toLowerCase()} right`} onClick={() => slide(1)} className={navBtn}>
+            <button
+              type="button"
+              aria-label={`Scroll ${eyebrow.toLowerCase()} right`}
+              onClick={() => slide(1)}
+              className={navBtn}
+            >
               <ArrowRight />
             </button>
           </div>
         </div>
       </div>
-      <div ref={rail} className="no-scrollbar -mx-5 flex snap-x snap-mandatory scroll-px-5 gap-4 overflow-x-auto scroll-smooth px-5 pb-1 sm:mx-0 sm:scroll-px-0 sm:gap-5 sm:px-0">
+      <div
+        ref={rail}
+        className="-mx-5 no-scrollbar flex snap-x snap-mandatory scroll-px-5 gap-4 overflow-x-auto scroll-smooth px-5 pb-1 sm:mx-0 sm:scroll-px-0 sm:gap-5 sm:px-0"
+      >
         {children}
       </div>
     </section>

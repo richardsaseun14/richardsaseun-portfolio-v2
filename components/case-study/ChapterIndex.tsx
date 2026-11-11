@@ -9,12 +9,7 @@ export function ChapterIndex({ chapters }: { chapters: ChapterEntry[] }) {
       .map(({ id }) => document.getElementById(id))
       .filter((node): node is HTMLElement => !!node);
     const update = () => {
-      const current = sections
-        .filter(
-          (node) =>
-            node.getBoundingClientRect().top <= window.innerHeight * 0.35,
-        )
-        .at(-1);
+      const current = sections.filter((node) => node.getBoundingClientRect().top <= window.innerHeight * 0.35).at(-1);
       setActive(current?.id ?? sections[0]?.id);
     };
     const observer = new IntersectionObserver(update, {
@@ -31,15 +26,11 @@ export function ChapterIndex({ chapters }: { chapters: ChapterEntry[] }) {
   }, [chapters]);
   return (
     <nav aria-label="Case study chapters" className="cs-index">
-      <p className="eyebrow mb-5">In this case study</p>
+      <p className="mb-5 eyebrow">In this case study</p>
       <ol>
         {chapters.map(({ id, number, title }) => (
           <li key={id}>
-            <a
-              href={`#${id}`}
-              aria-current={active === id ? "location" : undefined}
-              className="cs-index-link"
-            >
+            <a href={`#${id}`} aria-current={active === id ? "location" : undefined} className="cs-index-link">
               <span className="meta">{number}</span>
               <span>{title}</span>
             </a>

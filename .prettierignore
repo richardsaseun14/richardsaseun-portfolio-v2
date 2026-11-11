@@ -1,0 +1,11 @@
+.next
+.vercel
+node_modules
+coverage
+out
+package-lock.json
+next-env.d.ts
+public
+design
+content
+graphify-out

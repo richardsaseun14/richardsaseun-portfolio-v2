@@ -45,30 +45,47 @@ export default async function WorkPage() {
             </p>
           </SectionHeading>
 
-          <div className="grid gap-5 [grid-template-columns:repeat(auto-fill,minmax(min(300px,100%),1fr))]">
+          <div className="grid [grid-template-columns:repeat(auto-fill,minmax(min(300px,100%),1fr))] gap-5">
             {sideProjects.map((sp, i) => (
-              <article key={`${sp.name}-${i}`} className="flex min-h-60 flex-col gap-3.5 border border-line bg-surface p-6 hover:border-ink">
+              <article
+                key={`${sp.name}-${i}`}
+                className="flex min-h-60 flex-col gap-3.5 border border-line bg-surface p-6 hover:border-ink"
+              >
                 <div className="flex items-center justify-between gap-3">
                   <span className="meta text-muted-foreground">{sp.date}</span>
-                  <span className={`meta px-2 py-1 text-[11px] tracking-[0.06em] ${statusStyle[sp.status]}`}>{sp.status}</span>
+                  <span className={`px-2 py-1 meta text-[11px] tracking-[0.06em] ${statusStyle[sp.status]}`}>
+                    {sp.status}
+                  </span>
                 </div>
-                <h3 className="font-display text-[clamp(22px,6vw,26px)] leading-[1.05] font-extrabold tracking-[-0.025em]">{sp.name}</h3>
+                <h3 className="font-display text-[clamp(22px,6vw,26px)] leading-[1.05] font-extrabold tracking-[-0.025em]">
+                  {sp.name}
+                </h3>
                 <p className="grow text-pretty text-muted-foreground">{sp.blurb}</p>
-                <div className="meta flex flex-wrap gap-1.5 text-[11px]">
+                <div className="flex flex-wrap gap-1.5 meta text-[11px]">
                   {sp.tags.map((t) => (
                     <span key={t} className="border border-line px-2 py-1 text-muted-foreground">
                       {t}
                     </span>
                   ))}
                 </div>
-                <div className="meta flex gap-6 border-t border-line pt-3.5">
+                <div className="flex gap-6 border-t border-line pt-3.5 meta">
                   {sp.demo && (
-                    <a href={sp.demo} target="_blank" rel="noreferrer" className="inline-flex min-h-8 items-center no-underline">
+                    <a
+                      href={sp.demo}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="inline-flex min-h-8 items-center no-underline"
+                    >
                       Try it ↗
                     </a>
                   )}
                   {sp.code && (
-                    <a href={sp.code} target="_blank" rel="noreferrer" className="inline-flex min-h-8 items-center no-underline">
+                    <a
+                      href={sp.code}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="inline-flex min-h-8 items-center no-underline"
+                    >
                       Code ↗
                     </a>
                   )}
@@ -82,7 +99,9 @@ export default async function WorkPage() {
       <section className="container-x pt-16 pb-20 sm:pt-24 sm:pb-30">
         <div className="flex flex-wrap items-center justify-between gap-6 border border-line bg-surface p-6 sm:p-10">
           <div className="flex flex-col gap-1.5">
-            <span className="font-display text-[clamp(24px,7vw,32px)] font-extrabold tracking-[-0.03em]">Some work is under NDA.</span>
+            <span className="font-display text-[clamp(24px,7vw,32px)] font-extrabold tracking-[-0.03em]">
+              Some work is under NDA.
+            </span>
             <span className="text-muted-foreground">Happy to walk through it on a call.</span>
           </div>
           <div className="flex w-full flex-wrap items-center gap-3 sm:w-auto">

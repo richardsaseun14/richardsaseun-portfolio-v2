@@ -18,7 +18,7 @@ export const profile = singleton({
     }),
     cvUpdated: fields.date({
       label: "CV last updated",
-      description: "Optional. Shown as \"Updated <month year>\" next to the CV button.",
+      description: 'Optional. Shown as "Updated <month year>" next to the CV button.',
     }),
     socials: fields.array(
       fields.object({

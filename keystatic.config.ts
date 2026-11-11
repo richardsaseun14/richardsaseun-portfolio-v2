@@ -11,15 +11,13 @@ import { afterHours } from "./keystatic/schema/after-hours";
 const useGitHub = process.env.NEXT_PUBLIC_KEYSTATIC_STORAGE === "github";
 
 export default config({
-  storage: useGitHub
-    ? { kind: "github", repo: "richardsaseun14/richardsaseun-portfolio-v2" }
-    : { kind: "local" },
+  storage: useGitHub ? { kind: "github", repo: "richardsaseun14/richardsaseun-portfolio-v2" } : { kind: "local" },
   ui: {
     brand: { name: "RS Portfolio" },
     navigation: {
       Pages: ["home", "about", "afterHours"],
       Work: ["projects", "sideProjects"],
-      More: ["profile"]
+      More: ["profile"],
     },
   },
   singletons: { profile, home, about, afterHours, sideProjects },

@@ -3,7 +3,14 @@ import type { RootKey } from "@/lib/content";
 export function RootIcon({ kind }: { kind: RootKey }) {
   if (kind === "roots") {
     return (
-      <svg role="img" aria-label="Flag of Nigeria" width="112" height="56" viewBox="0 0 6 3" className="block border border-line">
+      <svg
+        role="img"
+        aria-label="Flag of Nigeria"
+        width="112"
+        height="56"
+        viewBox="0 0 6 3"
+        className="block border border-line"
+      >
         <rect x="0" y="0" width="2" height="3" fill="#008751" />
         <rect x="2" y="0" width="2" height="3" fill="#FFFFFF" />
         <rect x="4" y="0" width="2" height="3" fill="#008751" />

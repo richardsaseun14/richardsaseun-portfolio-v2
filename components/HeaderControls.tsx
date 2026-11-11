@@ -16,7 +16,7 @@ export function Tip({ children }: { children: React.ReactNode }) {
   return (
     <span
       aria-hidden
-      className="hk-tip pointer-events-none absolute top-[calc(100%+8px)] right-0 z-30 bg-ink px-[9px] py-1.5 font-mono text-[11px] whitespace-nowrap text-bg uppercase tracking-[0.06em]"
+      className="hk-tip pointer-events-none absolute top-[calc(100%+8px)] right-0 z-30 bg-ink px-[9px] py-1.5 font-mono text-[11px] tracking-[0.06em] whitespace-nowrap text-bg uppercase"
     >
       {children}
     </span>
@@ -26,7 +26,7 @@ export function Tip({ children }: { children: React.ReactNode }) {
 export function LagosTime({ className = "" }: { className?: string }) {
   return (
     <span
-      className={`flex h-11 items-center gap-2 px-1.5 font-mono text-xs uppercase tracking-[0.04em] text-muted-foreground ${className}`}
+      className={`flex h-11 items-center gap-2 px-1.5 font-mono text-xs tracking-[0.04em] text-muted-foreground uppercase ${className}`}
     >
       <Clock />
       Lagos <LagosClock className="text-ink" /> {site.tzLabel}
@@ -37,7 +37,7 @@ export function LagosTime({ className = "" }: { className?: string }) {
 export function Availability({ className = "" }: { className?: string }) {
   return (
     <span
-      className={`flex h-11 items-center gap-2 border border-line px-3.5 font-mono text-xs uppercase tracking-[0.04em] text-muted-foreground ${className}`}
+      className={`flex h-11 items-center gap-2 border border-line px-3.5 font-mono text-xs tracking-[0.04em] text-muted-foreground uppercase ${className}`}
     >
       <span className="size-2 rounded-full bg-live" />
       Open to roles

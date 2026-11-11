@@ -42,8 +42,7 @@ function write(key: string, value: string) {
 }
 
 function applyTheme(mode: ThemeMode) {
-  const dark =
-    mode === "dark" || (mode === "auto" && window.matchMedia("(prefers-color-scheme: dark)").matches);
+  const dark = mode === "dark" || (mode === "auto" && window.matchMedia("(prefers-color-scheme: dark)").matches);
   document.documentElement.dataset.theme = dark ? "dark" : "light";
 }
 
@@ -58,7 +57,8 @@ function useSynth() {
 
   const tone = useCallback(
     (freq: number, at = 0, dur = 0.2, opts: { type?: OscillatorType; vol?: number; to?: number } = {}) => {
-      const AC = window.AudioContext || (window as unknown as { webkitAudioContext?: typeof AudioContext }).webkitAudioContext;
+      const AC =
+        window.AudioContext || (window as unknown as { webkitAudioContext?: typeof AudioContext }).webkitAudioContext;
       if (!AC) return;
       ctxRef.current ??= new AC();
       const ac = ctxRef.current;
@@ -228,9 +228,12 @@ export function PrefsProvider({ children }: { children: React.ReactNode }) {
     return () => window.removeEventListener("keydown", onKey);
   }, [toggleSound, setMode, openPanel, closePanel, closeTip]);
 
-  useEffect(() => () => {
-    if (tipTimer.current) clearTimeout(tipTimer.current);
-  }, []);
+  useEffect(
+    () => () => {
+      if (tipTimer.current) clearTimeout(tipTimer.current);
+    },
+    [],
+  );
 
   const value = useMemo<Prefs>(
     () => ({ mode, setMode, sound, toggleSound, sparkle, tip, closeTip, panel, openPanel, closePanel }),

@@ -21,7 +21,7 @@ export function Header() {
   }, []);
 
   return (
-    <header className="sticky top-0 z-40 isolate border-b border-line">
+    <header className="sticky top-0 isolate z-40 border-b border-line">
       {/* Glass layer lives on its own element: backdrop-filter on the header
           would trap the fixed-position MobileMenu inside the header box. */}
       <div
@@ -35,7 +35,7 @@ export function Header() {
 
         <nav
           aria-label="Primary"
-          className="hidden items-center gap-7 font-mono text-[13px] uppercase tracking-[0.04em] md:flex"
+          className="hidden items-center gap-7 font-mono text-[13px] tracking-[0.04em] uppercase md:flex"
         >
           {nav.map((item) => {
             const active = isActive(pathname, item.href);
@@ -44,11 +44,7 @@ export function Header() {
                 key={item.href}
                 href={item.href}
                 aria-current={active ? "page" : undefined}
-                className={
-                  active
-                    ? "underline decoration-accent decoration-2 underline-offset-[6px]"
-                    : "no-underline"
-                }
+                className={active ? "underline decoration-accent decoration-2 underline-offset-[6px]" : "no-underline"}
               >
                 {item.label}
               </Link>

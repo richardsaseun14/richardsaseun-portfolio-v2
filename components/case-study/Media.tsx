@@ -22,7 +22,7 @@ export function Media({
           className="object-contain"
         />
       ) : (
-        <span className="meta absolute inset-0 grid place-items-center p-6 text-center text-muted-foreground">
+        <span className="absolute inset-0 grid place-items-center p-6 text-center meta text-muted-foreground">
           TODO: Add {alt}
         </span>
       )}

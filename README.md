@@ -13,19 +13,19 @@ npm run typecheck
 
 ## Where things live
 
-| What | Where |
-| --- | --- |
-| All editable copy (profile, home, about, after hours, side projects) | `content/*.json`, edited at `/keystatic` |
-| Project listing metadata | `content/projects/<slug>.json`, edited at `/keystatic` |
-| Case study body and hero facts | `content/case-studies/<slug>.mdx` |
-| Content schema (what the editor shows) | `keystatic.config.ts`, `keystatic/schema/*` |
-| Typed content for components, plus nav / shortcuts | `lib/content.ts`, `lib/projects.ts` |
-| Colours, fonts, shared utilities (eyebrow, page-title, stripes…) | `app/(site)/globals.css` |
-| Pages | `app/(site)/page.tsx` (Home), `app/(site)/work`, `app/(site)/work/[slug]` (case study), `app/(site)/about`, `app/(site)/after-hours` |
-| Theme / sound / keyboard shortcuts / click sounds | `components/PrefsProvider.tsx` |
-| Nav, footer, scrolling top bar | `components/Header.tsx`, `Footer.tsx`, `Marquee.tsx` |
-| Portrait | `public/richard-portrait.jpg` |
-| CV PDF and the `/cv` route | `content/cv/`, `app/(site)/cv/route.ts`, `lib/cv.ts` |
+| What                                                                 | Where                                                                                                                                |
+| -------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
+| All editable copy (profile, home, about, after hours, side projects) | `content/*.json`, edited at `/keystatic`                                                                                             |
+| Project listing metadata                                             | `content/projects/<slug>.json`, edited at `/keystatic`                                                                               |
+| Case study body and hero facts                                       | `content/case-studies/<slug>.mdx`                                                                                                    |
+| Content schema (what the editor shows)                               | `keystatic.config.ts`, `keystatic/schema/*`                                                                                          |
+| Typed content for components, plus nav / shortcuts                   | `lib/content.ts`, `lib/projects.ts`                                                                                                  |
+| Colours, fonts, shared utilities (eyebrow, page-title, stripes…)     | `app/(site)/globals.css`                                                                                                             |
+| Pages                                                                | `app/(site)/page.tsx` (Home), `app/(site)/work`, `app/(site)/work/[slug]` (case study), `app/(site)/about`, `app/(site)/after-hours` |
+| Theme / sound / keyboard shortcuts / click sounds                    | `components/PrefsProvider.tsx`                                                                                                       |
+| Nav, footer, scrolling top bar                                       | `components/Header.tsx`, `Footer.tsx`, `Marquee.tsx`                                                                                 |
+| Portrait                                                             | `public/richard-portrait.jpg`                                                                                                        |
+| CV PDF and the `/cv` route                                           | `content/cv/`, `app/(site)/cv/route.ts`, `lib/cv.ts`                                                                                 |
 
 ## Editing content (Keystatic)
 
@@ -52,6 +52,7 @@ To add a project, create its Keystatic entry and matching MDX file, then add the
 The CV is written in Google Docs and served from a permanent link: `/cv` downloads it as `Richard-Saseun-CV.pdf`, and `/cv?view=1` opens it in the browser. Share these links (LinkedIn, email); they never change.
 
 To update it:
+
 1. In Google Docs: File > Download > PDF document.
 2. Open `/keystatic` > More > Profile > CV (PDF), and upload the file. Replacing it overwrites `content/cv/cv.pdf`.
 3. Optionally set "CV last updated" to show "Updated <month year>" next to the buttons.
@@ -64,6 +65,7 @@ Only upload PDFs. Keystatic's file field can't restrict file types, so the site 
 Set `NEXT_PUBLIC_KEYSTATIC_STORAGE=github` to make `/keystatic` commit to GitHub instead of the local disk. Each save then triggers a redeploy.
 
 One-time setup:
+
 1. Locally, add `NEXT_PUBLIC_KEYSTATIC_STORAGE=github` to `.env.local`, run `npm run dev` and open `/keystatic`.
 2. Follow the prompt to create a GitHub App for the repo. Keystatic writes `KEYSTATIC_GITHUB_CLIENT_ID`, `KEYSTATIC_GITHUB_CLIENT_SECRET`, `KEYSTATIC_SECRET` and `NEXT_PUBLIC_KEYSTATIC_GITHUB_APP_SLUG` into `.env`.
 3. Copy those four values plus `NEXT_PUBLIC_KEYSTATIC_STORAGE=github` into your host's environment variables (e.g. Vercel) and redeploy.
@@ -76,6 +78,7 @@ Only GitHub users with write access to the repo can sign in and save.
 The Watching now, Recently finished and Up next carousels on `/after-hours` come from Simkl. Following Simkl's sync guide, the site checks `/sync/activities` hourly and refetches the library (one `/sync/all-items` call) only when something changed, or once a day. They disappear when the env vars below aren't set.
 
 One-time setup:
+
 1. Create an app at https://simkl.com/settings/developer/ and choose "TV, devices & command line". Copy its Client ID.
 2. Request a device code, then open the returned `verification_uri` and enter the `user_code`:
    ```bash
@@ -95,6 +98,7 @@ The site exchanges the refresh token for a 7-day access token, shares it across 
 The Music block on `/after-hours` shows your most-played Spotify track from the last ~4 weeks (cover, title, artist, link). It refreshes hourly. The note and playlists link come from Keystatic, and the whole block falls back to Keystatic content when the env vars below aren't set.
 
 One-time setup:
+
 1. Create an app at https://developer.spotify.com/dashboard (select "Web API"). Add the redirect URI `http://127.0.0.1:3000/callback` (Spotify rejects `localhost`). Copy the Client ID and Client Secret.
 2. Open this URL, approve, then copy the `code` parameter from the address bar it redirects to (the page itself won't load, which is fine):
    ```
@@ -113,6 +117,7 @@ Apps in development mode only work for users on the app's allowlist; the owner a
 The Playing now and Recently played carousels on `/after-hours` come from your Steam library (cover, title, rounded playtime). They refresh hourly. When the env vars below aren't set, the profile is private, or Steam errors, the page falls back to the games list managed in Keystatic.
 
 One-time setup:
+
 1. Create a key at https://steamcommunity.com/dev/apikey (any domain name works).
 2. Find your 64-bit SteamID (the 17-digit number, not the vanity URL), e.g. via https://steamid.io.
 3. In Steam, set Profile -> Edit Profile -> Privacy Settings -> Game details to Public. A private setting returns no games, so the section stays hidden.

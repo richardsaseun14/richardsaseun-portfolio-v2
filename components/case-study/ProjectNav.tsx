@@ -1,12 +1,6 @@
 import Link from "next/link";
 import type { Project } from "@/lib/content";
-export function ProjectNav({
-  projects,
-  slug,
-}: {
-  projects: Project[];
-  slug: string;
-}) {
+export function ProjectNav({ projects, slug }: { projects: Project[]; slug: string }) {
   if (projects.length < 2) return null;
   const index = projects.findIndex((project) => project.slug === slug);
   const neighbors = [
@@ -20,10 +14,7 @@ export function ProjectNav({
     },
   ];
   return (
-    <nav
-      aria-label="More case studies"
-      className="container-x grid gap-px py-20 sm:grid-cols-2 sm:py-28"
-    >
+    <nav aria-label="More case studies" className="container-x grid gap-px py-20 sm:grid-cols-2 sm:py-28">
       {neighbors.map(({ label, project }) => (
         <Link
           key={label}

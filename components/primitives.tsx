@@ -45,7 +45,7 @@ export function PageIntro({
 }) {
   return (
     <section className="container-x pt-12 sm:pt-18">
-      <div className="eyebrow flex flex-wrap justify-between gap-3 pb-7">
+      <div className="flex flex-wrap justify-between gap-3 pb-7 eyebrow">
         <span>{eyebrow}</span>
         {eyebrowRight && <span>{eyebrowRight}</span>}
       </div>
@@ -57,7 +57,7 @@ export function PageIntro({
         {action}
       </div>
       {intro && (
-        <p className="mt-8 max-w-[680px] sm:mt-10 text-[clamp(20px,2vw,26px)] leading-[1.3] tracking-[-0.015em] text-pretty text-muted-foreground">
+        <p className="mt-8 max-w-[680px] text-[clamp(20px,2vw,26px)] leading-[1.3] tracking-[-0.015em] text-pretty text-muted-foreground sm:mt-10">
           {intro}
         </p>
       )}
@@ -113,7 +113,7 @@ export function ButtonLink({
 /** Striped placeholder box for screenshots, posters and covers. */
 export function Placeholder({ label, className = "" }: { label?: string; className?: string }) {
   return (
-    <div className={`stripes meta grid place-items-center border border-line text-muted-foreground ${className}`}>
+    <div className={`grid place-items-center border border-line stripes meta text-muted-foreground ${className}`}>
       {label}
     </div>
   );

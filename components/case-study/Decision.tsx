@@ -1,27 +1,14 @@
 import type { ReactNode } from "react";
 export function ProblemList({ children }: { children: ReactNode }) {
-  return (
-    <ul className="divide-y divide-line border-y border-line">{children}</ul>
-  );
+  return <ul className="divide-y divide-line border-y border-line">{children}</ul>;
 }
-export function Problem({
-  n,
-  decision,
-  children,
-}: {
-  n: string;
-  decision: string;
-  children: ReactNode;
-}) {
+export function Problem({ n, decision, children }: { n: string; decision: string; children: ReactNode }) {
   return (
     <li className="grid gap-3 py-6 sm:grid-cols-[40px_1fr]">
       <span className="meta text-accent">P{n}</span>
       <div>
         {children}
-        <a
-          className="mt-3 block text-sm underline underline-offset-4"
-          href={`#decision-${decision}`}
-        >
+        <a className="mt-3 block text-sm underline underline-offset-4" href={`#decision-${decision}`}>
           See decision {decision} →
         </a>
       </div>
@@ -44,10 +31,7 @@ export function Decision({
   proof: string;
 }) {
   return (
-    <aside
-      id={`decision-${n}`}
-      className="scroll-mt-28 border border-line border-l-2 border-l-accent p-6 sm:p-8"
-    >
+    <aside id={`decision-${n}`} className="scroll-mt-28 border border-l-2 border-line border-l-accent p-6 sm:p-8">
       <p className="meta text-accent">
         Decision {n} · {problem}
       </p>

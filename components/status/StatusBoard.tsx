@@ -37,7 +37,7 @@ export function StatusBoard({ report, refreshMs }: { report: StatusReport; refre
               <span className="text-lg font-semibold">{r.name}</span>
               <span className="text-muted-foreground">{r.description}</span>
             </div>
-            <span className="meta col-start-1 row-start-2 text-muted-foreground sm:col-start-auto sm:row-start-auto sm:text-right">
+            <span className="col-start-1 row-start-2 meta text-muted-foreground sm:col-start-auto sm:row-start-auto sm:text-right">
               {r.status === "unconfigured" ? "—" : formatLatency(r.latencyMs)}
               {r.code ? ` · HTTP ${r.code}` : ""}
             </span>

@@ -37,7 +37,7 @@ export function CvButtons({
       >
         <Download /> Download CV
       </a>
-      <span className="meta flex items-center gap-3 text-muted-foreground">
+      <span className="flex items-center gap-3 meta text-muted-foreground">
         <a
           href={cv.viewHref}
           target="_blank"

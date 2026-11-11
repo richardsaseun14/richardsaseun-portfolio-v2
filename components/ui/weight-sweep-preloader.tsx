@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 // Weight Sweep Preloader — a type-specimen loading gate. The page is one giant
 // counter set in a variable grotesk, and as the load climbs from 000 to 100 the
@@ -10,55 +10,55 @@
 // One file, React only. Every rule in the scoped <style> is .wsp- prefixed and
 // nothing is fetched: the faces come from the host page or the fallback stacks.
 
-import * as React from "react"
+import * as React from "react";
 
 export interface SweepPalette {
   /** The specimen sheet. */
-  paper: string
+  paper: string;
   /** The numerals, HUD type, rail and the panel that rises at the end. */
-  ink: string
+  ink: string;
 }
 
-export type SweepPreset = "paper" | "ink" | "vermilion" | "bone"
+export type SweepPreset = "paper" | "ink" | "vermilion" | "bone";
 
 export interface WeightSweepPreloaderProps {
   /** Content revealed once the gate lifts. Ignored while `loop` is set. */
-  children?: React.ReactNode
+  children?: React.ReactNode;
   /** Run forever as a showcase: children are never revealed, onComplete never fires. */
-  loop?: boolean
+  loop?: boolean;
   /**
    * Real loading progress, 0–100. Leave undefined to run the built-in
    * simulated load over `durationMs`. The count holds until this hits 100.
    */
-  progress?: number
+  progress?: number;
   /** Length of the simulated load. Defaults to 3600ms. */
-  durationMs?: number
+  durationMs?: number;
   /** Starting colours. Defaults to "paper". */
-  preset?: SweepPreset
+  preset?: SweepPreset;
   /** Colour overrides, merged over the preset. */
-  palette?: { paper?: string; ink?: string }
+  palette?: { paper?: string; ink?: string };
   /** Top-left line of the HUD. */
-  label?: string
+  label?: string;
   /** Bottom-left caption beside the rail. */
-  caption?: string
+  caption?: string;
   /** The italic line on the closing panel. Empty string skips the panel. */
-  message?: string
+  message?: string;
   /** Lightest and heaviest weight of the sweep. Defaults to [100, 900]. */
-  weights?: [number, number]
+  weights?: [number, number];
   /** Corner type, the rail and the live weight readout. Defaults to true. */
-  hud?: boolean
+  hud?: boolean;
   /** Face for the numerals. Variable fonts sweep smoothly; static ones step. */
-  fontFamily?: string
+  fontFamily?: string;
   /** Face for the closing line. */
-  serifFamily?: string
+  serifFamily?: string;
   /** Face for the HUD. */
-  monoFamily?: string
+  monoFamily?: string;
   /** Root height. A definite length, never a percentage. */
-  height?: string
+  height?: string;
   /** Fired once, after the gate has lifted. */
-  onComplete?: () => void
+  onComplete?: () => void;
   /** Extra root class names. */
-  className?: string
+  className?: string;
 }
 
 const PRESETS: { [K in SweepPreset]: SweepPalette } = {
@@ -66,24 +66,24 @@ const PRESETS: { [K in SweepPreset]: SweepPalette } = {
   ink: { paper: "#121110", ink: "#ece6da" },
   vermilion: { paper: "#ec472c", ink: "#140c0a" },
   bone: { paper: "#e6dfd1", ink: "#2b2620" },
-}
+};
 
 const SANS_STACK =
-  '"Inter Tight", "Inter Variable", "Inter", "Segoe UI Variable Display", "SF Pro Display", "Helvetica Neue", system-ui, sans-serif'
-const SERIF_STACK = '"Instrument Serif", "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif'
-const MONO_STACK = '"JetBrains Mono", "SF Mono", ui-monospace, Menlo, Consolas, monospace'
+  '"Inter Tight", "Inter Variable", "Inter", "Segoe UI Variable Display", "SF Pro Display", "Helvetica Neue", system-ui, sans-serif';
+const SERIF_STACK = '"Instrument Serif", "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif';
+const MONO_STACK = '"JetBrains Mono", "SF Mono", ui-monospace, Menlo, Consolas, monospace';
 
-const TICKS = 40
-const PANEL_MS = 900
-const HOLD_MS = 1300
-const LIFT_MS = 700
+const TICKS = 40;
+const PANEL_MS = 900;
+const HOLD_MS = 1300;
+const LIFT_MS = 700;
 
 // #region timeline
 // Pure helpers for the preloader timeline.
 
 /** Clamp to [0, 1]. */
 export function wspClamp01(v: number) {
-  return v < 0 ? 0 : v > 1 ? 1 : v
+  return v < 0 ? 0 : v > 1 ? 1 : v;
 }
 
 /**
@@ -92,33 +92,33 @@ export function wspClamp01(v: number) {
  * runs backwards. Exactly 0 at t = 0 and exactly 100 at t = 1.
  */
 export function wspSimulated(t: number) {
-  const k = wspClamp01(t)
-  const ease = k < 0.5 ? 4 * k * k * k : 1 - Math.pow(-2 * k + 2, 3) / 2
-  const stall = 0.035 * Math.sin(k * Math.PI * 3) * Math.sin(k * Math.PI)
-  return Math.max(0, Math.min(100, (ease - stall) * 100))
+  const k = wspClamp01(t);
+  const ease = k < 0.5 ? 4 * k * k * k : 1 - Math.pow(-2 * k + 2, 3) / 2;
+  const stall = 0.035 * Math.sin(k * Math.PI * 3) * Math.sin(k * Math.PI);
+  return Math.max(0, Math.min(100, (ease - stall) * 100));
 }
 
 /** The weight drawn at a given percentage, between the lightest and heaviest. */
 export function wspWeight(pct: number, lo: number, hi: number) {
-  const a = Math.max(1, Math.min(1000, lo))
-  const b = Math.max(1, Math.min(1000, hi))
-  return Math.round(a + (b - a) * wspClamp01(pct / 100))
+  const a = Math.max(1, Math.min(1000, lo));
+  const b = Math.max(1, Math.min(1000, hi));
+  return Math.round(a + (b - a) * wspClamp01(pct / 100));
 }
 
 /** Tracking in em for a weight: hairlines sit open, black sits tight. */
 export function wspTracking(weight: number) {
-  return -0.02 - 0.06 * wspClamp01((weight - 100) / 800)
+  return -0.02 - 0.06 * wspClamp01((weight - 100) / 800);
 }
 
 /** How many of the rail's ticks are lit at a percentage. */
 export function wspTicks(pct: number, total: number) {
-  return Math.round(wspClamp01(pct / 100) * total)
+  return Math.round(wspClamp01(pct / 100) * total);
 }
 
 /** Zero-padded three-digit count. */
 export function wspPad(pct: number) {
-  const n = Math.max(0, Math.min(100, Math.floor(pct)))
-  return (n < 10 ? "00" : n < 100 ? "0" : "") + n
+  const n = Math.max(0, Math.min(100, Math.floor(pct)));
+  return (n < 10 ? "00" : n < 100 ? "0" : "") + n;
 }
 // #endregion
 
@@ -178,7 +178,7 @@ const WSP_CSS = `
   .wsp-line, .wsp-replay { transition: none; transform: none; }
   .wsp-tick { transition: none; }
 }
-`
+`;
 
 export default function WeightSweepPreloader({
   children,
@@ -199,84 +199,91 @@ export default function WeightSweepPreloader({
   onComplete,
   className = "",
 }: WeightSweepPreloaderProps) {
-  const colors = { ...(PRESETS[preset] || PRESETS.paper), ...(palette || {}) }
-  const [pct, setPct] = React.useState(0)
-  const [phase, setPhase] = React.useState("load" as "load" | "panel" | "lift" | "done")
-  const [run, setRun] = React.useState(0)
-  const [reduced, setReduced] = React.useState(false)
-  const onCompleteRef = React.useRef(onComplete)
-  onCompleteRef.current = onComplete
-  const progressRef = React.useRef(progress)
-  progressRef.current = progress
+  const colors = { ...(PRESETS[preset] || PRESETS.paper), ...(palette || {}) };
+  const [pct, setPct] = React.useState(0);
+  const [phase, setPhase] = React.useState("load" as "load" | "panel" | "lift" | "done");
+  const [run, setRun] = React.useState(0);
+  const [reduced, setReduced] = React.useState(false);
+  const onCompleteRef = React.useRef(onComplete);
+  onCompleteRef.current = onComplete;
+  const progressRef = React.useRef(progress);
+  progressRef.current = progress;
 
   React.useEffect(() => {
-    const mq = window.matchMedia("(prefers-reduced-motion: reduce)")
-    const sync = () => setReduced(mq.matches)
-    sync()
-    mq.addEventListener("change", sync)
-    return () => mq.removeEventListener("change", sync)
-  }, [])
+    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const sync = () => setReduced(mq.matches);
+    sync();
+    mq.addEventListener("change", sync);
+    return () => mq.removeEventListener("change", sync);
+  }, []);
 
   // The count: simulated, or eased toward the real progress, never backwards.
   React.useEffect(() => {
-    if (phase !== "load") return
-    let raf = 0
-    let shown = 0
-    const t0 = performance.now()
-    const dur = Math.max(400, durationMs)
+    if (phase !== "load") return;
+    let raf = 0;
+    let shown = 0;
+    const t0 = performance.now();
+    const dur = Math.max(400, durationMs);
     const tick = (now: number) => {
-      const real = progressRef.current
-      const target = real === undefined ? wspSimulated((now - t0) / dur) : Math.max(0, Math.min(100, Number(real) || 0))
-      shown = reduced ? Math.max(shown, target) : Math.max(shown, shown + (target - shown) * 0.18)
-      if (target >= 100 && shown > 99.6) shown = 100
-      setPct(shown)
+      const real = progressRef.current;
+      const target =
+        real === undefined ? wspSimulated((now - t0) / dur) : Math.max(0, Math.min(100, Number(real) || 0));
+      shown = reduced ? Math.max(shown, target) : Math.max(shown, shown + (target - shown) * 0.18);
+      if (target >= 100 && shown > 99.6) shown = 100;
+      setPct(shown);
       if (shown >= 100) {
-        setPhase(message ? "panel" : "lift")
-        return
+        setPhase(message ? "panel" : "lift");
+        return;
       }
-      raf = requestAnimationFrame(tick)
-    }
-    raf = requestAnimationFrame(tick)
-    return () => cancelAnimationFrame(raf)
-  }, [phase, run, durationMs, reduced, message])
+      raf = requestAnimationFrame(tick);
+    };
+    raf = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(raf);
+  }, [phase, run, durationMs, reduced, message]);
 
   // Panel → hold → lift (or loop back to the start).
   React.useEffect(() => {
     if (phase === "panel") {
-      const t = setTimeout(() => {
-        if (loop) return
-        setPhase("lift")
-      }, (reduced ? 0 : PANEL_MS) + HOLD_MS)
-      return () => clearTimeout(t)
+      const t = setTimeout(
+        () => {
+          if (loop) return;
+          setPhase("lift");
+        },
+        (reduced ? 0 : PANEL_MS) + HOLD_MS,
+      );
+      return () => clearTimeout(t);
     }
     if (phase === "lift") {
-      const t = setTimeout(() => {
-        setPhase("done")
-        if (!loop) onCompleteRef.current?.()
-      }, reduced ? 0 : LIFT_MS)
-      return () => clearTimeout(t)
+      const t = setTimeout(
+        () => {
+          setPhase("done");
+          if (!loop) onCompleteRef.current?.();
+        },
+        reduced ? 0 : LIFT_MS,
+      );
+      return () => clearTimeout(t);
     }
-    return undefined
-  }, [phase, loop, reduced])
+    return undefined;
+  }, [phase, loop, reduced]);
 
   // A showcase loop restarts by itself a beat after the panel lands.
   React.useEffect(() => {
-    if (!loop || phase !== "panel") return
-    const t = setTimeout(() => replay(), PANEL_MS + HOLD_MS + 1600)
-    return () => clearTimeout(t)
-  }, [loop, phase, run])
+    if (!loop || phase !== "panel") return;
+    const t = setTimeout(() => replay(), PANEL_MS + HOLD_MS + 1600);
+    return () => clearTimeout(t);
+  }, [loop, phase, run]);
 
   const replay = () => {
-    setPct(0)
-    setPhase("load")
-    setRun((r) => r + 1)
-  }
+    setPct(0);
+    setPhase("load");
+    setRun((r) => r + 1);
+  };
 
-  const [lo, hi] = weights
-  const weight = wspWeight(pct, lo, hi)
-  const lit = wspTicks(pct, TICKS)
-  const count = wspPad(pct)
-  const done = phase === "done"
+  const [lo, hi] = weights;
+  const weight = wspWeight(pct, lo, hi);
+  const lit = wspTicks(pct, TICKS);
+  const count = wspPad(pct);
+  const done = phase === "done";
 
   return (
     <div
@@ -348,5 +355,5 @@ export default function WeightSweepPreloader({
         </div>
       )}
     </div>
-  )
+  );
 }
