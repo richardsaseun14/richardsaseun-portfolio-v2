@@ -20,6 +20,11 @@ export const afterHours = singleton({
     ),
     books: fields.object(
       {
+        show: fields.checkbox({
+          label: "Show on site",
+          description: "Leave off until the books below are filled in.",
+          defaultValue: false,
+        }),
         current: fields.object(
           {
             title: text("Title"),
@@ -30,10 +35,10 @@ export const afterHours = singleton({
           },
           { label: "Currently reading" },
         ),
-        finished: fields.array(
-          fields.object({ title: text("Title"), author: text("Author") }),
-          { label: "Finished", itemLabel: (props) => props.fields.title.value || "Book" },
-        ),
+        finished: fields.array(fields.object({ title: text("Title"), author: text("Author") }), {
+          label: "Finished",
+          itemLabel: (props) => props.fields.title.value || "Book",
+        }),
         listHref: text("Reading list URL"),
       },
       { label: "Books" },

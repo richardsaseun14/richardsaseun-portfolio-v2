@@ -8,6 +8,7 @@
     "cover": null
   },
   "books": {
+    "show": false,
     "current": {
       "title": "[Book title]",
       "author": "[Author]",
