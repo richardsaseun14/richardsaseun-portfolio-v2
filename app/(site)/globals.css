@@ -204,24 +204,61 @@
 
 /* ---------- Hero portrait (hover reveal) ---------- */
 .hero-photo {
+  pointer-events: none;
   opacity: 0;
   transform: translate(24px, -50%) rotate(-6deg) scale(0.92);
   transition:
     opacity 0.25s ease,
     transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
-.hero-name:hover .hero-photo {
+.hero-name:hover .hero-photo,
+.hero-name:focus-within .hero-photo {
+  pointer-events: auto;
   opacity: 1;
   transform: translate(40px, -50%) rotate(3deg) scale(1);
 }
+/* Bridge the reveal's 40px offset so the photo stays open while the pointer crosses. */
+.hero-photo::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 100%;
+  width: 64px;
+}
+.portrait-terminal-tab {
+  opacity: 0;
+  transform: translateX(-6px);
+  transition:
+    opacity 0.18s ease-out,
+    transform 0.18s ease-out;
+}
+.hero-photo:hover .portrait-terminal-tab,
+.portrait-terminal-trigger:focus-visible .portrait-terminal-tab,
+.portrait-terminal-trigger[data-state="open"] .portrait-terminal-tab {
+  opacity: 1;
+  transform: none;
+}
 @media (hover: none), (max-width: 900px) {
-  .hero-photo {
+  .hero-photo,
+  .hero-name:hover .hero-photo,
+  .hero-name:focus-within .hero-photo {
+    pointer-events: auto;
     position: relative !important;
     top: auto !important;
     left: auto !important;
     margin-top: 28px;
     opacity: 1;
     transform: rotate(-2deg);
+  }
+  .hero-photo::before {
+    display: none;
+  }
+}
+@media (hover: none), (pointer: coarse) {
+  .portrait-terminal-tab {
+    opacity: 1;
+    transform: none;
   }
 }
 
@@ -285,6 +322,7 @@
     animation: none;
   }
   .hero-photo,
+  .portrait-terminal-tab,
   .hk-tip {
     transition: none;
   }

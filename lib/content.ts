@@ -7,6 +7,7 @@ import profileData from "@/content/profile.json";
 import sideProjectsData from "@/content/side-projects.json";
 import afterHoursData from "@/content/after-hours.json";
 import { getCvMeta, type CvFields } from "./cv-meta";
+import type { AskAiConfig } from "./ask-ai";
 
 const orUndefined = <T>(value: T | null | ""): T | undefined => (value === null || value === "" ? undefined : value);
 
@@ -20,6 +21,12 @@ export const site = {
   wordmark: { pre: "r", post: "saseun" },
   timeZone: "Africa/Lagos",
   tzLabel: "WAT",
+};
+
+// Keystatic may omit empty fields; incomplete Ask AI settings hide the component.
+export const askAi: AskAiConfig = {
+  ...(profileData as { askAi?: Pick<AskAiConfig, "enabled" | "prompt"> }).askAi,
+  siteUrl: (profileData as { siteUrl?: string }).siteUrl,
 };
 
 export const mailto = `mailto:${site.email}`;

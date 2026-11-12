@@ -60,6 +60,14 @@ To update it:
 
 Only upload PDFs. Keystatic's file field can't restrict file types, so the site checks instead: anything that isn't a real PDF is treated as no CV. When there's no CV, `/cv` returns 404 and the CV buttons on Home, About and the footer are hidden.
 
+### Ask AI
+
+The home portrait is the entry point to an interactive briefing terminal. On desktop, hover over the name to reveal the portrait, then hover over the photo to discover a small `>_` tab. Click anywhere on the portrait to open the terminal. Keyboard focus reveals the photo and tab; Enter or Space opens it. On touch devices the tab stays visible and one tap opens the terminal. The terminal offers clickable `whoami`, `ls projects`, and `cat team-fit` commands. Exploring all three reveals a bonus `sudo hire richard` contact command. Closing the dialog resets exploration. ChatGPT and Claude links are available throughout; no AI service is called inside the site. In `/keystatic` > More > Profile, set the **Canonical site URL** to the public HTTPS portfolio address and edit **Ask AI** > **Prompt template**. Every `{siteUrl}` placeholder is replaced with that URL. The default prompt asks for no more than 120 words in up to four short bullets. Both assistants receive the same editable template; their final output length is controlled by the provider. Update the prompt's availability wording when it changes.
+
+Turn off **Show Ask AI links** to remove the portrait interaction while keeping the photo. Missing prompts or invalid URLs also hide the links. Links open a new tab; sign-in, prompt handling, and the assistant's ability to browse depend on the provider and visitor's account. In GitHub mode, saving these settings commits the content and triggers a redeploy.
+
+The links reserve `data-analytics-event="ask_ai_clicked"` and `data-analytics-provider="chatgpt|claude"` for issue #8. These hooks do not send analytics until that integration is added.
+
 ### Editing from the live site (GitHub mode)
 
 Set `NEXT_PUBLIC_KEYSTATIC_STORAGE=github` to make `/keystatic` commit to GitHub instead of the local disk. Each save then triggers a redeploy.

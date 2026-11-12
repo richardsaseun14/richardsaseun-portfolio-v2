@@ -1,3 +1,4 @@
+import { AskAI } from "@/components/AskAI";
 import Link from "next/link";
 import { HeroName } from "@/components/HeroName";
 import { HeroStars } from "@/components/HeroStars";
@@ -22,7 +23,7 @@ export default async function Home() {
           <span>Full-stack engineer · Web &amp; mobile</span>
           <span>Building since 2017</span>
         </div>
-        <HeroName />
+        <HeroName portraitAction={<AskAI />} />
         <div className="mt-12 grid [grid-template-columns:repeat(auto-fit,minmax(min(420px,100%),1fr))] items-end gap-10">
           <p className="max-w-[640px] text-[clamp(22px,2.2vw,30px)] leading-[1.25] tracking-[-0.02em] text-pretty">
             A software engineer who thinks like a product owner. I use AI-assisted workflows to move faster and
