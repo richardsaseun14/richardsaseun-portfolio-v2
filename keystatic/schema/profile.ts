@@ -11,6 +11,17 @@ export const profile = singleton({
     location: text("Location"),
     bio: longText("Bio", "Used in the hero, footer and default page description."),
     replyTime: text("Reply time"),
+    siteUrl: text("Canonical site URL", "Public HTTPS URL assistants should research, including https://."),
+    askAi: fields.object(
+      {
+        enabled: fields.checkbox({ label: "Show Ask AI links", defaultValue: false }),
+        prompt: longText(
+          "Prompt template",
+          "Use {siteUrl} for the canonical URL above. Update availability wording when it changes.",
+        ),
+      },
+      { label: "Ask AI" },
+    ),
     cv: fields.file({
       label: "CV (PDF)",
       directory: "content/cv",

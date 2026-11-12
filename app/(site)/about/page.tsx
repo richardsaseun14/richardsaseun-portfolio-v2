@@ -1,3 +1,4 @@
+import { AskAI } from "@/components/AskAI";
 import type { Metadata } from "next";
 import { ExploreCards } from "@/components/ExploreCards";
 import { GetInTouchLink } from "@/components/GetInTouchLink";
@@ -26,7 +27,12 @@ export default function AboutPage() {
         eyebrow="About"
         eyebrowRight="Last updated [October 2026]"
         title="About"
-        action={<CvButtons location="about" />}
+        action={
+          <div className="flex w-full flex-col items-start gap-5 sm:w-auto">
+            <CvButtons location="about" />
+            <AskAI />
+          </div>
+        }
         intro="Who I am, where I've worked, the kind of work I can take on for you, and a few quick facts for when you just need the overview."
       />
 

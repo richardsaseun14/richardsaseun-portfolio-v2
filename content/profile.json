@@ -18,5 +18,10 @@
       "label": "X",
       "href": "https://x.com/richardsaseun"
     }
-  ]
+  ],
+  "siteUrl": "https://builtbysaseun.com",
+  "askAi": {
+    "enabled": true,
+    "prompt": "Tell me about Richard Saseun, a product-minded software engineer based in Lagos, Nigeria, currently open to new roles. Visit {siteUrl} and summarize Richard's background, experience, key projects, and superpowers. What makes Richard a standout product engineer, and what kind of team or role would Richard be a strong fit for? Give a concise, evidence-based briefing in no more than 120 words, using up to four short bullets covering background, standout projects, strengths, and role fit. Prioritize concrete details from the portfolio; avoid generic praise and repetition."
+  }
 }

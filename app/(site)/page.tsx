@@ -1,3 +1,4 @@
+import { AskAI } from "@/components/AskAI";
 import Link from "next/link";
 import { HeroName } from "@/components/HeroName";
 import { HeroStars } from "@/components/HeroStars";
@@ -28,13 +29,16 @@ export default async function Home() {
             A software engineer who thinks like a product owner. I use AI-assisted workflows to move faster and
             engineering discipline to make sure what ships, lasts.
           </p>
-          <div className="flex flex-wrap justify-start gap-3 sm:justify-end">
-            <ButtonLink href={mailto} full>
-              Discuss a role
-            </ButtonLink>
-            <ButtonLink href="/work" variant="ghost" icon={false} full>
-              Explore my work
-            </ButtonLink>
+          <div className="flex flex-col items-start gap-5 sm:items-end">
+            <div className="flex w-full flex-wrap justify-start gap-3 sm:justify-end">
+              <ButtonLink href={mailto} full>
+                Discuss a role
+              </ButtonLink>
+              <ButtonLink href="/work" variant="ghost" icon={false} full>
+                Explore my work
+              </ButtonLink>
+            </div>
+            <AskAI />
           </div>
         </div>
       </section>
