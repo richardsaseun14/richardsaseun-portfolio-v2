@@ -34,19 +34,15 @@ export function AskAIBriefing({ links, briefing }: { links: AskAiLink[]; briefin
       <Dialog.Trigger asChild>
         <button
           type="button"
-          className={`group flex w-full max-w-[380px] cursor-pointer items-center gap-3 border border-line bg-bg p-3 text-left text-ink transition-colors hover:border-accent data-[state=open]:border-accent sm:w-[340px] ${focusStyle}`}
+          aria-label="Explore Richard’s briefing terminal"
+          className="portrait-terminal-trigger absolute inset-0 cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-6 focus-visible:outline-accent"
         >
           <span
             aria-hidden="true"
-            className="grid size-10 shrink-0 place-items-center bg-surface font-mono text-lg text-accent"
+            className="portrait-terminal-tab absolute right-[-18px] bottom-5 grid size-9 place-items-center border border-bg bg-accent font-mono text-sm text-on-accent shadow-sm"
           >
             &gt;_
           </span>
-          <span className="flex min-w-0 flex-1 flex-col gap-1">
-            <span className="font-mono text-[13px] font-semibold">&gt; explore richard</span>
-            <span className="text-xs text-muted-foreground">An interactive introduction</span>
-          </span>
-          <ArrowUpRight size={18} className="text-accent" />
         </button>
       </Dialog.Trigger>
       <Dialog.Portal>
