@@ -1,5 +1,6 @@
 import { AskAI } from "@/components/AskAI";
 import Link from "next/link";
+import Image from "next/image";
 import { HeroName } from "@/components/HeroName";
 import { HeroStars } from "@/components/HeroStars";
 import { ExploreCards } from "@/components/ExploreCards";
@@ -122,11 +123,21 @@ export default async function Home() {
             href={`/work/${featured.slug}`}
             className="group grid [grid-template-columns:repeat(auto-fit,minmax(min(480px,100%),1fr))] overflow-hidden border border-line bg-surface text-ink no-underline hover:text-ink"
           >
-            <div className="overflow-hidden border-b border-line md:border-r md:border-b-0">
-              <Placeholder
-                label="[Product screenshot]"
-                className="aspect-[4/3] border-0 transition-transform duration-400 group-hover:scale-[1.015]"
-              />
+            <div className="relative aspect-[4/3] overflow-hidden border-b border-line md:border-r md:border-b-0">
+              {featured.caseStudy?.heroImage ? (
+                <Image
+                  src={featured.caseStudy.heroImage}
+                  alt={`${featured.name} product screenshot`}
+                  fill
+                  sizes="(max-width: 1023px) 100vw, 50vw"
+                  className="object-cover object-top transition-transform duration-400 group-hover:scale-[1.015]"
+                />
+              ) : (
+                <Placeholder
+                  label="[Product screenshot]"
+                  className="aspect-[4/3] border-0 transition-transform duration-400 group-hover:scale-[1.015]"
+                />
+              )}
             </div>
             <div className="flex flex-col justify-between gap-8 p-6 sm:p-10">
               <div className="flex flex-col gap-4">
@@ -166,11 +177,21 @@ export default async function Home() {
                 href={`/work/${p.slug}`}
                 className="group flex flex-col overflow-hidden border border-line bg-surface text-ink no-underline hover:text-ink"
               >
-                <div className="overflow-hidden border-b border-line">
-                  <Placeholder
-                    label="[Screenshot]"
-                    className="aspect-[16/10] border-0 transition-transform duration-400 group-hover:scale-[1.015]"
-                  />
+                <div className="relative aspect-[16/10] overflow-hidden border-b border-line">
+                  {p.caseStudy?.heroImage ? (
+                    <Image
+                      src={p.caseStudy.heroImage}
+                      alt={`${p.name} product screenshot`}
+                      fill
+                      sizes="(max-width: 767px) 100vw, 50vw"
+                      className="object-cover object-top transition-transform duration-400 group-hover:scale-[1.015]"
+                    />
+                  ) : (
+                    <Placeholder
+                      label="[Screenshot]"
+                      className="aspect-[16/10] border-0 transition-transform duration-400 group-hover:scale-[1.015]"
+                    />
+                  )}
                 </div>
                 <div className="flex flex-col gap-2.5 p-6 sm:p-7">
                   <span className="meta text-muted-foreground">
